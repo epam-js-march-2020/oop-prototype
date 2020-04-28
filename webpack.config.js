@@ -7,22 +7,26 @@ module.exports = {
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader', 'eslint-loader']
       },
-    ],
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   resolve: {
-    extensions: ['*', '.js'],
+    extensions: ['*', '.js']
   },
   output: {
     path: path.join(__dirname, '/dist'),
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   devServer: {
     contentBase: './dist',
     open: true,
-    stats: "errors-only",
-    overlay: true,
-  },
+    stats: 'errors-only',
+    overlay: true
+  }
 };

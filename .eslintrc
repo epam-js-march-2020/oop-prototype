@@ -1,8 +1,5 @@
 {
     "parser": "babel-eslint",
-    "extends": ["airbnb"],
-    "rules": {},
-    "env": {
-        "jest/globals": true
-    }
+    "extends": ["eslint-config-es5"],
+    "env": {"jest/globals": true }
 }
