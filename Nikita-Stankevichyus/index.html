@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>OOP Prototype</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+  </head>
+
+  <body>
+
+    <header>
+    </header>
+
+    <main class="main container-fluid">
+      <div class="row">
+        <aside class="aside col-5 bg-danger text-white">
+
+          <select name="" id="select" class="aside__select form-control form-danger text-danger mg-t-15">
+            <option value="burgers" class="aside__select_burgers">Hamburgers</option>
+            <option value="salads" class="aside__select_salads">Salads</option>
+            <option value="drinks" class="aside__select_drinks">Drinks</option>
+          </select>
+
+          <div class="aside__burgers food mg-t-35">
+
+            <form action="" class="aside__burgers_form form container">
+
+              <div class="form_size size border border-white rounded bg-white text-danger row pd-15">
+
+                <div class="col-12"><h3>Choose desirable size:</h3></div>
+
+                <div class="col-12 row justify-content form-check">
+                  <div class="col-6">
+                    <input type="radio" class="size_radio radio" value="big" name="size" id="size--big">
+                    <label for="size--big" class="size_label label">Big</label>
+                  </div>
+                    
+                  <div class="col-6">
+                    <input type="radio" class="size_radio radio" value="small" name="size" id="size--small">
+                    <label for="size--small" class="size_label label">Small</label>
+                  </div>
+                    
+                
+                </div>
+                
+              </div>
+
+              <div class="form_stuffing stuffing border border-white rounded row bg-white text-danger pd-15 mg-t-15">
+                
+                <div class="col-12"><h3>Choose desirable stuffing:</h3></div>
+
+                <div class="col-12 row justify-content form-check">
+                  <div class="col-4">
+                    <input type="radio" class="size_radio radio" value="big" name="stuffing" id="stuffing--cheese">
+                    <label for="stuffing--cheese" class="size_label label">Cheese</label>
+                  </div>
+                    
+                  <div class="col-4">
+                    <input type="radio" class="size_radio radio" value="small" name="stuffing" id="stuffing--salad">
+                    <label for="stuffing--salad" class="size_label label">Salad</label>
+                  </div>
+
+                  <div class="col-4">
+                    <input type="radio" class="size_radio radio" value="small" name="stuffing" id="stuffing--potato">
+                    <label for="stuffing--potato" class="size_label label">Potato</label>
+                  </div>
+                    
+                
+                </div>
+                
+              </div>
+
+              <div id="burgers_submit" class="form_submit row mg-b--100">
+                <button type="submit" class="btn btn-block btn-light button--stable text-danger mg-t-35">Add position</button>
+              </div>
+
+            </form>
+          
+          </div>
+
+          <div class="aside__salads food mg-t-35 hidden">
+
+            <form action="" class="aside__salads_form form container">
+
+              <div class="form_size size border border-white rounded row bg-white text-danger pd-15">
+
+                <div class="col-12"><h3>Choose desirable salad:</h3></div>
+
+                <div class="col-12 row justify-content form-check">
+                  <div class="col-6">
+                    <input type="radio" class="size_radio radio" value="big" name="salad" id="salad--ceaser">
+                    <label for="salad--ceaser" class="size_label label">Ceaser</label>
+                  </div>
+                    
+                  <div class="col-6">
+                    <input type="radio" class="size_radio radio" value="small" name="salad" id="salad--olivie">
+                    <label for="salad--olivie" class="size_label label">Olivie</label>
+                  </div>
+                    
+                
+                </div>
+                
+              </div>
+
+        
+
+              <div id="salads_submit" class="form_submit row">
+                <button type="submit" class="btn btn-block btn-light button--stable text-danger mg-t-35">Add position</button>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="aside__drinks food mg-t-35 hidden">
+            <form action="" class="aside__drinks_form form container">
+
+              <div class="form_size size border border-white rounded row bg-white text-danger pd-15">
+
+                <div class="col-12"><h3>Choose desirable drink:</h3></div>
+
+                <div class="col-12 row justify-content form-check">
+                  <div class="col-6">
+                    <input type="radio" class="size_radio radio" value="big" name="drink" id="drink--coffee">
+                    <label for="drink--coffee" class="size_label label">Coffee</label>
+                  </div>
+                    
+                  <div class="col-6">
+                    <input type="radio" class="size_radio radio" value="small" name="drink" id="drink--cola">
+                    <label for="drink--cola" class="size_label label">Cola</label>
+                  </div>
+                    
+                
+                </div>
+                
+              </div>
+
+        
+
+              <div id="drinks_submit" class="form_submit row">
+                <button type="submit" class="btn btn-block btn-light text-danger button--stable mg-t-35">Add position</button>
+              </div>
+
+            </form>
+          </div>
+
+        </aside>
+
+
+        <div class="content col-7">
+          <form action="" class="content__form">
+            <div class="content__order">
+              <div class="col-12 text-danger mg-t-15">
+                <h2>Your Order:</h2>
+              </div>
+
+              <div id="positions" class="content__order_positions positions border border-danger rounded container pd-15">
+
+                <div class="position row mg-h-auto mg-b-10">
+                  <button id="" type="button" class="position_delete btn btn-warning text-danger border border-warning rounded col-1">X</button>
+                  <div class="mg-l-1 position_description bg-danger text-white border border-danger rounded col-8 text-center">
+                    <span class="align-middle">Small</span>
+                    <span class="align-middle">Potato</span>
+                    <span class="align-middle">Hamburger</span>
+                  </div>
+                  <div class="mg-l-1 position_numbers bg-white text-danger border border-danger rounded col-2 text-center">
+                    <span class="align-middle">40tg</span>
+                    <span class="align-middle">40cal</span>
+                  </div>
+                </div>
+
+                
+
+                
+
+              </div>
+
+            </div>
+            <div class="content__buttons mg-t-15">
+              <div class="row">
+                <div class="col-6">
+                  <button type="submit" class="btn btn-block btn-warning form-submit text-white commit">Commit</button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-block btn-danger text-white clear">Clear</button>
+                </div>
+               
+              </div>
+            </div>
+          </form>
+            
+        </div>
+      </div>
+        
+    </main>
+
+    <footer>
+    </footer>
+
+    <script type="text/template" id="">
+    </script>
+
+    <script type="text/javascript" src="bundle.js"></script>
+    
+  </body>
+</html>
