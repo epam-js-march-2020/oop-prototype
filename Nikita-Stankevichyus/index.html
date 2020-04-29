@@ -154,24 +154,13 @@
         <div class="content col-7">
           <form action="" class="content__form">
             <div class="content__order">
-              <div class="col-12 text-danger mg-t-15">
-                <h2>Your Order:</h2>
+              <div class="text-danger mg-t-15">
+                <h2>Your Order</h2>
               </div>
 
               <div id="positions" class="content__order_positions positions border border-danger rounded container pd-15">
 
-                <div class="position row mg-h-auto mg-b-10">
-                  <button id="" type="button" class="position_delete btn btn-warning text-danger border border-warning rounded col-1">X</button>
-                  <div class="mg-l-1 position_description bg-danger text-white border border-danger rounded col-8 text-center">
-                    <span class="align-middle">Small</span>
-                    <span class="align-middle">Potato</span>
-                    <span class="align-middle">Hamburger</span>
-                  </div>
-                  <div class="mg-l-1 position_numbers bg-white text-danger border border-danger rounded col-2 text-center">
-                    <span class="align-middle">40tg</span>
-                    <span class="align-middle">40cal</span>
-                  </div>
-                </div>
+                
 
                 
 
@@ -180,6 +169,11 @@
               </div>
 
             </div>
+            <div class="order_info text-danger">
+              <h3 class="">Total: </h2>
+              <h3 class="">Calories: </h2>
+            </div>
+
             <div class="content__buttons mg-t-15">
               <div class="row">
                 <div class="col-6">
@@ -201,7 +195,19 @@
     <footer>
     </footer>
 
-    <script type="text/template" id="">
+    <script type="text/template" id="position_tempalte">
+      <div class="position row mg-h-auto mg-b-10">
+        <button id="" type="button" class="position_delete btn btn-warning text-danger border border-warning rounded col-1">X</button>
+        <div class="mg-l-1 position_description bg-danger text-white border border-danger rounded col-8 text-center">
+          <span class="align-middle"><%-size%></span>
+          <span class="align-middle"><%-stuffing%></span>
+          <span class="align-middle"><%-type%></span>
+        </div>
+        <div class="mg-l-1 position_numbers bg-white text-danger border border-danger rounded col-2 text-center">
+          <span class="align-middle"><%-price%></span>
+          <span class="align-middle"><%-calories%></span>
+        </div>
+      </div>
     </script>
 
     <script type="text/javascript" src="bundle.js"></script>
