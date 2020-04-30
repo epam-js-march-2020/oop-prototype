@@ -45,14 +45,16 @@ const FOOD = require('./abstract_class_food.js').FOOD;
 
 
 // Constructor for stuffing objects
-function Stuffing(option='cheese', price, calories) {
+function Stuffing(option) {
   
   this.type = 'stuffing';
 
-  // 
-  this.option = option;
-  this.price = price;
-  this.calories = calories;
+  // Option is 'cheese' by default
+  this.option = option || 'cheese';
+
+  // Depending on the chosen option, parameters are founded automatically in prototype
+  this.price = this._definePrice(this.option);
+  this.calories = this._defineCalories(this.option);
 
 
 }
@@ -60,25 +62,42 @@ function Stuffing(option='cheese', price, calories) {
 Stuffing.prototype = FOOD;
 
 
-function Hamburger(option, calories, stuffing) {
+function Hamburger(option, stuffing) {
 
   this.type = 'hamburger';
-  this.option = option;
+
+  // Option is 'small' by default 
+  this.option = option || 'small';
+
+  // Default stuffing by default
+  this.stuffing = stuffing || new Stuffing();
   
-  // Depending on the chosen option, price is founded automatically in prototype
-  this.price = this.prices[option];
-  this.calories = calories;
+  // Depending on the chosen option, parameters are founded automatically in prototype
+  this.price = this._definePrice(this.option);
+  this.calories = this._defineCalories(this.option);
 
-  this.stuffing = stuffing;
+  // Calculates total parameters for hamburger with stuffing
+  this._calculatePrice = function(){
+    return this.price + this.stuffing.price;
+  }  
 
-  this.calculateCalories = function(){
-
+  this._calculateCalories = function(){
+    return this.calories + this.stuffing.calories;
   }
+
+
 }
 
 Hamburger.prototype = FOOD;
 
-const burg = new Hamburger('small', 1, 2, 'kek');
+const burg = new Hamburger('small', new Stuffing());
+const another = new Hamburger('big', new Stuffing(STUFF_POTATO_NAME));
+const other = new Hamburger('small', new Stuffing(STUFF_SALAD_NAME));
+const def = new Hamburger();
+const stuff = new Stuffing();
 
-console.log(burg.price);
+console.log(burg.getParameters());
+console.log(another.getParameters());
+console.log(other.getParameters());
+console.log(def.getName());
 

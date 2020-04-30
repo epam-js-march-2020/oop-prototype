@@ -29,7 +29,7 @@ module.exports.DRINK_COFFEE_NAME = 'coffee';
 */
 
 // Hamburgers
-module.exports.BURGER_SM_CALS = 50;
+module.exports.BURGER_SM_PRICE = 50;
 module.exports.BURGER_BIG_PRICE = 100;
 
 // Stuffings

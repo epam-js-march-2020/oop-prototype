@@ -22,8 +22,6 @@ const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
 
 
 
-
-
 /*
  * PRICES
 */
@@ -67,44 +65,86 @@ const SALAD_OLIVIE_CALS = require('./consts_food_params.js'). SALAD_OLIVIE_CALS;
 const DRINK_COLA_CALS = require('./consts_food_params.js').DRINK_COLA_CALS;
 const DRINK_COFFEE_CALS = require('./consts_food_params.js').DRINK_COFFEE_CALS;
 
+
 module.exports.FOOD = {
 
+  // Sets product's price depending on the option of the food
+  _definePrice(option) {
+    return this._prices[option];
+  },
 
+  // Sets product's calories depending on the option of the food
+  _defineCalories(option) {
+    return this._calories[option];
+  },
+
+  // Type is basic type of the food (Hamburger/Salad/Drink)
   getType() {
     return this.type;
   },
 
-  getPrice() {
-    return this.price;
-  },
-
-  getCalories() {
-    return this.calories;
-  },
-
+  // Option is advanced type of the food (For hamburgers it's size, for drink this is either cola or coffee, etc)
   getOption() {
     return this.option;
   },
 
+  // Name is option + type (and stuffing in case of hamburgers)
   getName() {
-    return this.option + ' ' + this.type;
+    return this.option + ' ' + this.type + (this.stuffing ? ' with ' + this.stuffing.getName() : '');
   },
 
+  // Parameters are price + calories with measurement units. It takes hamburger's stuffing in consideration too
   getParameters() {
-    return this.price + 'tg' + ' ' + this.calories + 'cal';
+    return (this._calculatePrice ? this._calculatePrice() : this.price) + 'tg' + ' ' 
+         + (this._calculateCalories ? this._calculateCalories() : this.calories) + 'cal';
   },
 
+  // Size is method specific for hamburgers. Not sure if it's needed
   geSize() {
     return this.size ? this.size : '';
   },
 
+  // Stuffing is method specific for hamburgers. Not sure if it's needed
   getStuffing() {
     return this.stuffing ? this.stuffing : '';
   },
 
-  prices: {
-    [BURGER_SM_NAME]: 'kek',
-  }
+
+  // 'Database' with prices for each food option
+  _prices: {
+
+    [BURGER_SM_NAME]: BURGER_SM_PRICE,
+    [BURGER_BIG_NAME]: BURGER_BIG_PRICE,
+
+    [STUFF_CHEESE_NAME]: STUFF_CHEESE_PRICE,
+    [STUFF_SALAD_NAME]: STUFF_SALAD_PRICE,
+    [STUFF_POTATO_NAME]: STUFF_POTATO_PRICE,
+
+    [SALAD_CEASER_NAME]: SALAD_CEASER_PRICE,
+    [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_PRICE,
+
+    [DRINK_COLA_NAME]: DRINK_COFFEE_PRICE,
+    [DRINK_COFFEE_NAME]: DRINK_COLA_PRICE,
+
+  },
+
+  // 'Database' with calories for each food option
+  _calories: {
+
+    [BURGER_SM_NAME]: BURGER_SM_CALS,
+    [BURGER_BIG_NAME]: BURGER_BIG_CALS,
+
+    [STUFF_CHEESE_NAME]: STUFF_CHEESE_CALS,
+    [STUFF_SALAD_NAME]: STUFF_SALAD_CALS,
+    [STUFF_POTATO_NAME]: STUFF_POTATO_CALS,
+
+    [SALAD_CEASER_NAME]: SALAD_CEASER_CALS,
+    [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_CALS,
+
+    [DRINK_COLA_NAME]: DRINK_COFFEE_CALS,
+    [DRINK_COFFEE_NAME]: DRINK_COLA_CALS,
+    
+  },
 
 
 }
