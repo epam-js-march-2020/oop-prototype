@@ -36,5 +36,5 @@ module.exports = {
     open: true,
     stats: 'errors-only',
     overlay: true
-  }
+  },
 };
