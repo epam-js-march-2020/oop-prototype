@@ -6,9 +6,15 @@
 
  .aside {
 	 width: 100%;
-	 min-height: 475px;
+	 min-height: 700px;
 	 height: 100vh;
 	 position: relative;
+ }
+
+ @media (max-width: 767.5px){
+	 .aside{
+		 min-height: 550px;
+	 }
  }
 
  .content {
