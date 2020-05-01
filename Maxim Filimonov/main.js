@@ -1,4 +1,29 @@
 'use strict'
+function* idMaker() {
+    var index = 0;
+    for(let i = 0;1; i++)
+      yield index++;
+};
+var gen = idMaker();
+var Subject= function (){
+    this.observers = [];
+
+
+    return {
+        subscribeObserver: function(observer){
+            this.observers.push(observer);
+        },
+        unsubscribeObserver: function(observer){
+            var index = this.observers.indexOf(observer);
+            if (index>-1){
+                this.observers.splice(index,1);
+            }
+        },
+        notifyObserver: function(observer){
+            var index = this.observers.indexOf(observer);
+        }
+    }
+}
 var Hamburger = function(){//pattern constructor 
     this.kkal=0;
     this.price = 0;
@@ -93,8 +118,108 @@ Drink.prototype.chooseType = function(n){
     this.type = n;
 }
 
-var ham1 = new Hamburger();
-ham1.SIZE_LARGE();
-ham1.STUFFING('cheese');
-ham1.getPrice();
-console.log ('123');
+Drink.prototype.getType = Salad.prototype.getType;
+Drink.prototype.getPrice = Hamburger.prototype.getPrice;
+Drink.prototype.getKkal = Hamburger.prototype.getKkal;
+
+
+function FoodFactory (){}; //factory?
+
+FoodFactory.prototype.createFood = function(options){
+    switch(options.foodType){
+        case 'Hamburger':
+            this.foodType = Hamburger;
+            break;
+        case 'Salad':
+            this.foodType = Salad;
+            break;
+        case 'Drink':
+            this.foodType = Drink;
+            break;
+        default:
+            this.foodType= Hamburger;
+            break;
+    }
+    return new this.foodType(options);
+};
+
+var foodFactory = new FoodFactory ();
+
+// var drink1 = foodFactory.createFood({
+//     foodType :'Drink'
+// });
+// var salad1 = foodFactory.createFood({
+//     foodType :'Salad'});
+// var ham1 = foodFactory.createFood({
+//     foodType :'Hamburger'});
+// ham1.SIZE_LARGE();
+// ham1.STUFFING('cheese');
+// ham1.getPrice();
+// drink1.chooseType('Cola');
+// console.log(drink1.getKkal());
+// console.log (drink1);
+// console.log (salad1);
+// console.log (ham1);
+
+var recipe = [];
+
+function addDrink (type){
+    var drink = foodFactory.createFood({
+        foodType :'Drink'
+    });
+    drink.id = gen.next().value;
+    drink.chooseType(type);
+    recipe.push(drink);
+}
+// var drink2 = getDrink('Cola');
+// console.log (drink2);
+
+function addHam (size, stuffingStr){
+    var ham = foodFactory.createFood({
+        foodType :'Hamburger'
+    });
+    if (size == 'small'){
+        ham.SIZE_SMALL();
+    }else if(size == 'large'){
+        ham.SIZE_LARGE();
+    }else{
+        console.log('Size is not correct');
+        return '';
+    }
+    if (stuffingStr != undefined){
+        var stuffingArr = stuffingStr.split(',');
+        for (var key in stuffingArr){
+            ham.STUFFING(stuffingArr[key]);
+        }
+    }
+    ham.id = gen.next().value;
+    recipe.push(ham);
+}
+function addSalad (type){
+    var salad = foodFactory.createFood({
+        foodType :'Salad'
+    });
+    salad.id = gen.next().value;
+    salad.chooseType(type);
+    recipe.push (salad);
+}
+function subTotal (){
+    console.log (recipe);
+    var price = 0;
+    var kkal = 0;
+    for (var key in recipe){
+        price += recipe[key].getPrice();
+        kkal += recipe[key].getKkal();
+    }
+    console.log('Price: ' + price);
+    console.log('Kkal: ' + kkal);
+}
+
+addDrink('Cola');
+addSalad('Ceasar');
+addHam('large','cheese,potato');
+addHam('small');
+subTotal();
+
+// var ham2 = getHam ('large', 'cheese,salad');
+// console.log(ham2);
