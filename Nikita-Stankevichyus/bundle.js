@@ -1,6 +1,9 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+
+// Importing ORDER local object. It handles dynamic elements
 const ORDER = require('./src/javascript/order_local_object.js').ORDER;
 
+// Importing food classes
 const Hamburger = require('./src/javascript/class_hamburger.js').Hamburger;
 const Stuffing = require('./src/javascript/class_hamburger.js').Stuffing;
 const Salad = require('./src/javascript/class_salad.js').Salad;
@@ -31,6 +34,8 @@ OPTIONS.forEach(function(element){
   })
 });
 
+
+// This method turn first letter in the string to upper case
 Object.defineProperty(String.prototype, 'myCapitalize', {
 
   value: function(){
@@ -40,30 +45,42 @@ Object.defineProperty(String.prototype, 'myCapitalize', {
   enumerable: false,
 });
 
-$('.aside__burgers_form').submit(function(event){
+
+// Hamburger adding form submition
+$('.aside__burgers_form').submit( function(event) {
+
   event.preventDefault();
   
-  
+  // Forming new Hamburger object (with stuffing object inside) initialized with checked radio-buttons
+  // And adding it to the order 
   ORDER.add(new Hamburger($('.aside__burgers_form').find('.size_radio:checked').val(),
             new Stuffing($('.aside__burgers_form').find('.stuffing_radio:checked').val())));
 
 });
 
-$('.aside__salads_form').submit(function(event){
+
+// Salad adding form submition
+$('.aside__salads_form').submit( function(event) {
+
   event.preventDefault();
 
+  // Forming new Salad object initialized with checked radio-buttons and adding it to the order
   ORDER.add(new Salad($('.aside__salads_form').find(':checked').val()));
 
 });
 
-$('.aside__drinks_form').submit(function(event){
+
+// Drink adding form submition
+$('.aside__drinks_form').submit( function(event) {
+
   event.preventDefault();
 
+  // Forming new Drink object initialized with checked radio-buttons and adding it to the order
   ORDER.add(new Drink($('.aside__drinks_form').find(':checked').val()));
 
 });
 
-
+// First render to initialize dynamic elements
 ORDER.render();
 },{"./src/javascript/class_drink.js":3,"./src/javascript/class_hamburger.js":4,"./src/javascript/class_salad.js":5,"./src/javascript/order_local_object.js":7}],2:[function(require,module,exports){
 /*

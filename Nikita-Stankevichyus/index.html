@@ -18,14 +18,19 @@
 
     <main class="main container-fluid">
       <div class="row">
+
+        <!-- Part of the page where added position is formed (food is being selected) -->
         <aside class="aside col-md-5 col-12 bg-danger text-white">
 
+          <!-- Selects which kind of food customer wants -->
           <select name="" id="select" class="aside__select form-control form-danger text-danger mg-t-15">
             <option value="burgers" selected class="aside__select_burgers">Hamburgers</option>
             <option value="salads" class="aside__select_salads">Salads</option>
             <option value="drinks" class="aside__select_drinks">Drinks</option>
           </select>
 
+
+          <!-- Form for 'customizing' burger -->
           <div class="aside__burgers burgers food mg-t-35">
 
             <form action="" class="aside__burgers_form form container">
@@ -50,6 +55,7 @@
                 
               </div>
 
+              <!-- Stuffing for burger -->
               <div class="form_stuffing stuffing border border-white rounded row bg-white text-danger pd-15 mg-t-15">
                 
                 <div class="col-12"><h3>Choose desirable stuffing:</h3></div>
@@ -75,6 +81,7 @@
                 
               </div>
 
+              <!-- Submition button of the burger adding form -->
               <div id="burgers_submit" class="form_submit row mg-b--100">
                 <button type="submit" class="btn btn-block btn-light button--stable text-danger mg-t-35">Add position</button>
               </div>
@@ -83,6 +90,7 @@
           
           </div>
 
+          <!-- Just like the burger, but for salads and without stuffing subform -->
           <div class="aside__salads salads food mg-t-35 hidden">
 
             <form action="" class="aside__salads_form form container">
@@ -108,7 +116,7 @@
               </div>
 
         
-
+              <!-- Submition button for salad -->
               <div id="salads_submit" class="form_submit row">
                 <button type="submit" class="btn btn-block btn-light button--stable text-danger mg-t-35">Add position</button>
               </div>
@@ -116,6 +124,7 @@
             </form>
           </div>
 
+          <!-- Just like the salad form, but for drinks -->
           <div class="aside__drinks drinks food mg-t-35 hidden">
             <form action="" class="aside__drinks_form form container">
 
@@ -140,7 +149,7 @@
               </div>
 
         
-
+              <!-- Submition button for drinks -->
               <div id="drinks_submit" class="form_submit row">
                 <button type="submit" class="btn btn-block btn-light text-danger button--stable mg-t-35">Add position</button>
               </div>
@@ -160,16 +169,13 @@
 
               <div id="positions" class="content__order_positions positions border border-danger rounded container pd-15">
 
-                
-
-                
-
-                
-
+                <!-- Position html elements are rendered here -->
               </div>
 
             </div>
             <div class="order_info text-danger mg-t-15">
+
+              <!-- Total price and total calories are rendered here -->
               <h4 class="" id="total_price"></h2>
               <h4 class="" id="total_calories"></h2>
             </div>
@@ -177,9 +183,11 @@
             <div class="content__buttons mg-t-15">
               <div class="row">
                 <div class="col-6">
+                  <!-- Submits order. After clicking this button all buttons (including this one) become disabled -->
                   <button type="submit" class="btn btn-block btn-warning form-submit text-white commit">Commit</button>
                 </div>
                 <div class="col-6">
+                  <!-- Clears order from all the positions -->
                   <button type="button" id="clear" class="btn btn-block btn-danger text-white clear">Clear</button>
                 </div>
                
@@ -195,6 +203,9 @@
     <footer>
     </footer>
 
+    <!-- Template for position html element -->
+    <!-- Description is food name (option + type, f.e.: cola drink (cola -- option, drink -- type)) -->
+    <!-- Parameters are food price and calories -->
     <script type="text/template" id="position_template">
       <div class="position row mg-h-auto mg-b-10" id="<%-id%>">
         <button id="" type="button" class="position_delete btn btn-warning text-danger border border-warning rounded col-1">X</button>
