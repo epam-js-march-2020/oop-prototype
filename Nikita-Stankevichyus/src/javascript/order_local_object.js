@@ -151,6 +151,17 @@ module.exports.ORDER = {
       element.position.jQueryElement.find('.position_delete').click(deleteHandler.bind(absoluteThis));
     })
 
+    $('#clear').click(function(){
+      absoluteThis.forEach(function(element){
+        absoluteThis.delete(element);
+        absoluteThis.render();
+      })
+    })
+
+    $('.content__form').submit(function(event){
+      event.preventDefault();
+      $('button').attr('disabled', true);
+    })
     
     $('#total_price').html('Total price: '.concat(this.collection.length > 0 ? this.totalPrice() : '0') + 'tg');
     $('#total_calories').text('Total calories: '.concat(this.collection.length > 0 ? this.totalCalories() : '0') + 'cal');

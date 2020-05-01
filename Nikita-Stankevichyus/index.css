@@ -6,6 +6,7 @@
 
  .aside {
 	 width: 100%;
+	 min-height: 475px;
 	 height: 100vh;
 	 position: relative;
  }
@@ -34,8 +35,8 @@
 .positions {
 	min-height: 30vh;
 	height: max-content;
-	max-height: 75vh;
-	
+	max-height: 60vh;
+	overflow: scroll;
 }
 
 
@@ -44,11 +45,13 @@
 	max-width: 95%;
 }
 
-.button--stable {
-	position: absolute;
-	bottom: 5%;
-	right: 50%;
-	transform: translateX(50%);
+@media (min-height: 475px){
+	.button--stable {
+		position: absolute;
+		bottom: 5%;
+		right: 50%;
+		transform: translateX(50%);
+	}
 }
 /* 
 .radio{
