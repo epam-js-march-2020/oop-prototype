@@ -1,10 +1,6 @@
 //'use strict'
-function* idMaker() {
-    var index = 0;
-    for(let i = 0;1; i++)
-      yield index++;
-};
-var gen = idMaker();
+
+var gen = 0;
 
 
 // var Subject= function (){
@@ -48,28 +44,139 @@ var gen = idMaker();
 
 // subject.subscribeObserver(observer1);
 // subject.notifyObserver(observer1);
+var BasketModule = (function(){// pattern module
+    var receipts = [];
+    var sum = 0;
+    var ksum=0;
+    var receipt = [];
+    var gen = 0;
+    return {
+        addHam: function (size, stuffingStr){
+            var ham = foodFactory.createFood({
+                foodType :'Hamburger'
+            });
+            if (size == 'small'){
+                ham.SIZE_SMALL();
+            }else if(size == 'large'){
+                ham.SIZE_LARGE();
+            }else{
+                console.log('Size is not correct');
+                return ;
+            }
+            if (stuffingStr != undefined){
+                var stuffingArr = stuffingStr.split(',');
+                for (var key in stuffingArr){
+                    ham.STUFFING(stuffingArr[key]);
+                }
+            }
+            ham.id = gen++;
+            receipt.push(ham);
+            this.subTotal();
+            //subject.notifyObserver(observer1);
+        },
+        addSalad: function (type, mass){
+            var salad = foodFactory.createFood({
+                foodType :'Salad'
+            });
+            salad.id = gen++;
+            salad.chooseType(type);
+            if (mass == Number){
+                salad.mass = mass;
+                var saladKkal = salad.kkal;
+                var saladPrice = salad.price;
+                salad.price = 0.01 * mass* saladPrice;
+                salad.kkal = 0.01 * mass* saladKkal;
+            } else {
+                console.log('mass is not a number');
+                return;
+            }
+            if (salad.type != 0){
+                receipt.push(salad);
+            }else{
+                return ;
+            }
+            //subject.notifyObserver(observer1);
+            this.subTotal();
+        },
+        addDrink: function (type){ // console commands
+            var drink = foodFactory.createFood({
+                foodType :'Drink'
+            });
+            drink.id = gen++;
+            drink.chooseType(type);
+            if (drink.type != 0){
+                receipt.push(drink);
+            }else{
+                return;
+            }
+            this.subTotal();
+            //subject.notifyObserver(observer1);
+        },
+        subTotal: function (){ //tracking current receipt status
+            //console.log (receipt);
+            var price = 0;
+            var kkal = 0;
+            console.log('Current receipt:')
+            for (var key in receipt){
+                console.log('id: ' + receipt[key].id +' '+'Item: ' +  receipt[key].name +' '+ 'price: ' + receipt[key].price +' '+'kkal: ' +  receipt[key].kkal);
+                if (receipt[key].mass != undefined){
+                    console.log ('                             Mass: '+ receipt[key].mass);
+                }else if (receipt[key].size != undefined){
+                    console.log('     size:'  + receipt[key].size + '   stuffing : ' + receipt[key].stuffing);
+                }
+                price += receipt[key].price;
+                kkal += receipt[key].kkal;
+            }
+            sum = price;
+            ksum = kkal;
+            console.log('Subtotal:')
+            console.log('Price: ' + sum);
+            console.log('Kkal: ' + ksum);
+        },
+        deleteItem: function (id){ 
+            receipt.splice(id,1);
+            this.subTotal();
+        },
+        pay: function(){
+            this.subTotal();
+            receipts.push(receipt);
+            receipt = [];
+            sum = 0;
+            ksum=0;
+            gen = 0;
+            console.log('Your new order:')
+        },
+        checkHistory:  function(){//checks previous receipts
+            console.log(receipts);
+        }
+
+
+
+    }
+})();
+
 
 
 var Hamburger = function(){//pattern constructor 
     this.kkal=0;
     this.price = 0;
-    this.size='Not yet chosen!';
+    this.size='0';
     this.stuffing = [];
     this.name = 'Hamburger';
-}
+};
 
 Hamburger.prototype.SIZE_SMALL = function(){
     this.size = 'small';
     this.kkal += 20;
     this.price += 50;
 
-}
+};
 Hamburger.prototype.SIZE_LARGE = function (){
     this.size = 'large';
     this.kkal += 40;
     this.price += 100;
 
-}
+};
 Hamburger.prototype.STUFFING= function(n){
     if (n =='cheese'){
         this.price += 10;
@@ -84,27 +191,13 @@ Hamburger.prototype.STUFFING= function(n){
         return console.log('There\'s no such stuffing try again');
     }
     this.stuffing.push(n);
-}
-Hamburger.prototype.getSize= function (){
-    //console.log(this.size);
-    return this.size;
-}
-Hamburger.prototype.getPrice= function (){
-    //console.log(this.price);
-    return this.price;
-}
-Hamburger.prototype.getStuffing = function (){
-    //console.log (this.stuffing);
-    return this.stuffing;
-}
-Hamburger.prototype.getKkal = function (){
-    return this.kkal;
-}
+};
+
 
 function Salad (){
     this.kkal=0;
     this.price = 0;
-    this.type = 'Please choose your salad\'s type';
+    this.type = 0;
 }
 Salad.prototype.chooseType = function(n){
     if (n =='Ceasar'){
@@ -119,19 +212,14 @@ Salad.prototype.chooseType = function(n){
         return console.log('There\'s no such salad try again');
     }
     this.type = n;
-}
-Salad.prototype.getType = function(){
-    return this.type;
-}
+};
 
-Salad.prototype.getPrice = Hamburger.prototype.getPrice;
-Salad.prototype.getKkal = Hamburger.prototype.getKkal;
 
 
 function Drink (){
     this.kkal=0;
     this.price = 0;
-    this.type = 'Please choose your drink\'s type';
+    this.type = 0;
 }
 
 Drink.prototype.chooseType = function(n){
@@ -147,11 +235,8 @@ Drink.prototype.chooseType = function(n){
         return console.log('There\'s no such drink try again');
     }
     this.type = n;
-}
+};
 
-Drink.prototype.getType = Salad.prototype.getType;
-Drink.prototype.getPrice = Hamburger.prototype.getPrice;
-Drink.prototype.getKkal = Hamburger.prototype.getKkal;
 
 
 function FoodFactory (){}; //factory?
@@ -176,116 +261,8 @@ FoodFactory.prototype.createFood = function(options){
 
 var foodFactory = new FoodFactory ();
 
-// var drink1 = foodFactory.createFood({
-//     foodType :'Drink'
-// });
-// var salad1 = foodFactory.createFood({
-//     foodType :'Salad'});
-// var ham1 = foodFactory.createFood({
-//     foodType :'Hamburger'});
-// ham1.SIZE_LARGE();
-// ham1.STUFFING('cheese');
-// ham1.getPrice();
-// drink1.chooseType('Cola');
-// console.log(drink1.getKkal());
-// console.log (drink1);
-// console.log (salad1);
-// console.log (ham1);
-
-var receipt = [];
-
-function addDrink (type){
-    var drink = foodFactory.createFood({
-        foodType :'Drink'
-    });
-    drink.id = gen.next().value;
-    drink.chooseType(type);
-    receipt.push(drink);
-    subTotal();
-    //subject.notifyObserver(observer1);
-}
-// var drink2 = getDrink('Cola');
-// console.log (drink2);
-
-function addHam (size, stuffingStr){
-    var ham = foodFactory.createFood({
-        foodType :'Hamburger'
-    });
-    if (size == 'small'){
-        ham.SIZE_SMALL();
-    }else if(size == 'large'){
-        ham.SIZE_LARGE();
-    }else{
-        console.log('Size is not correct');
-        return '';
-    }
-    if (stuffingStr != undefined){
-        var stuffingArr = stuffingStr.split(',');
-        for (var key in stuffingArr){
-            ham.STUFFING(stuffingArr[key]);
-        }
-    }
-    ham.id = gen.next().value;
-    receipt.push(ham);
-    subTotal();
-    //subject.notifyObserver(observer1);
-}
-function addSalad (type, mass){
-    var salad = foodFactory.createFood({
-        foodType :'Salad'
-    });
-    salad.id = gen.next().value;
-    salad.chooseType(type);
-    salad.mass = mass;
-    var saladKkal = salad.kkal;
-    var saladPrice = salad.price;
-    salad.price = 0.01 * mass* saladPrice;
-    salad.kkal = 0.01 * mass* saladKkal;
-    receipt.push (salad);
-    //subject.notifyObserver(observer1);
-    subTotal();
-}
-function subTotal (){
-    //console.log (receipt);
-    var price = 0;
-    var kkal = 0;
-    console.log('Current receipt:')
-    for (var key in receipt){
-        console.log('id: ' + receipt[key].id +' '+'Item: ' +  receipt[key].name +' '+ 'price: ' + receipt[key].price +' '+'kkal: ' +  receipt[key].kkal);
-        if (receipt[key].mass != undefined){
-            console.log ('                             Mass: '+ receipt[key].mass);
-        }else if (receipt[key].size != undefined){
-            console.log('     size:'  + receipt[key].size + '   stuffing : ' + receipt[key].stuffing);
-        }
-        price += receipt[key].getPrice();
-        kkal += receipt[key].getKkal();
-    }
-    console.log('Subtotal:')
-    console.log('Price: ' + price);
-    console.log('Kkal: ' + kkal);
-}
-function deleteItem (id){
-    receipt.splice(id,1);
-    subTotal();
-}
-var receipts = [];
-function total (){
-    subTotal();
-    receipts.push(receipt);
-    gen = idMaker();
-    receipt = [];
-    console.log('Choose your new order')
-}
-
-// addDrink('Cola');
-// addSalad('Ceasar');
-// addHam('large','cheese,potato');
-// addHam('small');
-
-// var ham2 = getHam ('large', 'cheese,salad');
-// console.log(ham2);
-console.log('In order to add Drink write: addDrink(\'DrinkType\'); currently available: Cola, Coffee');
-console.log('In order to add Hamburger write: addHam(\'Size\',\'Stuffing1,Stuffing2, etc\'); currently available sizes: large, small; currently available stuffing: cheese, salad, potato ');
-console.log('In order to add Drink write: addSalad(\'SaladType\',mass) mass in gramms; currently available: Ceasar, Russian');
-console.log('In order to delete position in receipt write: deleteItem(Id), where\'s id is a \'Id\' of item in subtotal list'); 
-console.log('In order to pay the receipt write: total();')
+console.log('In order to add Drink write: BasketModule.addDrink(\'DrinkType\'); currently available: Cola, Coffee');
+console.log('In order to add Hamburger write: BasketModule.addHam(\'Size\',\'Stuffing1,Stuffing2, etc\'); currently available sizes: large, small; currently available stuffing: cheese, salad, potato ');
+console.log('In order to add Drink write: BasketModule.addSalad(\'SaladType\',mass) mass in gramms; currently available: Ceasar, Russian');
+console.log('In order to delete position in receipt write: BasketModule.deleteItem(Id), where\'s id is a \'Id\' of item in subtotal list'); 
+console.log('In order to pay the receipt write: BasketModule.pay();');
