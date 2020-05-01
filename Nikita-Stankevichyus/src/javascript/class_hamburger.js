@@ -17,7 +17,7 @@ const FOOD = require('./abstract_class_food.js').FOOD;
 
 
 // Constructor for stuffing objects
-function Stuffing(option) {
+module.exports.Stuffing = function(option) {
   
   this.type = 'stuffing';
 
@@ -31,10 +31,10 @@ function Stuffing(option) {
 
 }
 
-Stuffing.prototype = FOOD;
+module.exports.Stuffing.prototype = FOOD;
 
 
-function Hamburger(option, stuffing) {
+module.exports.Hamburger = function(option, stuffing) {
 
   this.type = 'hamburger';
 
@@ -60,5 +60,5 @@ function Hamburger(option, stuffing) {
 
 }
 
-Hamburger.prototype = FOOD;
+module.exports.Hamburger.prototype = FOOD;
 

@@ -93,6 +93,16 @@ module.exports.FOOD = {
     return this.option + ' ' + this.type + (this.stuffing ? ' with ' + this.stuffing.getName() : '');
   },
 
+  // Gettin price. If object is hamburger -- price is calculated via corresponding method
+  getPrice() {
+    return (this._calculatePrice ? this._calculatePrice() : this.price);
+  },
+
+   // Gettin calories. If object is hamburger -- calories are calculated via corresponding method
+  getCalories() {
+    return (this._calculateCalories ? this._calculateCalories() : this.calories);
+  },
+
   // Parameters are price + calories with measurement units. It takes hamburger's stuffing in consideration too
   getParameters() {
     return (this._calculatePrice ? this._calculatePrice() : this.price) + 'tg' + ' ' 

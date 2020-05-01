@@ -36,13 +36,13 @@
 
                 <div class="col-12 row justify-content form-check">
                   <div class="col-6">
-                    <input type="radio" class="size_radio radio" value="big" name="size" id="size--big">
-                    <label for="size--big" class="size_label label">Big</label>
+                    <input type="radio" class="size_radio radio" checked value="" name="size" id="size--big">
+                    <label for="size--big" class="size_label label"></label>
                   </div>
                     
                   <div class="col-6">
-                    <input type="radio" class="size_radio radio" value="small" name="size" id="size--small">
-                    <label for="size--small" class="size_label label">Small</label>
+                    <input type="radio" class="size_radio radio" value="" name="size" id="size--small">
+                    <label for="size--small" class="size_label label"></label>
                   </div>
                     
                 
@@ -56,18 +56,18 @@
 
                 <div class="col-12 row justify-content form-check">
                   <div class="col-4">
-                    <input type="radio" class="size_radio radio" value="big" name="stuffing" id="stuffing--cheese">
-                    <label for="stuffing--cheese" class="size_label label">Cheese</label>
+                    <input type="radio" class="stuffing_radio radio" value="" name="stuffing" id="stuffing--cheese">
+                    <label for="stuffing--cheese" class="stuffing_label label"></label>
                   </div>
                     
                   <div class="col-4">
-                    <input type="radio" class="size_radio radio" value="small" name="stuffing" id="stuffing--salad">
-                    <label for="stuffing--salad" class="size_label label">Salad</label>
+                    <input type="radio" class="stuffing_radio radio" checked value="" name="stuffing" id="stuffing--salad">
+                    <label for="stuffing--salad" class="stuffing_label label"></label>
                   </div>
 
                   <div class="col-4">
-                    <input type="radio" class="size_radio radio" value="small" name="stuffing" id="stuffing--potato">
-                    <label for="stuffing--potato" class="size_label label">Potato</label>
+                    <input type="radio" class="stuffing_radio radio" value="" name="stuffing" id="stuffing--potato">
+                    <label for="stuffing--potato" class="stuffing_label label"></label>
                   </div>
                     
                 
@@ -87,19 +87,19 @@
 
             <form action="" class="aside__salads_form form container">
 
-              <div class="form_size size border border-white rounded row bg-white text-danger pd-15">
+              <div class="form_salad salad border border-white rounded row bg-white text-danger pd-15">
 
                 <div class="col-12"><h3>Choose desirable salad:</h3></div>
 
                 <div class="col-12 row justify-content form-check">
                   <div class="col-6">
-                    <input type="radio" class="size_radio radio" value="big" name="salad" id="salad--ceaser">
-                    <label for="salad--ceaser" class="size_label label">Ceaser</label>
+                    <input type="radio" class="salad_radio radio" checked value="" name="salad" id="salad--ceaser">
+                    <label for="salad--ceaser" class="salad_label label"></label>
                   </div>
                     
                   <div class="col-6">
-                    <input type="radio" class="size_radio radio" value="small" name="salad" id="salad--olivie">
-                    <label for="salad--olivie" class="size_label label">Olivie</label>
+                    <input type="radio" class="salad_radio radio" value="" name="salad" id="salad--olivie">
+                    <label for="salad--olivie" class="salad_label label"></label>
                   </div>
                     
                 
@@ -119,19 +119,19 @@
           <div class="aside__drinks drinks food mg-t-35 hidden">
             <form action="" class="aside__drinks_form form container">
 
-              <div class="form_size size border border-white rounded row bg-white text-danger pd-15">
+              <div class="form_drink drink border border-white rounded row bg-white text-danger pd-15">
 
                 <div class="col-12"><h3>Choose desirable drink:</h3></div>
 
                 <div class="col-12 row justify-content form-check">
                   <div class="col-6">
-                    <input type="radio" class="size_radio radio" value="big" name="drink" id="drink--coffee">
-                    <label for="drink--coffee" class="size_label label">Coffee</label>
+                    <input type="radio" class="drink_radio radio" checked value="" name="drink" id="drink--coffee">
+                    <label for="drink--coffee" class="drink_label label"></label>
                   </div>
                     
                   <div class="col-6">
-                    <input type="radio" class="size_radio radio" value="small" name="drink" id="drink--cola">
-                    <label for="drink--cola" class="size_label label">Cola</label>
+                    <input type="radio" class="drink_radio radio" value="" name="drink" id="drink--cola">
+                    <label for="drink--cola" class="drink_label label"></label>
                   </div>
                     
                 
@@ -170,8 +170,8 @@
 
             </div>
             <div class="order_info text-danger mg-t-15">
-              <h4 class="">Total: </h2>
-              <h4 class="">Calories: </h2>
+              <h4 class="" id="total_price"></h2>
+              <h4 class="" id="total_calories"></h2>
             </div>
 
             <div class="content__buttons mg-t-15">
@@ -195,17 +195,14 @@
     <footer>
     </footer>
 
-    <script type="text/template" id="position_tempalte">
-      <div class="position row mg-h-auto mg-b-10">
+    <script type="text/template" id="position_template">
+      <div class="position row mg-h-auto mg-b-10" id="<%-id%>">
         <button id="" type="button" class="position_delete btn btn-warning text-danger border border-warning rounded col-1">X</button>
         <div class="mg-l-1 position_description bg-danger text-white border border-danger rounded col-8 text-center">
-          <span class="align-middle"><%-size%></span>
-          <span class="align-middle"><%-stuffing%></span>
-          <span class="align-middle"><%-type%></span>
+          <span class="align-middle"><%-description%></span>
         </div>
         <div class="mg-l-1 position_numbers bg-white text-danger border border-danger rounded col-2 text-center">
-          <span class="align-middle"><%-price%></span>
-          <span class="align-middle"><%-calories%></span>
+          <span class="align-middle"><%-parameters%></span>
         </div>
       </div>
     </script>

@@ -9,7 +9,7 @@ const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
 const FOOD = require('./abstract_class_food.js').FOOD;
 
 // Constructor for drinks objects
-function Salad(option) {
+module.exports.Salad = function(option) {
   
   this.type = 'salad';
 
@@ -23,4 +23,4 @@ function Salad(option) {
 
 }
 
-Salad.prototype = FOOD;
+module.exports.Salad.prototype = FOOD;

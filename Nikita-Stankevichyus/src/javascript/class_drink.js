@@ -9,7 +9,7 @@ const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
 const FOOD = require('./abstract_class_food.js').FOOD;
 
 // Constructor for drinks objects
-function Drink(option) {
+module.exports.Drink = function(option) {
   
   this.type = 'drink';
 
@@ -23,4 +23,4 @@ function Drink(option) {
 
 }
 
-Drink.prototype = FOOD;
+module.exports.Drink.prototype = FOOD;
