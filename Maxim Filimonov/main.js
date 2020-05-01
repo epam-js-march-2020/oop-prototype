@@ -237,8 +237,10 @@ function addSalad (type, mass){
     salad.id = gen.next().value;
     salad.chooseType(type);
     salad.mass = mass;
+    var saladKkal = salad.kkal;
     var saladPrice = salad.price;
     salad.price = 0.01 * mass* saladPrice;
+    salad.kkal = 0.01 * mass* saladKkal;
     receipt.push (salad);
     //subject.notifyObserver(observer1);
     subTotal();
