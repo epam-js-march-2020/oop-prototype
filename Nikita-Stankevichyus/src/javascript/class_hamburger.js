@@ -62,14 +62,3 @@ function Hamburger(option, stuffing) {
 
 Hamburger.prototype = FOOD;
 
-const burg = new Hamburger(BURGER_SM_NAME, new Stuffing());
-const another = new Hamburger(BURGER_BIG_NAME, new Stuffing(STUFF_POTATO_NAME));
-const other = new Hamburger(BURGER_SM_NAME, new Stuffing(STUFF_SALAD_NAME));
-const def = new Hamburger();
-const stuff = new Stuffing();
-
-console.log(burg.getName());
-console.log(another.getName());
-console.log(other.getName());
-console.log(def.getName());
-

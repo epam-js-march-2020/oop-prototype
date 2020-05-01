@@ -24,11 +24,3 @@ function Drink(option) {
 }
 
 Drink.prototype = FOOD;
-
-const kek = new Drink();
-const shek = new Drink(DRINK_COLA_NAME);
-const cheburek = new Drink(DRINK_COFFEE_NAME);
-
-console.log(kek.getFullDescription());
-console.log(shek.getFullDescription());
-console.log(cheburek.getFullDescription());
