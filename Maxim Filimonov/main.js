@@ -46,6 +46,8 @@ var gen = 0;
 // subject.notifyObserver(observer1);
 var BasketModule = (function(){// pattern module
     var receipts = [];
+    var priceHistory = [];
+    var kkalHistory = [];
     var sum = 0;
     var ksum=0;
     var receipt = [];
@@ -140,6 +142,8 @@ var BasketModule = (function(){// pattern module
         pay: function(){
             this.subTotal();
             receipts.push(receipt);
+            priceHistory.push(sum);
+            kkalHistory.push(ksum);
             receipt = [];
             sum = 0;
             ksum=0;
@@ -148,6 +152,8 @@ var BasketModule = (function(){// pattern module
         },
         checkHistory:  function(){//checks previous receipts
             console.log(receipts);
+            console.log(priceHistory);
+            console.log(kkalHistory);
         }
 
 
