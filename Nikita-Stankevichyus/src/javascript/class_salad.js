@@ -23,4 +23,5 @@ module.exports.Salad = function(option) {
 
 }
 
+// Setting prototype
 module.exports.Salad.prototype = FOOD;

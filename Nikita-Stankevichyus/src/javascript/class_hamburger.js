@@ -60,5 +60,6 @@ module.exports.Hamburger = function(option, stuffing) {
 
 }
 
+// Setting prototype
 module.exports.Hamburger.prototype = FOOD;
 

@@ -23,4 +23,5 @@ module.exports.Drink = function(option) {
 
 }
 
+// Setting prototype
 module.exports.Drink.prototype = FOOD;
