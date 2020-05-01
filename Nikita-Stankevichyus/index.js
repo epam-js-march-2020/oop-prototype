@@ -10,7 +10,7 @@ const ASIDE = $('aside');
 
 // Setting options to show corresponding foods forms
 OPTIONS.forEach(function(element){
-
+ 
   $(element).click(function(){
 
     // All forms are hidden

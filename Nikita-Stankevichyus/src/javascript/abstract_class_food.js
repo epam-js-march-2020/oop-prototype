@@ -99,6 +99,11 @@ module.exports.FOOD = {
          + (this._calculateCalories ? this._calculateCalories() : this.calories) + 'cal';
   },
 
+  // getName + getParameters. Mainly for testing matters
+  getFullDescription() {
+    return this.getName() + ' ' + this.getParameters();
+  },
+
   // Size is method specific for hamburgers. Not sure if it's needed
   geSize() {
     return this.size ? this.size : '';
@@ -123,8 +128,8 @@ module.exports.FOOD = {
     [SALAD_CEASER_NAME]: SALAD_CEASER_PRICE,
     [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_PRICE,
 
-    [DRINK_COLA_NAME]: DRINK_COFFEE_PRICE,
-    [DRINK_COFFEE_NAME]: DRINK_COLA_PRICE,
+    [DRINK_COLA_NAME]: DRINK_COLA_PRICE,
+    [DRINK_COFFEE_NAME]: DRINK_COFFEE_PRICE,
 
   },
 
@@ -141,8 +146,8 @@ module.exports.FOOD = {
     [SALAD_CEASER_NAME]: SALAD_CEASER_CALS,
     [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_CALS,
 
-    [DRINK_COLA_NAME]: DRINK_COFFEE_CALS,
-    [DRINK_COFFEE_NAME]: DRINK_COLA_CALS,
+    [DRINK_COLA_NAME]: DRINK_COLA_CALS,
+    [DRINK_COFFEE_NAME]: DRINK_COFFEE_CALS,
     
   },
 
