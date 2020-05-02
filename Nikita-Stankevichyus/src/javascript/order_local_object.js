@@ -49,9 +49,9 @@ module.exports.ORDER = {
   positionTemplate: _.template($('#position_template').html()),
 
 
-  // Overriding (defining) forEach for ORDER LO
-  forEach(callback) {
-    this.collection.forEach(callback);
+  // Overriding (defining) myForEach for ORDER LO
+  myForEach(callback) {
+    this.collection.myForEach(callback);
   },
 
   // Pushes item to the collection and re-renders 
@@ -119,7 +119,7 @@ module.exports.ORDER = {
     $('#positions').empty();
 
     // Rendering position html elements where they belong
-    this.collection.forEach(function(element, index){
+    this.collection.myForEach(function(element, index){
       $(positionTemplate({
 
         // ID of the each position is 'position_<corresponding_item_index_in_collection>' 
@@ -148,7 +148,7 @@ module.exports.ORDER = {
 
     // Clear button delets all positions from the order
     $('#clear').click(function(){
-      absoluteThis.forEach(function(element){
+      absoluteThis.myForEach(function(element){
         absoluteThis.delete(element);
       })
     })
