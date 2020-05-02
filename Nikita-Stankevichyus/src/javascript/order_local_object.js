@@ -81,11 +81,13 @@ module.exports.ORDER = {
   },
 
   // Initializes position adding form
+  // NOTE: Maybe it's better to incapsulate this method as function into 'render' method
   inputInit(form, input, text){
     form.find(input).val(text);
     form.find(input).siblings('label').text(text.myCapitalize());
   },
 
+  // Main method that initializes food adding forms, and render dynamic elements (positions) into page
   render() { 
     
 
@@ -120,6 +122,7 @@ module.exports.ORDER = {
 
     // Rendering position html elements where they belong
     this.collection.myForEach(function(element, index){
+
       $(positionTemplate({
 
         // ID of the each position is 'position_<corresponding_item_index_in_collection>' 

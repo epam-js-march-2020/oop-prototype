@@ -9,6 +9,7 @@ const Stuffing = require('./src/javascript/class_hamburger.js').Stuffing;
 const Salad = require('./src/javascript/class_salad.js').Salad;
 const Drink = require('./src/javascript/class_drink.js').Drink;
 
+
 // Not sure if 'forEach' method is ES6, but I wrote my polyfill
 Object.defineProperty(Array.prototype, 'myForEach', {
 
@@ -19,7 +20,7 @@ Object.defineProperty(Array.prototype, 'myForEach', {
       // Invoking callback with apparent context
       callback.call(this, this[i], i);
     }
-    
+
   },
 
   enumerable: false,
@@ -36,6 +37,8 @@ Object.defineProperty(String.prototype, 'myCapitalize', {
   enumerable: false,
 });
 
+const SELECT = $('#select');
+
 // <option> html elements from <select>
 const OPTIONS = $('#select option').toArray();
 
@@ -45,21 +48,38 @@ const FOODS = $('.food').toArray();
 // Aside section of the page to chose desirable position and it's parameters
 const ASIDE = $('aside');
 
-// Setting options to show corresponding foods forms
-OPTIONS.myForEach(function(element){
- 
-  $(element).click(function(){
+SELECT.change( function(){
 
-    // All forms are hidden
-    FOODS.myForEach(function(element){
-      $(element).addClass('hidden');
-    })
+  //All forms are hidden
+  FOODS.myForEach(function(element){
 
-    // Except for the needed one
-    ASIDE.find('.'+$(element).val()).removeClass('hidden');
+    $(element).addClass('hidden');
 
   })
+
+  // Except for the needed one
+  ASIDE.find('.'+SELECT.find(':selected').val()).removeClass('hidden');
+
 });
+
+// Setting options to show corresponding foods forms
+// NOTE: This event listener DOES NOT WORK ON MOBILE VERSION
+// OPTIONS.myForEach(function(element){
+ 
+//   $(element).click(function(){
+
+//     // All forms are hidden
+//     FOODS.myForEach(function(element){
+
+//       $(element).addClass('hidden');
+
+//     })
+
+//     // Except for the needed one
+//     ASIDE.find('.'+$(element).val()).removeClass('hidden');
+
+//   })
+// });
 
 
 // Hamburger adding form submition
@@ -543,11 +563,13 @@ module.exports.ORDER = {
   },
 
   // Initializes position adding form
+  // NOTE: Maybe it's better to incapsulate this method as function into 'render' method
   inputInit(form, input, text){
     form.find(input).val(text);
     form.find(input).siblings('label').text(text.myCapitalize());
   },
 
+  // Main method that initializes food adding forms, and render dynamic elements (positions) into page
   render() { 
     
 
@@ -582,6 +604,7 @@ module.exports.ORDER = {
 
     // Rendering position html elements where they belong
     this.collection.myForEach(function(element, index){
+
       $(positionTemplate({
 
         // ID of the each position is 'position_<corresponding_item_index_in_collection>' 
