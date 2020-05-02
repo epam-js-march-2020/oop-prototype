@@ -1,9 +1,3 @@
-/*
- * OPTIONS' NAMES
-*/
-
-const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
-const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
 
 // Importing FOOD object (considering it abstract class)
 const FOOD = require('./abstract_class_food.js').FOOD;

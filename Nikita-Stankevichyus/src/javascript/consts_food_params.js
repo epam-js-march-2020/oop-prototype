@@ -1,5 +1,6 @@
 // Parameteres for food
-
+// NOTE: It probably would be better to storage those as three objects instead of separate values
+//       But it is a minor issue
 
 /*
  * OPTIONS' NAMES

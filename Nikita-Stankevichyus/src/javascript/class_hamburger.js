@@ -1,16 +1,3 @@
-/*
- * OPTIONS' NAMES
-*/
-
-// Hamburgers
-const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
-const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
-
-// Stuffings
-const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
-const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
-const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
-
 
 // Importing FOOD object (considering it abstract class)
 const FOOD = require('./abstract_class_food.js').FOOD;

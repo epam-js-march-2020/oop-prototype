@@ -69,11 +69,13 @@ const DRINK_COFFEE_CALS = require('./consts_food_params.js').DRINK_COFFEE_CALS;
 module.exports.FOOD = {
 
   // Sets product's price depending on the option of the food
+  // NOTE: It's a protected method
   _definePrice(option) {
     return this._prices[option];
   },
 
   // Sets product's calories depending on the option of the food
+  // NOTE: It's a protected method
   _defineCalories(option) {
     return this._calories[option];
   },
@@ -126,6 +128,7 @@ module.exports.FOOD = {
 
 
   // 'Database' with prices for each food option
+  // NOTE: It's a private field
   _prices: {
 
     [BURGER_SM_NAME]: BURGER_SM_PRICE,
@@ -144,6 +147,7 @@ module.exports.FOOD = {
   },
 
   // 'Database' with calories for each food option
+  // NOTE: It's a private field
   _calories: {
 
     [BURGER_SM_NAME]: BURGER_SM_CALS,
