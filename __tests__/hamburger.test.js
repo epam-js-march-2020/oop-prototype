@@ -1,10 +1,10 @@
 import Hamburger from '../src/hamburger';
 
 test('Hamburger counters', () => {
-  var smallCheese = new Hamburger('SIZE_SMALL', 'STUFFING_CHEESE');
-  var largeSalad = new Hamburger('SIZE_LARGE', 'STUFFING_SALAD');
-  var smallPotato = new Hamburger('SIZE_SMALL', 'STUFFING_POTATO');
-  var largeCheese = new Hamburger('SIZE_LARGE', 'STUFFING_CHEESE');
+  var smallCheese = new Hamburger('SIZE_SMALL', 'TYPE_CHEESE');
+  var largeSalad = new Hamburger('SIZE_LARGE', 'TYPE_SALAD');
+  var smallPotato = new Hamburger('SIZE_SMALL', 'TYPE_POTATO');
+  var largeCheese = new Hamburger('SIZE_LARGE', 'TYPE_CHEESE');
   
   expect(smallCheese.calculatePrice()).toBe(60);
   expect(smallCheese.calculateCalories()).toBe(40);

@@ -6,7 +6,7 @@ import Order from '../src/order';
 test('Hamburger counters', () => {
   var mediumOlivie = new Salad('SIZE_MEDIUM', 'TYPE_OLIVIE');
   var mediumCOLA = new Drink('SIZE_MEDIUM', 'TYPE_COLA');
-  var largeCheese = new Hamburger('SIZE_LARGE', 'STUFFING_CHEESE');
+  var largeCheese = new Hamburger('SIZE_LARGE', 'TYPE_CHEESE');
   var totalCalories = mediumOlivie.calculateCalories() + mediumCOLA.calculateCalories() + largeCheese.calculateCalories()
   var totalPrice = mediumOlivie.calculatePrice() + mediumCOLA.calculatePrice() + largeCheese.calculatePrice();
   var order = new Order(mediumOlivie, mediumCOLA, largeCheese);
@@ -16,7 +16,7 @@ test('Hamburger counters', () => {
   expect(order.calculatePrice()).toBe(totalPrice);
 
   var largeCOLA = new Drink('SIZE_LARGE', 'TYPE_COLA');
-  var largeSalad = new Hamburger('SIZE_LARGE', 'STUFFING_SALAD');
+  var largeSalad = new Hamburger('SIZE_LARGE', 'TYPE_SALAD');
   var mediumCaesar = new Salad('SIZE_MEDIUM', 'TYPE_CAESAR');
   totalCalories += largeCOLA.calculateCalories() + largeSalad.calculateCalories() + mediumCaesar.calculateCalories() + largeCOLA.calculateCalories();
   totalPrice += largeCOLA.calculatePrice() + largeSalad.calculatePrice() + mediumCaesar.calculatePrice() + largeCOLA.calculatePrice();
