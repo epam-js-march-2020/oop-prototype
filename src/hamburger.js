@@ -4,17 +4,17 @@
 * @param {string} size        Размер
 * @param {string} stuffing    Начинка
 */
-export default function Hamburger(size, stuffing) {
+export default function Hamburger(size, type) {
   this.size = size;
-  this.stuffing = stuffing;
+  this.type = type;
 }
 
 /* Размеры, виды начинок и добавок */
 Hamburger.SIZE_SMALL = { price: 50, calories: 20 };
 Hamburger.SIZE_LARGE = { price: 100, calories: 40 };
-Hamburger.STUFFING_CHEESE = { price: 10, calories: 20 };
-Hamburger.STUFFING_SALAD = { price: 20, calories: 5 };
-Hamburger.STUFFING_POTATO = { price: 15, calories: 10 };
+Hamburger.TYPE_CHEESE = { price: 10, calories: 20 };
+Hamburger.TYPE_SALAD = { price: 20, calories: 5 };
+Hamburger.TYPE_POTATO = { price: 15, calories: 10 };
 
 /**
 * Узнать размер гамбургера
@@ -28,8 +28,8 @@ Hamburger.prototype.getSize = function () {
 * Узнать начинку гамбургера
 * @returns {string}          Начинка
 */
-Hamburger.prototype.getStuffing = function () {
-  return this.stuffing;
+Hamburger.prototype.getType = function () {
+  return this.type;
 };
 
 /**
@@ -37,7 +37,7 @@ Hamburger.prototype.getStuffing = function () {
 * @return {Number} Цена в тугриках
 */
 Hamburger.prototype.calculatePrice = function () {
-  return Hamburger[this.size].price + Hamburger[this.stuffing].price;
+  return Hamburger[this.size].price + Hamburger[this.type].price;
 };
 
 /**
@@ -45,5 +45,5 @@ Hamburger.prototype.calculatePrice = function () {
 * @return {Number} Калорийность в калориях
 */
 Hamburger.prototype.calculateCalories = function () {
-  return Hamburger[this.size].calories + Hamburger[this.stuffing].calories;
+  return Hamburger[this.size].calories + Hamburger[this.type].calories;
 };
