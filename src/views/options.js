@@ -23,46 +23,76 @@ var initTemplate = _.template(
 
 var burgersOptions = _.template(
   `<h4>Size</h4>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Small</button>
-    <button type="button" class="btn btn-secondary">Large</button>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="sizeButtonsGroup">
+    <label class="btn btn-secondary">
+      <input type="radio" name="burgersSize" value="SIZE_SMALL"> Small
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="burgersSize" value="SIZE_LARGE"> Large
+    </label>
   </div>
   <hr>
   <h4>Stuffing</h4>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Cheese</button>
-    <button type="button" class="btn btn-secondary">Salad</button>
-    <button type="button" class="btn btn-secondary">Potato</button>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="typeButtonsGroup">
+    <label class="btn btn-secondary">
+      <input type="radio" name="burgersType" value="TYPE_CHEESE"> Cheese
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="burgersType" value="TYPE_SALAD"> Salad
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="burgersType" value="TYPE_POTATO"> Potato
+    </label>
   </div>`
 );
 
 var saladsOptions = _.template(
   `<h4>Size</h4>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Small</button>
-    <button type="button" class="btn btn-secondary">Medium</button>
-    <button type="button" class="btn btn-secondary">Large</button>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="sizeButtonsGroup">
+    <label class="btn btn-secondary">
+      <input type="radio" name="saladsSize" value="SIZE_SMALL"> Small
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="saladsSize" value="SIZE_MEDIUM"> Medium
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="saladsSize" value="SIZE_LARGE"> Large
+    </label>
   </div>
   <hr>
   <h4>Type</h4>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Olieve</button>
-    <button type="button" class="btn btn-secondary">Caesar</button>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="typeButtonsGroup">
+    <label class="btn btn-secondary">
+      <input type="radio" name="saladsType" value="TYPE_OLIVIE"> Olieve
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="saladsType" value="TYPE_CAESAR"> Caesar
+    </label>
   </div>`
 );
 
 var drinksOptions = _.template(
   `<h4>Size</h4>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Small</button>
-    <button type="button" class="btn btn-secondary">Medium</button>
-    <button type="button" class="btn btn-secondary">Large</button>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="sizeButtonsGroup">
+    <label class="btn btn-secondary">
+      <input type="radio" name="drinksSize" value="SIZE_SMALL"> Small
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="drinksSize" value="SIZE_MEDIUM"> Medium
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="drinksSize" value="SIZE_LARGE"> Large
+    </label>
   </div>
   <hr>
   <h4>Type</h4>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Cola</button>
-    <button type="button" class="btn btn-secondary">Coffee</button>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons" id="typeButtonsGroup">
+    <label class="btn btn-secondary">
+      <input type="radio" name="drinksType" value="TYPE_COLA"> Cola
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="drinksType" value="TYPE_COFFEE"> Coffee
+    </label>
   </div>`
 );
 
