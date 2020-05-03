@@ -1,6 +1,6 @@
 //'use strict'
 
-var gen = 0;
+//var gen = 0;
 
 
 // var Subject= function (){
@@ -8,7 +8,7 @@ var gen = 0;
 
 //     return {
 //         subscribeObserver: function(observer){
-//             this.observers.push(observer);
+//             this.observers.push(observer); // for some reason "this.observers" declaration is out of scope and i dont realise why
 //         },
 //         unsubscribeObserver: function(observer){
 //             var index = this.observers.indexOf(observer);
@@ -137,6 +137,7 @@ var BasketModule = (function(){// pattern module
         },
         deleteItem: function (id){ 
             receipt.splice(id,1);
+            gen--;
             this.subTotal();
         },
         pay: function(){
