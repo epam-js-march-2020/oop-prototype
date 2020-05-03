@@ -265,10 +265,28 @@ FoodFactory.prototype.createFood = function(options){
     return new this.foodType(options);
 };
 
+
+//adding facade ? :)
+
+var hamburger = function (options,op){
+    return BasketModule.addHam(options,op);
+};
+var drink = function (options){
+    return BasketModule.addDrink(options);
+};
+var salad = function (options,op){
+    return BasketModule.addSalad(options,op);
+};
+var deleteItem = function (options){
+    return BasketModule.deleteItem(options);
+};
+var pay = function(){
+    return BasketModule.pay();
+}
 var foodFactory = new FoodFactory ();
 
-console.log('In order to add Drink write: BasketModule.addDrink(\'DrinkType\'); currently available: Cola, Coffee');
-console.log('In order to add Hamburger write: BasketModule.addHam(\'Size\',\'Stuffing1,Stuffing2, etc\'); currently available sizes: large, small; currently available stuffing: cheese, salad, potato ');
-console.log('In order to add Drink write: BasketModule.addSalad(\'SaladType\',mass) mass in gramms; currently available: Ceasar, Russian');
-console.log('In order to delete position in receipt write: BasketModule.deleteItem(Id), where\'s id is a \'Id\' of item in subtotal list'); 
-console.log('In order to pay the receipt write: BasketModule.pay();');
+console.log('In order to add Drink write: drink(\'DrinkType\'); currently available: Cola, Coffee');
+console.log('In order to add Hamburger write: hamburger(\'Size\',\'Stuffing1,Stuffing2, etc\'); currently available sizes: large, small; currently available stuffing: cheese, salad, potato ');
+console.log('In order to add Drink write: salad(\'SaladType\',mass) mass in gramms; currently available: Ceasar, Russian');
+console.log('In order to delete position in receipt write: deleteItem(Id), where\'s id is a \'Id\' of item in subtotal list'); 
+console.log('In order to pay the receipt write: pay();');
