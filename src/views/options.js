@@ -14,7 +14,7 @@ var footerTemplate = _.template(
   `<h5>Total Calories: <span id="totalProductCalories"></span> Cal</h5>
   <h5>Total Price: <span id="totalProductPrice"></span> ₮</h5>
   <hr>
-  <button type="button" class="btn btn-secondary">Add to Cart</button>`
+  <button type="button" class="btn btn-secondary" id="addProduct">Add to Cart</button>`
 );
 
 var initTemplate = _.template(
@@ -22,7 +22,7 @@ var initTemplate = _.template(
 );
 
 var burgersOptions = _.template(
-  `<h4>Size</h4>
+  `<h4 id='sizeHeader'>Size</h4>
   <div class="btn-group btn-group-toggle" data-toggle="buttons" id="sizeButtonsGroup">
     <label class="btn btn-secondary">
       <input type="radio" name="burgersSize" value="SIZE_SMALL"> Small
@@ -32,7 +32,7 @@ var burgersOptions = _.template(
     </label>
   </div>
   <hr>
-  <h4>Stuffing</h4>
+  <h4 id='typeHeader'>Stuffing</h4>
   <div class="btn-group btn-group-toggle" data-toggle="buttons" id="typeButtonsGroup">
     <label class="btn btn-secondary">
       <input type="radio" name="burgersType" value="TYPE_CHEESE"> Cheese
@@ -47,7 +47,7 @@ var burgersOptions = _.template(
 );
 
 var saladsOptions = _.template(
-  `<h4>Size</h4>
+  `<h4 id='sizeHeader'>Size</h4>
   <div class="btn-group btn-group-toggle" data-toggle="buttons" id="sizeButtonsGroup">
     <label class="btn btn-secondary">
       <input type="radio" name="saladsSize" value="SIZE_SMALL"> Small
@@ -60,7 +60,7 @@ var saladsOptions = _.template(
     </label>
   </div>
   <hr>
-  <h4>Type</h4>
+  <h4 id='typeHeader'>Type</h4>
   <div class="btn-group btn-group-toggle" data-toggle="buttons" id="typeButtonsGroup">
     <label class="btn btn-secondary">
       <input type="radio" name="saladsType" value="TYPE_OLIVIE"> Olieve
@@ -72,7 +72,7 @@ var saladsOptions = _.template(
 );
 
 var drinksOptions = _.template(
-  `<h4>Size</h4>
+  `<h4 id='sizeHeader'>Size</h4>
   <div class="btn-group btn-group-toggle" data-toggle="buttons" id="sizeButtonsGroup">
     <label class="btn btn-secondary">
       <input type="radio" name="drinksSize" value="SIZE_SMALL"> Small
@@ -85,7 +85,7 @@ var drinksOptions = _.template(
     </label>
   </div>
   <hr>
-  <h4>Type</h4>
+  <h4 id='typeHeader'>Type</h4>
     <div class="btn-group btn-group-toggle" data-toggle="buttons" id="typeButtonsGroup">
     <label class="btn btn-secondary">
       <input type="radio" name="drinksType" value="TYPE_COLA"> Cola
