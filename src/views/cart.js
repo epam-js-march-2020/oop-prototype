@@ -4,11 +4,26 @@ var cartTemplate = _.template(
   `<div class="container">
     <h2 class="text-center">Cart</h2>
     <hr>
-    <ul>
+    <div class="container overflow-auto" style="height: 415px">
       <% items.forEach(function(item) { %>
-      <li><%-item.size%> <%-item.type%> <%-item.name%> <%-item.price%>₮ <%-item.calories%>Cal</li>
+        <div class="card mb-2 text-center">
+          <div class="card-body">
+            <p class="card-text"><%-item.size%> <%-item.type%> <%-item.name%></p>
+            <div class="d-flex">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text rounded-left"><%-item.price%> ₮</span>
+                </div>
+                <div class="input-group-append">
+                  <span class="input-group-text rounded-right"><%-item.calories%> Cal</span>
+                </div>
+              </div>
+              <button type="button" class="btn btn-outline-danger">Remove</button>
+            </div>
+          </div>
+        </div>
       <% }); %>
-    </ul>
+    </div>
   </div>`
 );
 
@@ -23,6 +38,5 @@ function cart(order) {
   });
   return cartTemplate({items: stringifiedOrder});
 }
-
 
 export default cart;

@@ -11,8 +11,8 @@ var container = _.template(
 );
 
 var footerTemplate = _.template(
-  `<h5>Total Calories: <span id="totalProductCalories"></span> Cal</h5>
-  <h5>Total Price: <span id="totalProductPrice"></span> ₮</h5>
+  `<h5>Position Calories: <span id="totalProductCalories"></span> Cal</h5>
+  <h5>Position Price: <span id="totalProductPrice"></span> ₮</h5>
   <hr>
   <button type="button" class="btn btn-secondary" id="addProduct">Add to Cart</button>`
 );
