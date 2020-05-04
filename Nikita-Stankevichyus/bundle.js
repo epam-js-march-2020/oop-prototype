@@ -190,11 +190,13 @@ const DRINK_COFFEE_CALS = require('./consts_food_params.js').DRINK_COFFEE_CALS;
 module.exports.FOOD = {
 
   // Sets product's price depending on the option of the food
+  // NOTE: It's a protected method
   _definePrice(option) {
     return this._prices[option];
   },
 
   // Sets product's calories depending on the option of the food
+  // NOTE: It's a protected method
   _defineCalories(option) {
     return this._calories[option];
   },
@@ -247,6 +249,7 @@ module.exports.FOOD = {
 
 
   // 'Database' with prices for each food option
+  // NOTE: It's a private field
   _prices: {
 
     [BURGER_SM_NAME]: BURGER_SM_PRICE,
@@ -265,6 +268,7 @@ module.exports.FOOD = {
   },
 
   // 'Database' with calories for each food option
+  // NOTE: It's a private field
   _calories: {
 
     [BURGER_SM_NAME]: BURGER_SM_CALS,
@@ -286,12 +290,13 @@ module.exports.FOOD = {
 }
 
 },{"./consts_food_params.js":6}],3:[function(require,module,exports){
-/*
- * OPTIONS' NAMES
-*/
+const DRINK_TYPE = require('./consts_food_params.js').DRINK_TYPE;
 
 const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
+
+// Not used. Here in case it's requested to change default value
 const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
+
 
 // Importing FOOD object (considering it abstract class)
 const FOOD = require('./abstract_class_food.js').FOOD;
@@ -299,10 +304,10 @@ const FOOD = require('./abstract_class_food.js').FOOD;
 // Constructor for drinks objects
 module.exports.Drink = function(option) {
   
-  this.type = 'drink';
+  this.type = DRINK_TYPE;
 
-  // Option is 'cola' by default
-  this.option = option || 'cola';
+  // Option is cola by default
+  this.option = option || DRINK_COLA_NAME;
 
   // Depending on the chosen option, parameters are founded automatically in the prototype
   this.price = this._definePrice(this.option);
@@ -315,18 +320,23 @@ module.exports.Drink = function(option) {
 module.exports.Drink.prototype = FOOD;
 
 },{"./abstract_class_food.js":2,"./consts_food_params.js":6}],4:[function(require,module,exports){
-/*
- * OPTIONS' NAMES
-*/
+const BURGER_TYPE = require('./consts_food_params.js').BURGER_TYPE;
 
-// Hamburgers
 const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
+
+// Not used. Here in case it's requested to change default value
 const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
 
-// Stuffings
+
+const STUFF_TYPE = require('./consts_food_params.js').STUFF_TYPE;
+
 const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
-const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
-const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
+
+// Not used. Here in case it's requested to change default value
+const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
+const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
+
+
 
 
 // Importing FOOD object (considering it abstract class)
@@ -336,10 +346,10 @@ const FOOD = require('./abstract_class_food.js').FOOD;
 // Constructor for stuffing objects
 module.exports.Stuffing = function(option) {
   
-  this.type = 'stuffing';
+  this.type = STUFF_TYPE;
 
-  // Option is 'cheese' by default
-  this.option = option || 'cheese';
+  // Option is cheese by default
+  this.option = option || STUFF_CHEESE_NAME;
 
   // Depending on the chosen option, parameters are founded automatically in the prototype
   this.price = this._definePrice(this.option);
@@ -353,10 +363,10 @@ module.exports.Stuffing.prototype = FOOD;
 
 module.exports.Hamburger = function(option, stuffing) {
 
-  this.type = 'hamburger';
+  this.type = BURGER_TYPE;
 
-  // Option is 'small' by default 
-  this.option = option || 'small';
+  // Option is small by default 
+  this.option = option || BURGER_SM_NAME;
 
   // Default stuffing by default
   this.stuffing = stuffing || new Stuffing();
@@ -382,12 +392,14 @@ module.exports.Hamburger.prototype = FOOD;
 
 
 },{"./abstract_class_food.js":2,"./consts_food_params.js":6}],5:[function(require,module,exports){
-/*
- * OPTIONS' NAMES
-*/
+const SALAD_TYPE = require('./consts_food_params.js').SALAD_TYPE;
+
 
 const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
+
+// Not used. Here in case it's requested to change default value
 const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
+
 
 // Importing FOOD object (considering it abstract class)
 const FOOD = require('./abstract_class_food.js').FOOD;
@@ -395,10 +407,10 @@ const FOOD = require('./abstract_class_food.js').FOOD;
 // Constructor for drinks objects
 module.exports.Salad = function(option) {
   
-  this.type = 'salad';
+  this.type = SALAD_TYPE;
 
   // Option is 'cola' by default
-  this.option = option || 'ceaser';
+  this.option = option || SALAD_CEASER_NAME;
 
   // Depending on the chosen option, parameters are founded automatically in the prototype
   this.price = this._definePrice(this.option);
@@ -412,6 +424,17 @@ module.exports.Salad.prototype = FOOD;
 
 },{"./abstract_class_food.js":2,"./consts_food_params.js":6}],6:[function(require,module,exports){
 // Parameteres for food
+// NOTE: It probably would be better to storage those as three objects instead of separate values
+//       But it is a minor issue
+
+/*
+ * TYPES' NAMES
+*/
+
+module.exports.BURGER_TYPE = 'hamburger';
+module.exports.STUFF_TYPE = 'stuffing';
+module.exports.SALAD_TYPE = 'salad';
+module.exports.DRINK_TYPE = 'drink';
 
 
 /*

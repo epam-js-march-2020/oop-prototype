@@ -3,6 +3,16 @@
 //       But it is a minor issue
 
 /*
+ * TYPES' NAMES
+*/
+
+module.exports.BURGER_TYPE = 'hamburger';
+module.exports.STUFF_TYPE = 'stuffing';
+module.exports.SALAD_TYPE = 'salad';
+module.exports.DRINK_TYPE = 'drink';
+
+
+/*
  * OPTIONS' NAMES
 */
 
