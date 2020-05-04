@@ -17,3 +17,4 @@ Drink.prototype.TYPE_COLA = { price: 50, calories: 40 };
 Drink.prototype.SIZE_SMALL = { coefficient: 1 };
 Drink.prototype.SIZE_MEDIUM = { coefficient: 1.5 };
 Drink.prototype.SIZE_LARGE = { coefficient: 2 };
+Drink.prototype.name = 'Drink';

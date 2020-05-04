@@ -17,3 +17,4 @@ Salad.prototype.TYPE_CAESAR = { price: 100, calories: 20 };
 Salad.prototype.SIZE_SMALL = { coefficient: 1 };
 Salad.prototype.SIZE_MEDIUM = { coefficient: 1.5 };
 Salad.prototype.SIZE_LARGE = { coefficient: 2 };
+Salad.prototype.name = 'Salad';

@@ -16,3 +16,4 @@ Hamburger.prototype.SIZE_LARGE = { price: 100, calories: 40 };
 Hamburger.prototype.TYPE_CHEESE = { price: 10, calories: 20 };
 Hamburger.prototype.TYPE_SALAD = { price: 20, calories: 5 };
 Hamburger.prototype.TYPE_POTATO = { price: 15, calories: 10 };
+Hamburger.prototype.name = 'Hamburger';
