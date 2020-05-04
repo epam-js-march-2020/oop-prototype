@@ -1,6 +1,4 @@
 const SALAD_TYPE = require('./consts_food_params.js').SALAD_TYPE;
-
-
 const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
 
 // Not used. Here in case it's requested to change default value

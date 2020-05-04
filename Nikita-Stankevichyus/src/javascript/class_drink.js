@@ -1,5 +1,4 @@
 const DRINK_TYPE = require('./consts_food_params.js').DRINK_TYPE;
-
 const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
 
 // Not used. Here in case it's requested to change default value

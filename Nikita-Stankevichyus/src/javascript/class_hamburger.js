@@ -1,5 +1,4 @@
 const BURGER_TYPE = require('./consts_food_params.js').BURGER_TYPE;
-
 const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
 
 // Not used. Here in case it's requested to change default value
@@ -7,7 +6,6 @@ const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
 
 
 const STUFF_TYPE = require('./consts_food_params.js').STUFF_TYPE;
-
 const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
 
 // Not used. Here in case it's requested to change default value
