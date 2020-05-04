@@ -9,7 +9,7 @@ var app = _.template(
           <%=options%>
       </div>
       <div class="col-4" id="cartSection">
-          <%=cart()%>
+          <%=cart%>
       </div>
   </div>`
 );
