@@ -6,7 +6,7 @@ var cartTemplate = _.template(
     <hr>
     <div class="container overflow-auto" style="height: 415px">
       <% items.forEach(function(item) { %>
-        <div class="card mb-2 text-center">
+        <div class="card mb-2 text-center" id="productCard<%-item.cardId%>">
           <div class="card-body">
             <p class="card-text"><%-item.size%> <%-item.type%> <%-item.name%></p>
             <div class="d-flex">
@@ -18,7 +18,7 @@ var cartTemplate = _.template(
                   <span class="input-group-text rounded-right"><%-item.calories%> Cal</span>
                 </div>
               </div>
-              <button type="button" class="btn btn-outline-danger">Remove</button>
+              <button type="button" class="btn btn-outline-danger" id="productRemove<%-item.cardId%>">Remove</button>
             </div>
           </div>
         </div>
@@ -28,13 +28,14 @@ var cartTemplate = _.template(
 );
 
 function cart(order) {
-  var stringifiedOrder = order.map((item) => {
+  var stringifiedOrder = order.map(([item, id]) => {
     var name = item.name;
     var type = _.capitalize(item.getType().slice(5));
     var size = _.capitalize(item.getSize().slice(5));
     var price = item.calculatePrice();
     var calories = item.calculateCalories();
-    return { name, type, size, price, calories };
+    var cardId = id;
+    return { name, type, size, price, calories, cardId };
   });
   return cartTemplate({items: stringifiedOrder});
 }

@@ -1,5 +1,7 @@
 /* eslint func-names: ["error", "never"] */
-/* eslint indent: ["error", 2, { "SwitchCase": 1 }]*/
+/* eslint indent: ["error", 2, { "SwitchCase": 1 }] */
+/* eslint no-use-before-define: ["error", { "functions": false }] */
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import _ from 'lodash';
@@ -63,8 +65,28 @@ function setButtonsListeners() {
   });
 }
 
+// Удаление товара
+function removeItem(e) {
+  var { id } = e.data;
+  _.remove(state.order, function(n) {
+    return n[1] === id;
+  });
+  renderCart();
+}
+
+// Подписка на события для кнопок удаления
+function setRemoveItemListeners() {
+  var buttons = $('[id*="productRemove"]');
+  $(buttons).each(function(index, button) {
+    var id = $(button).attr('id').slice('productRemove'.length);
+    $(button).on('click', { id }, removeItem);
+  });
+}
+
+// Отрисовка корзины
 function renderCart() {
   $('#cartSection').empty().append(cart(state.order));
+  setRemoveItemListeners();
 }
 
 // Валидация продукта
@@ -87,7 +109,7 @@ function validateProduct() {
 // Добавление продукта в корзину
 function addProduct() {
   if (validateProduct()) {
-    state.order.push(state.product);
+    state.order.push([state.product, _.uniqueId()]);
     // клон текущего объекта на случай, если не меняли категорию, а изменили опцию и опять добавили в корзину
     state.product = _.clone(state.product);
     renderCart();
