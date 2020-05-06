@@ -1,0 +1,214 @@
+.card-img {
+    transition: 0.6s;
+    z-index: 0;
+}
+
+.list-group-item {
+    display: flex;
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: lightgray;
+}
+
+.card-img-overlay {
+    z-index: 1;
+}
+
+.card-img-overlay:hover ~ .card-img {
+    transform: rotateY(180deg);
+    opacity: .5;
+}
+
+.card-img-overlay-content {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.card-img-overlay:hover .card-img-overlay-content {
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card {
+    max-width: 290px !important;
+    min-width: 231px !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .menuContainer {
+        width: 100% !important;;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .orderlist {
+        width: 330px !important;;
+        background-color: #ebebebde !important;
+    }
+}
+
+.myAlerts {
+    position: fixed;
+    z-index: 1400;
+    bottom: 2%;
+    right: 4%;
+    margin: 0px auto;
+    text-align: center;
+    display: none;
+}
+
+
+.number-input input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+
+}
+
+.number-input input[type=number]::-webkit-inner-spin-button,
+.number-input input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.number-input {
+    margin-bottom: 3rem;
+    background-color: #f0f0f0;
+}
+
+.number-input button {
+    -webkit-appearance: none;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+
+}
+
+
+.number-input button:before,
+.number-input button:after {
+    border: none;
+    display: inline-block;
+    position: absolute;
+    content: '';
+    height: 2px;
+    transform: translate(-50%, -50%);
+}
+
+.number-input button.plus:after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type=number] {
+    text-align: center;
+}
+
+.number-input.number-input {
+    border: 1px solid #ced4da;
+    width: 10rem;
+    border-radius: .25rem;
+    display: inline-flex;
+    margin: 0 auto;
+
+}
+
+.number-input.number-input button {
+    width: 3.6rem;
+    outline: none;
+}
+
+.number-input.number-input button:active {
+    background-color: lightgray;
+}
+
+.number-input.number-input button.minus {
+    padding-left: 10px;
+}
+
+.number-input.number-input button:before,
+.number-input.number-input button:after {
+    width: .7rem;
+    background-color: #495057;
+}
+
+.number-input.number-input input[type=number] {
+    max-width: 4rem;
+    padding: .5rem;
+    border: 1px solid #ced4da;
+    border-width: 0 1px;
+    font-size: 1rem;
+    height: 2rem;
+    color: #495057;
+}
+
+.roundButtonToDisplayCart {
+    width: 43px;
+    height: 40px;
+    border: 2px solid red;
+    border-radius: 50%;
+    line-height: 29px;
+    text-align: center;
+    background: mistyrose;
+    font-size: xx-large;
+    left: -30px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.orderlist {
+    background-color: #ebebeb54;
+    position: fixed;
+    z-index: 2;
+    border-top-left-radius: .75rem !important;
+    border-bottom-left-radius: .75rem !important;
+    width: 380px;
+    position: fixed;
+    right: 0px;
+    transition: all 1s ease;
+}
+
+.removeItemButton {
+    position: absolute;
+    right: -50%;
+    width: 50%;
+    transition: all 0s ease;
+    visibility: hidden;
+    opacity: 0;
+    height: -webkit-fill-available;
+}
+
+.mybtnRemove {
+    width: 100%;
+    background: red;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    height: 100%;
+
+}
+
+.itemInCart {
+    position: relative;
+}
+
+.itemInCart:hover > .removeItemButton {
+    transition: all 1s ease;
+    right: 0;
+    visibility: visible;
+    opacity: .9;
+
+
+}
