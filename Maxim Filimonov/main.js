@@ -3,47 +3,38 @@
 //var gen = 0;
 
 
-// var Subject= function (){
-//     this.observers = [];
-
-//     return {
-//         subscribeObserver: function(observer){
-//             this.observers.push(observer); // for some reason "this.observers" declaration is out of scope and i dont realise why
-//         },
-//         unsubscribeObserver: function(observer){
-//             var index = this.observers.indexOf(observer);
-//             if (index>-1){
-//                 this.observers.splice(index,1);
-//             }
-//         },
-//         notifyObserver: function(observer){
-//             var index = this.observers.indexOf(observer);
-//             if (index>-1){
-//                 this.observers[index].notify(index);
-//             }
-//         },
-//         notifyAllObservers: function (){
-//             for (var i = 0 ; i<this.observers.length; i++){
-//                 this.observers[i].notify(i);
-//             }
-//         }
-//     };
-// };
-// var Observer = function (){
-//     return {
-//         notify: function (){
-//             subTotal();
-//         }
-//     };
-// };
-
-// var subject = new Subject();
-
-// var observer1 = new Observer();
+var Subject= function (){// some kind of Observer pattern
+    this.observers = [];
+    var that= this;
 
 
-// subject.subscribeObserver(observer1);
-// subject.notifyObserver(observer1);
+    return {
+        subscribeObserver: function(observer){
+            //debugger;
+            that.observers.push(observer); 
+        },
+        unsubscribeObserver: function(observer){
+            var index = that.observers.indexOf(observer);
+            if (index>-1){
+                that.observers.splice(index,1);
+            }
+        },
+        notifyObserver: function(observer){
+            var index = that.observers.indexOf(observer);
+            if (index>-1){
+                that.observers[index].notify(index);
+            }
+        },
+        notifyAllObservers: function (){
+            for (var i = 0 ; i<that.observers.length; i++){
+                that.observers[i].notify(i);
+            }
+        }
+    };
+};
+
+
+
 var BasketModule = (function(){// pattern module
     var receipts = [];
     var priceHistory = [];
@@ -73,7 +64,7 @@ var BasketModule = (function(){// pattern module
             }
             ham.id = gen++;
             receipt.push(ham);
-            this.subTotal();
+            //this.subTotal();
             //subject.notifyObserver(observer1);
         },
         addSalad: function (type, mass){
@@ -82,7 +73,7 @@ var BasketModule = (function(){// pattern module
             });
             salad.id = gen++;
             salad.chooseType(type);
-            if (mass == Number){
+            if (mass != NaN){
                 salad.mass = mass;
                 var saladKkal = salad.kkal;
                 var saladPrice = salad.price;
@@ -98,7 +89,7 @@ var BasketModule = (function(){// pattern module
                 return ;
             }
             //subject.notifyObserver(observer1);
-            this.subTotal();
+            //this.subTotal();
         },
         addDrink: function (type){ // console commands
             var drink = foodFactory.createFood({
@@ -111,7 +102,7 @@ var BasketModule = (function(){// pattern module
             }else{
                 return;
             }
-            this.subTotal();
+            //this.subTotal();
             //subject.notifyObserver(observer1);
         },
         subTotal: function (){ //tracking current receipt status
@@ -138,10 +129,10 @@ var BasketModule = (function(){// pattern module
         deleteItem: function (id){ 
             receipt.splice(id,1);
             gen--;
-            this.subTotal();
+            //this.subTotal();
         },
         pay: function(){
-            this.subTotal();
+            //this.subTotal();
             receipts.push(receipt);
             priceHistory.push(sum);
             kkalHistory.push(ksum);
@@ -161,6 +152,22 @@ var BasketModule = (function(){// pattern module
 
     }
 })();
+
+
+var Observer = function (){// observer pattern 2nd part
+    return {
+        notify: function (){
+            BasketModule.subTotal();
+        }
+    };
+};
+
+var subject = new Subject();
+
+var observer1 = new Observer();
+
+
+subject.subscribeObserver(observer1);
 
 
 
@@ -270,24 +277,30 @@ FoodFactory.prototype.createFood = function(options){
 //adding facade ? :)
 
 var hamburger = function (options,op){
-    return BasketModule.addHam(options,op);
+    BasketModule.addHam(options,op);
+    subject.notifyObserver(observer1);
+    
 };
 var drink = function (options){
-    return BasketModule.addDrink(options);
+    BasketModule.addDrink(options);
+    subject.notifyObserver(observer1);
 };
 var salad = function (options,op){
-    return BasketModule.addSalad(options,op);
+    BasketModule.addSalad(options,op);
+    subject.notifyObserver(observer1);
 };
 var deleteItem = function (options){
-    return BasketModule.deleteItem(options);
+    BasketModule.deleteItem(options);
+    subject.notifyObserver(observer1);
 };
 var pay = function(){
-    return BasketModule.pay();
+    subject.notifyObserver(observer1);
+    BasketModule.pay();
 }
 var foodFactory = new FoodFactory ();
 
-console.log('In order to add Drink write: drink(\'DrinkType\'); currently available: Cola, Coffee');
+console.log('In order to add Drink write: drink(\'DrinkType\'); currently available drink types: Cola, Coffee');
 console.log('In order to add Hamburger write: hamburger(\'Size\',\'Stuffing1,Stuffing2, etc\'); currently available sizes: large, small; currently available stuffing: cheese, salad, potato ');
-console.log('In order to add Drink write: salad(\'SaladType\',mass) mass in gramms; currently available: Ceasar, Russian');
+console.log('In order to add Drink write: salad(\'SaladType\',mass) mass in gramms; currently available salad types: Ceasar, Russian');
 console.log('In order to delete position in receipt write: deleteItem(Id), where\'s id is a \'Id\' of item in subtotal list'); 
 console.log('In order to pay the receipt write: pay();');
