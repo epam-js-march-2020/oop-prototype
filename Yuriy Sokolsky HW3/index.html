@@ -110,12 +110,12 @@
             <div class="card col-5 p-0">
                 <div class="card-img-overlay p-1">
                     <div class="card-img-overlay-content text-center">
-                        <h5 class="card-title">Choose weight</h5>
+                        <h5 class="card-title">Choose weight <small>(in grams)</small></h5>
                         <div class="def-number-input number-input">
                             <button class="minus"
                                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
                             <input class="quantity form-control" max="5000" min="50" name="quantity" pattern="[0-9]"
-                                   step="50" type="number" value="100">
+                                   step="50" type="number" value="100" readonly>
                             <button class="plus"
                                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                         </div>
@@ -141,12 +141,12 @@
             <div class="card col-5 p-0">
                 <div class="card-img-overlay p-1">
                     <div class="card-img-overlay-content text-center">
-                        <h5 class="card-title">Choose weight</h5>
+                        <h5 class="card-title">Choose weight<small>(in grams)</small></h5>
                         <div class="def-number-input number-input ">
                             <button class="minus"
                                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
                             <input class="quantity form-control" max="5000" min="50" name="quantity" pattern="\d*"
-                                   step="50" type="number" value="100">
+                                   step="50" type="number" value="100" readonly>
                             <button class="plus"
                                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                         </div>
