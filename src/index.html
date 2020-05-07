@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:700' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+    <title>Cafe</title>
+</head>
+<body>
+  <div class="container">
+    <main class="main">
+      <div class='main__title-wrapper'>
+      <h1 class= "main__title">Menu
+      </h1>
+      <img src="https://img.icons8.com/cotton/64/000000/restaurant-menu.png"/>
+    </div>
+      <div class="main__content content">
+        <section class="content__item content__item-hamburger">
+          <h2 class="content__item-title">HAMBURGER
+          </h2>
+          <img src="https://img.icons8.com/cotton/64/000000/cheeseburger.png"/>
+          <div class="content__item-wrapper">
+            <form class="content__form form">
+                <div class="form__item-config">
+                  <h3 class="form__item-subtitle">HAMBURGER SIZE</h3>
+                  <div class='form__input-wrapper'>
+                    <input class='hamburger-size visually-hidden form__input' type='radio' name='hamburger-size' data-type='SIZE_SMALL'
+                      data-size='Small' data-price='50' data-calory='20' value='small' id='size-1'>
+                    <label class='form__input-label' for='size-1'>SMALL
+                    </label>
+                    <ul class='form__description'>
+                      <li class='form__description-price'>50tu</li>
+                      <li class='form__description-calories'> 20cal</li>
+                    </ul>
+                  </div>
+                  <div class='form__input-wrapper'>
+                    <input class='visually-hidden form__input' type='radio' name='hamburger-size' data-type='SIZE_LARGE' data-size='Big'
+                      data-price='100' data-calory='40' value='big' id='size-2'>
+                    <label class='form__input-label' for='size-2'>BIG
+                    </label>
+                    <ul class='form__description'>
+                      <li class='form__description-price'>100tu</li>
+                      <li class='form__description-calories'>40cal</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="form__item-config">
+                  <h3 class="form__item-subtitle">HAMBURGER STUFFING</h3>
+                  <div class='form__input-wrapper'>
+                    <input class="visually-hidden form__input" id='stuffing-1' type='radio' name='hamburger-stuffing' data-type='STUFFING_CHEESE' data-stuffing='Cheese' data-price-stuffing='10' data-calory-stuffing='20' value='cheese'>
+                    <label class='form__input-label' for='stuffing-1'>CHEESE</label>
+                    <ul class='form__description'>
+                      <li class='form__description-price'>+ 10tu</li>
+                      <li class='form__description-calories'>+ 20cal</li>
+                    </ul>
+                  </div>
+                    <div class='form__input-wrapper'>
+                      <input class="visually-hidden form__input" id='stuffing-2' type='radio' name='hamburger-stuffing' data-type='STUFFING_SALAD' data-stuffing='Salad' data-price-stuffing='20' data-calory-stuffing='5' value='salad'>
+                      <label class='form__input-label' class='form__input-label' for='stuffing-2'>SALAD</label>
+                      <ul class='form__description'>
+                        <li class='form__description-price'>+ 20tu</li>
+                        <li class='form__description-calories'>+ 5cal</li>
+                      </ul>
+                    </div>
+                    <div class='form__input-wrapper'>
+                      <input class="visually-hidden form__input" id='stuffing-3' type='radio' name='hamburger-stuffing' data-type='STUFFING_POTATO' data-stuffing='Potato' data-price-stuffing='15' data-calory-stuffing='10' value='potato'>
+                      <label class='form__input-label' for='stuffing-3'>POTATO</label>
+                      <ul class='form__description'>
+                        <li class='form__description-price'>+ 15tu</li>
+                        <li class='form__description-calories'>+ 10cal</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  
+                <div class="form__count-wrapper">
+                  <div class='form__input-wrapper'>
+                    <label class='form__input-label-count' for='quanity'>Quantity : </label>
+                    <input class='form__input-quantity form__input' type='number' name='hamburger-quantity' id="quanity" value=1 min='1' />
+                  </div>
+                  <button class='button form__add-btn'>ADD</button>
+                </div>
+
+                
+              <ul class='form__total'>
+                <li class='form__total-item'>
+                  Name:
+                  <span class='form__total-item-name'></span>
+                </li>
+                <li class='form__total-item'>
+                  Price:
+                  <span class='form__total-item-sum'>0 tu</span>
+                </li>
+                <li class='form__total-item'>
+                  Calories:
+                  <span class='form__total-item-calories'> 0 cal</span>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </section>
+        <section class="content__item content__item-salad">
+          <h2 class="content__item-title">SALAD
+          </h2>
+          <img src="https://img.icons8.com/cotton/64/000000/lettuce-1--v2.png">
+          <div class="content__item-wrapper">
+            <form class="content__form form">
+              <div class="form__item-config">
+                <h3 class="form__item-subtitle">SALAD TO CHOOSE</h3>
+                <div class='form__input-wrapper'>
+                  <input class='visually-hidden form__input' type='radio' id='salad-1' name='salad-kind' data-type='CAESAR'  data-price='100'  data-salad='Caesar' data-calory='20' value='caesar'>
+                  <label class='form__input-salad-label form__input-label' for='salad-1'>CAESAR <br>
+                    <span class='form__item-description'>romaine or cos lettuce, olive oil, crushed garlic , salt, Dijon mustard, black pepper, 
+                      lemon juice, Worcestershire sauce, anchovies, raw or, coddled eggs, grated Parmesan cheese, croutons
+                    </span>
+                  </label>
+                 
+                  <ul class='form__description'>
+                    <li class='form__description-price'>100tu,</li>
+                    <li class='form__description-calories'> 20cal</li>
+                  </ul>
+                </div>
+                <div class='form__input-wrapper'>
+                  <input class='visually-hidden form__input' id='salad-2' type='radio' name='salad-kind' data-type='OLIVIE'  data-salad='Оlivie' data-price='50' data-calory='80' value='olivie'>
+                  <label class='form__input-salad-label form__input-label' for='salad-2'>OLIVIE <br>
+                    <span class='form__item-description'>meat,  potatoes, carrots, eggs, pickles, sweet onion,  peas, mayo
+                      salt and pepper
+                    </span>
+                  </label>
+                  <ul class='form__description'>
+                    <li class='form__description-price'>50tu</li>
+                    <li class='form__description-calories'>80cal</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="form__count-wrapper">
+                <div class='form__input-wrapper'>
+                  <label class='form__input-label-count' for='quanity-salad'>Weight:</label>
+                  <input class='form__input-quantity' type='number' name='salad-quantity' id="quanity-salad" value=100 min='100' step='100'> gr.
+                </div>
+                <button class='button form__add-btn'>ADD</button>
+              </div>
+              <ul class='form__total'>
+                <li class='form__total-item'>
+                  Name:
+                  <span class='form__total-item-name'></span>
+                </li>
+                <li class='form__total-item'>
+                  Price:
+                  <span class='form__total-item-sum'>0 tu</span>
+                </li>
+                <li class='form__total-item'>
+                  Calories:
+                  <span class='form__total-item-calories'> 0 cal</span>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </section>
+        <section class="content__item content__item-drinks">
+          <h2 class="content__item-title">DRINKS
+          </h2>
+          <img src="https://img.icons8.com/cotton/64/000000/orange-soda-bottle--v2.png"/>
+          <div class="content__item-wrapper">
+            <form class="content__form form">
+              <div class="form__item-config">
+                <h3 class="form__item-subtitle">DRINKS TO CHOOSE</h3>
+                <div class='form__input-wrapper'>
+                  <input class='visually-hidden form__input' id='drink-1' type='radio' name='drinks-kind' data-type='COLA'  data-price='40'  data-drink='COLA' data-calory='80' value='cola'>
+                  <label class='form__input-label' for='drink-1'>COCA-COLA</label>
+                  <ul class='form__description'>
+                    <li class='form__description-price'>50tu</li>
+                    <li class='form__description-calories'> 40cal</li>
+                  </ul>
+                </div>
+                <div class='form__input-wrapper'>
+                  <input class='visually-hidden form__input' id='drink-2' type='radio' name='drinks-kind' data-type='COFFEE'  data-drink='COFFEE' data-price='80' data-calory='20' value='coffee'>
+                  <label class='form__input-label' for='drink-2'>COFFEE</label>
+                  <ul class='form__description'>
+                    <li class='form__description-price'>80tu</li>
+                    <li class='form__description-calories'>20cal</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="form__count-wrapper">
+                <div class='form__input-wrapper'>
+                  <label class='form__input-label-count' for='quanity-drink'>Count:</label>
+                  <input class='form__input-quantity' type='number' name='drink-quantity' id="quanity-drink" value=1 min='1'>
+                </div>
+                <button class='button form__add-btn'>ADD</button>
+              </div>
+              <ul class='form__total'>
+                <li class='form__total-item'>
+                  Name:
+                  <span class='form__total-item-name'></span>
+                </li>
+                <li class='form__total-item'>
+                  Price:
+                  <span class='form__total-item-sum'>0 tu</span>
+                </li>
+                <li class='form__total-item'>
+                  Calories:
+                  <span class='form__total-item-calories'> 0 cal</span>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </section>
+        
+      </div>
+      <div class='order'>
+        <h3 class='order__subtitle'>TOTAL ORDER</h3>
+        <ul class='order__list'>
+         
+        </ul>
+        <div class='order__wrapper'>
+          <div class='order__wrapper-col'>
+            <p class='order__info'> TOTAL SUM :</p>
+            <p class='order__sum order__sum--value'>0</p><span>tu</span>
+          </div>
+          <div class='order__wrapper-col'>
+            <p class='order__info'>TOTAL CALORY :</p>
+            <p class='order__calory order__sum--value'>0</p><span>cal</span>
+         </div>
+          <button class='button order__pay disabled' disabled>PAY ORDER</button>
+          <button class='button order__new'>NEW ORDER</button>
+        </div>
+      </div>
+    </main>
+    <a href="https://icons8.com/icon/82486/бургер-из-говядины" style="font-size: 0;">Бургер из говядины icon by Icons8</a>
+  </div>
+  <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+</body>
+</html>
+
+
+
+
+
