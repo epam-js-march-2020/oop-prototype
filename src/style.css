@@ -12,14 +12,16 @@ html {
   
   body {
     margin: 0;
-    /* font-family: 'Nunito', sans-serif; */
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Assistant', sans-serif;
     font-weight: bold;
-    color: #ffff;
+  
+    color: lightgray;
+   
     font-size: 12px;
     line-height: 12px;
     text-align: center; 
     background-color: #6CB1D7;
+    background-color: ghostwhite;
 }
   
   ul {
@@ -32,14 +34,34 @@ html {
 }
 
 
-.content__item{ 
-    width: 30%;
-    align-items: center;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #0668C1;
-    box-shadow: 5px 5px 5px 5px #035D8F;
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
 }
+
+
+
+.content__item {
+  width: 30%;
+  /* color: cadetblue;   */
+  color: darkcyan;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #faebf6;
+  box-shadow: 0 11px 24px 21px #ebe1e8;
+}
+
+.content__item:hover {
+  box-shadow: 0px 1px 20px 4px darkcyan;
+}
+
 .form__count-wrapper {
     display: flex;
     justify-content: space-between;
@@ -49,6 +71,7 @@ html {
 .content {
     display: flex;
     justify-content: space-between;
+    font-family: 'Assistant', sans-serif;
 }
 
 .order__wrapper {
@@ -80,11 +103,12 @@ html {
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
-  width: 141px;
+  width: 630px;
   margin-bottom: 0;
 }
 
 .content__form {
+  font-family: 'PT Mono', monospace;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -96,6 +120,13 @@ html {
   padding-bottom: 30px;
 }
 
+.main__title {
+  margin-right: 21px;
+  color: darkcyan;
+  font-size: 64px;
+  font-weight: 700;
+}
+
 .form__input-quantity {
   width: 100px;
   padding: 8px;
@@ -103,8 +134,10 @@ html {
   height: 30px;
   border-radius: 8px;
   border: none;
-  box-shadow: 1px 2px 2px 2px #035d8f;
+  /* box-shadow: inset 1px 2px 2px 2px #f2cbe9; */
+  box-shadow: 0px 1px 12px 7px #f2cbe9 inset;
 }
+
 
 .form__input-label {
   margin-right: 15px;
@@ -129,17 +162,70 @@ html {
   line-height: 0.8;
 }
 
-label {
-  margin-left: 8px;
+.form__input-label {
+  position: relative;
+  width: 100%;
+  padding-left: 15px;
   margin-bottom: 0;
   text-align: start;
   font-size: 20px;
 }
 
+.form__input-label-count {
+  padding-left: 15px;
+}
+
+.form__input-label::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -2px;
+  left: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #008b8b;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.form__input-salad-label {
+  position: relative;
+  padding-left: 15px;
+}
+
+.form__input-salad-label::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -2px;
+  left: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #008b8b;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.form__input:checked+.form__input-salad-label::before,
+.form__input:checked+.form__input-label::before {
+  background-color: #008b8b;
+  border-radius: 50%;
+  /* background-image: url(./images/checkbox.svg); */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* .form__input-quantity::before {
+  content: "";
+} */
+
 .content__item-title {
   font-weight: 700;
   height: 50px;
   text-decoration: underline;
+  /* font-family: 'Amatic SC', cursive; */
 }
 
 .form__item-description {
@@ -182,7 +268,37 @@ label {
 .order__list-delete-item {
   width: 25px;
   height: 15px;
+  margin-left: 8px;
   border-radius: 8px;
   border: 0;
-  box-shadow: 1px 2px 2px 2px #035d8f;
+  box-shadow: inset 0 -1px 3px 4px #f2cbe9;;
+  
+}
+
+
+
+.form__total-item-name, .form__total-item-sum, .form__total-item-calories {
+  font-size: 21px;
+}
+
+
+.button {
+  box-shadow: 0px 1px 12px 7px #f2cbe9 inset;
+}
+
+.button:hover {
+  box-shadow: 0px 1px 20px 4px darkcyan;
+}
+
+.active {
+  color: #008b8b
+}
+
+.main__title-wrapper {
+  display: flex;
+    justify-content: center;
+}
+
+.disabled {
+  box-shadow: inset 0 1px 12px 7px grey;
 }
