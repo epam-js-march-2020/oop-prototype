@@ -21,7 +21,7 @@ Order.prototype.addItem = function () {
 
 
 Order.prototype.removeItem = function (idToDelete) {
-    if (this.items.length) {
+    if (this.items.length && !Object.isFrozen(this.items)) {
         this.items.splice(this.items.findIndex(({id}) => id == idToDelete), 1);
         return this.items;
     } else {

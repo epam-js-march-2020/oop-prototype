@@ -52,7 +52,7 @@ function addDrink(type) {
 }
 
 function updateOrderDisplay(items) {
-    if (items === false) {
+    if (!items) {
         toggleAlert("#alreadyOrderedAlert");
 
     } else if (items.length) {
@@ -79,7 +79,7 @@ function updateOrderDisplay(items) {
             "<small> Kcal</small></div><div class='col-sm'>" +
             order.totalPrice() +
             "<small> &#x20bd;</small> </div>";
-        $("#purchaseButton").show();
+        $("#purchaseButton").attr( "style", "display: block !important;" );
         $("#cart").html(res);
     } else {
         $("#cart").html("Cart is empty. Add something.");
@@ -101,7 +101,7 @@ function toggleAlert(alertID) {
 
 function payedAlert(payedStatus) {
     if (payedStatus) {
-        $("#purchaseButton").hide();
+            $("#purchaseButton").hide();
         toggleAlert("#orderAlert");
     }
 }
