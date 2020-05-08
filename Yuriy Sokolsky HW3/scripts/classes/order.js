@@ -1,79 +1,54 @@
+"use strict";
+
 /**
  * Class Order.
  */
 function Order() {
     this.items = [];
+    this.status = 'New';
 }
 
-
 Order.prototype.addItem = function () {
-    if (!Object.isFrozen(this.items)) {
-        if (this.items.length)
-            arguments[0].id = Math.max.apply(Math, this.items.map(function (o) {
-                return o.id;
-            })) + 1
-        else arguments[0].id = 0;
+    if (this.status === "New") {
+        if (this.items.length) arguments[0].id = order.items.reduce(function (max, o) {
+            return Math.max(max, o.id);
+        }, 0) + 1;else arguments[0].id = 0;
         this.items.push(arguments[0]);
-        return this.items
-    } else
-        return false;
+        return this.items.id;
+    } else throw "Can`t add item to cart, order is completed";
 };
-
 
 Order.prototype.removeItem = function (idToDelete) {
-    if (this.items.length && !Object.isFrozen(this.items)) {
-        this.items.splice(this.items.findIndex(({id}) => id == idToDelete), 1);
-        return this.items;
+    if (this.items.length && this.status === "New") {
+        this.items.splice(this.items.findIndex(function (_ref) {
+            var id = _ref.id;
+            return id == idToDelete;
+        }), 1);
+
     } else {
-        return false;
+        throw "Can`t remove item from cart, order is completed";
     }
 };
-
-
-Order.prototype.getOrder = function () {
-    if (this.items.length) {
-        return this.items
-    } else {
-        return false;
-    }
-};
-
 
 Order.prototype.payForOrder = function () {
-    if (!Object.isFrozen(this.items)) {
-        this.items.forEach(function (item) {
-            if (!item.name) {
-                for (var key in item) {
-                    item[key] = Object.freeze(item[key]);
-                }
-            }
-            item = Object.freeze(item);
-        });
-        this.items = Object.freeze(this.items);
+    if (this.status === "New") {
+        this.status = "Completed";
         return true;
     } else {
-        return false
+        throw "Can`t pay for order , it is completed";
     }
 };
 
-
-Order.prototype.totalPrice = function () {
+Order.prototype.getTotalPrice = function () {
     var totalPrice = this.items.reduce(function (acc, cur) {
-        if (!cur.price) {
-            return acc + cur.calculatePrice();
-        }
-        return acc + cur.price;
+        return acc + cur.getPrice();
     }, 0);
     return totalPrice;
 };
 
-
-Order.prototype.totalCalories = function () {
+Order.prototype.getTotalCalories = function () {
     var totalCalories = this.items.reduce(function (acc, cur) {
-        if (!cur.calories) {
-            return acc + cur.calculateCalories();
-        }
-        return acc + cur.calories;
+        return acc + cur.getCalories();
     }, 0);
     return totalCalories;
 };

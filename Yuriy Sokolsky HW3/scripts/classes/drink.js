@@ -10,14 +10,14 @@ function Drink(options) {
 
 Drink.prototype = Object.create(MenuItem.prototype);
 
-var drinkType = {};
+var drinkOptions = {};
 
-drinkType.COLA = {
+drinkOptions.COLA = {
     name: 'Cola',
     price: 50,
     calories: 40
 };
-drinkType.COFFEE = {
+drinkOptions.COFFEE = {
     name: 'Coffee',
     price: 80,
     calories: 20

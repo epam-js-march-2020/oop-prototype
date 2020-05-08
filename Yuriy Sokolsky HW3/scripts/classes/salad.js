@@ -12,14 +12,14 @@ function Salad(options, weight) {
 
 Salad.prototype = Object.create(MenuItem.prototype);
 
-var saladType = {};
+var saladOptions = {};
 
-saladType.CEASAR = {
+saladOptions.CEASAR = {
     name: 'Ceasar',
     price: 100,
     calories: 20
 };
-saladType.OLIVIE = {
+saladOptions.OLIVIE = {
     name: 'Olivie',
     price: 50,
     calories: 80

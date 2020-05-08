@@ -1,230 +1,348 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/styles.css" rel="stylesheet">
+  <head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles/styles.css" rel="stylesheet" />
     <title>OOP Prototype Yuriy Sokolsky HW3</title>
-</head>
+  </head>
 
-<body>
-<div>
-    <div class="myAlerts alert alert-warning" data-alert="alert" id="alreadyOrderedAlert">You have already made your
-        order
-    </div>
-    <div class="myAlerts alert alert-success" data-alert="alert" id="orderAlert">Order has been completed</div>
-    <div class="orderlist p-2 ">
-        <div data-offset-top="10" data-spy="affix" id='cart-container'>
-            <div class="roundButtonToDisplayCart">&#x1F6D2;</div>
-            <h3 class="text-center">Shopping Cart &#x1F6D2;<span class="badge" id='cartItems'></span></h3>
-            <div class="container cart" id='cart'>
-                Cart is empty. Add something.
-            </div>
-        </div>
-        <div id='prices'></div>
-        <h5 class="float-right">
-            <button class="btn btn-outline-success btn-sm mt-3 d-none" id="purchaseButton"
-                    onclick="payedAlert(order.payForOrder())" type="button">Purchase &#x1F4B3;
-            </button>
-        </h5>
-    </div>
-</div>
-<h1 class="text-center mt-5">Restaurant Menu</h1>
-<div class="mx-auto mt-5 w-50 menuContainer">
+  <body>
     <div>
+      <div
+        class="myAlerts alert alert-warning"
+        data-alert="alert"
+        id="alreadyOrderedAlert"
+      >
+        You have already made your order
+      </div>
+      <div
+        class="myAlerts alert alert-success"
+        data-alert="alert"
+        id="orderAlert"
+      >
+        Order has been completed
+      </div>
+      <div class="orderlist p-2">
+        <div data-offset-top="10" data-spy="affix" id="cart-container">
+          <div class="roundButtonToDisplayCart">&#x1F6D2;</div>
+          <h3 class="text-center">
+            Shopping Cart &#x1F6D2;<span class="badge" id="cartItems"></span>
+          </h3>
+          <div class="container cart" id="cart">
+            Cart is empty. Add something.
+          </div>
+        </div>
+        <div id="prices"></div>
+        <h5 class="float-right">
+          <button
+            class="btn btn-outline-success btn-sm mt-3 d-none"
+            id="purchaseButton"
+            onclick="payedAlert(order.payForOrder())"
+            type="button"
+          >
+            Purchase &#x1F4B3;
+          </button>
+        </h5>
+        <button
+          class="btn btn-outline-success btn-sm mt-3 d-none"
+          id="newOrderButton"
+          onclick="newOrder()"
+          type="button"
+        >
+          New Order &#x1F9FE;
+        </button>
+      </div>
+    </div>
+    <h1 class="text-center mt-5">Restaurant Menu</h1>
+    <div class="mx-auto mt-5 w-50 menuContainer">
+      <div>
         <h4>Hamburgers</h4>
         <div class="card-deck">
-            <div class="card col-5 p-0">
-                <div class="card-img-overlay p-1">
-                    <div class="card-img-overlay-content ">
-                        <h5 class="card-title">Choose the filling</h5>
-                        <ul class="list-group ">
-                            <li class="list-group-item card-text p-1" onclick="addBurger('big','cheese')">
-                                <small class="col-sm-5">&#x1F9C0; Cheese</small>
-                                <small class="text-muted col-sm-4">20 Kcal</small>
-                                <small class="float-right col-sm-4"> +10 &#x20bd;</small>
-                            </li>
-                            <li class="list-group-item card-text  p-1" onclick="addBurger('big','salad')">
-                                <small class="col-sm-5"> &#127811; Salad</small>
-                                <small class="text-muted col-sm-4">5 Kcal</small>
-                                <small class="float-right col-sm-4"> +20 &#x20bd;</small>
-                            </li>
-                            <li class="list-group-item card-text p-1" onclick="addBurger('big','potato')">
-                                <small class="col-sm-5">&#x1F954; Potato</small>
-                                <small class="text-muted col-sm-4">10 Kcal</small>
-                                <small class="float-right col-sm-4"> +15 &#x20bd;</small>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <img alt="Big Burger" class="card-img" src="./media/images/bigBurger.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Big Burger</h5>
-                    <p class="card-text">This is a succulent big burger with a choice of filling.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted float-left">40 Kcal</small><small class="text-muted float-right"> 100
-                    &#x20bd;</small>
-                </div>
+          <div class="card col-5 p-0">
+            <div class="card-img-overlay p-1">
+              <div class="card-img-overlay-content">
+                <h5 class="card-title">Choose the filling</h5>
+                <ul class="list-group">
+                  <li
+                    class="list-group-item card-text p-1 itemsAddButtons"
+                    onclick="addItem( new Hamburger(hamburgerOptions.SIZE_LARGE, stuffingOptions.CHEESE))"
+                  >
+                    <small class="col-sm-5">&#x1F9C0; Cheese</small>
+                    <small class="text-muted col-sm-4">20 Kcal</small>
+                    <small class="float-right col-sm-4"> +10 &#x20bd;</small>
+                  </li>
+                  <li
+                    class="list-group-item card-text p-1 itemsAddButtons"
+                    onclick="addItem(new Hamburger(hamburgerOptions.SIZE_LARGE, stuffingOptions.SALAD))"
+                  >
+                    <small class="col-sm-5"> &#127811; Salad</small>
+                    <small class="text-muted col-sm-4">5 Kcal</small>
+                    <small class="float-right col-sm-4"> +20 &#x20bd;</small>
+                  </li>
+                  <li
+                    class="list-group-item card-text p-1 itemsAddButtons"
+                    onclick="addItem(new Hamburger(hamburgerOptions.SIZE_LARGE, stuffingOptions.POTATO))"
+                  >
+                    <small class="col-sm-5">&#x1F954; Potato</small>
+                    <small class="text-muted col-sm-4">10 Kcal</small>
+                    <small class="float-right col-sm-4"> +15 &#x20bd;</small>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="card col-5 p-0">
-                <div class="card-img-overlay p-1">
-                    <div class="card-img-overlay-content ">
-                        <h5 class="card-title">Choose the filling</h5>
-                        <ul class="list-group ">
-                            <li class="list-group-item card-text p-1" onclick="addBurger('small','cheese')">
-                                <small class="col-sm-5">&#x1F9C0; Cheese</small>
-                                <small class="text-muted col-sm-4">20 Kcal</small>
-                                <small class="float-right col-sm-4">+10 &#x20bd;</small>
-                            </li>
-                            <li class="list-group-item card-text p-1" onclick="addBurger('small','salad')">
-                                <small class="col-sm-5"> &#127811; Salad</small>
-                                <small class="text-muted col-sm-4">5 Kcal</small>
-                                <small class="float-right col-sm-4">+20 &#x20bd;</small>
-                            </li>
-                            <li class="list-group-item card-text p-1" onclick="addBurger('small','potato')">
-                                <small class="col-sm-5">&#x1F954; Potato</small>
-                                <small class="text-muted col-sm-4">10 Kcal</small>
-                                <small class="float-right col-sm-4">+15 &#x20bd;</small>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <img alt="Small Burger" class="card-img" src="./media/images/smallBurger.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Small Burger</h5>
-                    <p class="card-text">This is a small burger (1pcs) with a choice of filling.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted float-left">20 Kcal</small><small class="text-muted float-right"> 50
-                    &#x20bd;</small>
-                </div>
+            <img
+              alt="Big Burger"
+              class="card-img"
+              src="./media/images/bigBurger.jpg"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Big Burger</h5>
+              <p class="card-text">
+                This is a succulent big burger with a choice of filling.
+              </p>
             </div>
-
+            <div class="card-footer">
+              <small class="text-muted float-left">40 Kcal</small
+              ><small class="text-muted float-right"> 100 &#x20bd;</small>
+            </div>
+          </div>
+          <div class="card col-5 p-0">
+            <div class="card-img-overlay p-1">
+              <div class="card-img-overlay-content">
+                <h5 class="card-title">Choose the filling</h5>
+                <ul class="list-group">
+                  <li
+                    class="list-group-item card-text p-1 itemsAddButtons"
+                    onclick="addItem(new Hamburger(hamburgerOptions.SIZE_SMALL, stuffingOptions.CHEESE))"
+                  >
+                    <small class="col-sm-5">&#x1F9C0; Cheese</small>
+                    <small class="text-muted col-sm-4">20 Kcal</small>
+                    <small class="float-right col-sm-4">+10 &#x20bd;</small>
+                  </li>
+                  <li
+                    class="list-group-item card-text p-1 itemsAddButtons"
+                    onclick="addItem(new Hamburger(hamburgerOptions.SIZE_SMALL, stuffingOptions.SALAD))"
+                  >
+                    <small class="col-sm-5"> &#127811; Salad</small>
+                    <small class="text-muted col-sm-4">5 Kcal</small>
+                    <small class="float-right col-sm-4">+20 &#x20bd;</small>
+                  </li>
+                  <li
+                    class="list-group-item card-text p-1 itemsAddButtons"
+                    onclick="addItem(new Hamburger(hamburgerOptions.SIZE_SMALL, stuffingOptions.POTATO))"
+                  >
+                    <small class="col-sm-5">&#x1F954; Potato</small>
+                    <small class="text-muted col-sm-4">10 Kcal</small>
+                    <small class="float-right col-sm-4">+15 &#x20bd;</small>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <img
+              alt="Small Burger"
+              class="card-img"
+              src="./media/images/smallBurger.jpg"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Small Burger</h5>
+              <p class="card-text">
+                This is a small burger (1pcs) with a choice of filling.
+              </p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted float-left">20 Kcal</small
+              ><small class="text-muted float-right"> 50 &#x20bd;</small>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="pt-5">
+      </div>
+      <div class="pt-5">
         <h4>Salads</h4>
         <div class="card-deck">
-            <div class="card col-5 p-0">
-                <div class="card-img-overlay p-1">
-                    <div class="card-img-overlay-content text-center">
-                        <h5 class="card-title">Choose weight <small>(in grams)</small></h5>
-                        <div class="def-number-input number-input">
-                            <button class="minus"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                            <input class="quantity form-control" max="5000" min="50" name="quantity" pattern="[0-9]"
-                                   step="50" type="number" value="100" readonly>
-                            <button class="plus"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
-                        </div>
-                        <h5>
-                            <button class="btn btn-light btn-sm mt-3"
-                                    onclick="addSalad('ceasar',  parseInt($(this).parent().prev().find('input[type=number]').val()))"
-                                    type="button">Add
-                            </button>
-                        </h5>
-                    </div>
+          <div class="card col-5 p-0">
+            <div class="card-img-overlay p-1">
+              <div class="card-img-overlay-content text-center">
+                <h5 class="card-title">
+                  Choose weight <small>(in grams)</small>
+                </h5>
+                <div class="def-number-input number-input">
+                  <button
+                    class="minus itemsAddButtons"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                  ></button>
+                  <input
+                    class="quantity form-control itemsAddButtons"
+                    max="5000"
+                    min="50"
+                    name="quantity"
+                    pattern="[0-9]"
+                    step="50"
+                    type="number"
+                    value="100"
+                    readonly
+                  />
+                  <button
+                    class="plus itemsAddButtons"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                  ></button>
                 </div>
-                <img alt="Caesar salad" class="card-img" src="./media/images/caesar.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Caesar</h5>
-                    <p class="card-text">Smoked chicken breast, Parmesan cheese, fresh tomatoes, boiled egg, Iceberg
-                        salad, Caesar sauce, croutons.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted float-left">20 Kcal / 100g</small><small class="text-muted float-right">
-                    100 &#x20bd; / 100g</small>
-                </div>
+                <h5>
+                  <button
+                    class="btn btn-light btn-sm mt-3 itemsAddButtons"
+                    onclick="addItem(new Salad(saladOptions.CEASAR, parseInt($(this).parent().prev().find('input[type=number]').val())))"
+                    type="button"
+                  >
+                    Add
+                  </button>
+                </h5>
+              </div>
             </div>
-            <div class="card col-5 p-0">
-                <div class="card-img-overlay p-1">
-                    <div class="card-img-overlay-content text-center">
-                        <h5 class="card-title">Choose weight<small>(in grams)</small></h5>
-                        <div class="def-number-input number-input ">
-                            <button class="minus"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                            <input class="quantity form-control" max="5000" min="50" name="quantity" pattern="\d*"
-                                   step="50" type="number" value="100" readonly>
-                            <button class="plus"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
-                        </div>
-                        <h5>
-                            <button class="btn btn-light btn-sm mt-3"
-                                    onclick="addSalad('olivie',  parseInt($(this).parent().prev().find('input[type=number]').val()))"
-                                    type="button">Add
-                            </button>
-                        </h5>
-                    </div>
-                </div>
-                <img alt="Olivie salad" class="card-img" src="./media/images/olivie.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Olivie</h5>
-                    <p class="card-text">Ham, gherkins, carrots, potatoes, peas, boiled egg, mayonnaise, parsley.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted float-left">80 Kcal / 100g</small><small class="text-muted float-right"> 50
-                    &#x20bd; / 100g</small>
-                </div>
+            <img
+              alt="Caesar salad"
+              class="card-img"
+              src="./media/images/caesar.jpg"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caesar</h5>
+              <p class="card-text">
+                Smoked chicken breast, Parmesan cheese, fresh tomatoes, boiled
+                egg, Iceberg salad, Caesar sauce, croutons.
+              </p>
             </div>
-
+            <div class="card-footer">
+              <small class="text-muted float-left">20 Kcal / 100g</small
+              ><small class="text-muted float-right">
+                100 &#x20bd; / 100g</small
+              >
+            </div>
+          </div>
+          <div class="card col-5 p-0">
+            <div class="card-img-overlay p-1">
+              <div class="card-img-overlay-content text-center">
+                <h5 class="card-title">
+                  Choose weight<small>(in grams)</small>
+                </h5>
+                <div class="def-number-input number-input">
+                  <button
+                    class="minus itemsAddButtons btn"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                  ></button>
+                  <input
+                    class="quantity form-control itemsAddButtons"
+                    max="5000"
+                    min="50"
+                    name="quantity"
+                    pattern="\d*"
+                    step="50"
+                    type="number"
+                    value="100"
+                    readonly
+                  />
+                  <button
+                    class="plus itemsAddButtons btn"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                  ></button>
+                </div>
+                <h5>
+                  <button
+                    class="btn btn-light btn-sm mt-3 itemsAddButtons"
+                    onclick="addItem(new Salad(saladOptions.OLIVIE, parseInt($(this).parent().prev().find('input[type=number]').val())))"
+                    type="button"
+                  >
+                    Add
+                  </button>
+                </h5>
+              </div>
+            </div>
+            <img
+              alt="Olivie salad"
+              class="card-img"
+              src="./media/images/olivie.jpg"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Olivie</h5>
+              <p class="card-text">
+                Ham, gherkins, carrots, potatoes, peas, boiled egg, mayonnaise,
+                parsley.
+              </p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted float-left">80 Kcal / 100g</small
+              ><small class="text-muted float-right"> 50 &#x20bd; / 100g</small>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="pt-5">
+      </div>
+      <div class="pt-5">
         <h4>Drinks</h4>
         <div class="card-deck mb-5">
-            <div class="card col-5 p-0">
-                <div class="card-img-overlay p-1">
-                    <div class="card-img-overlay-content text-center">
-                        <h5 class="card-title">Cola</h5>
-                        <h5>
-                            <button class="btn btn-light btn-sm mt-3" onclick="addDrink('cola')" type="button">Add
-                            </button>
-                        </h5>
-                    </div>
-                </div>
-                <img alt="Cola" class="card-img" src="./media/images/cola.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Cola</h5>
-                    <p class="card-text">This is a cola in the bottle.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted float-left">40 Kcal</small><small class="text-muted float-right"> 50
-                    &#x20bd;</small>
-                </div>
+          <div class="card col-5 p-0">
+            <div class="card-img-overlay p-1">
+              <div class="card-img-overlay-content text-center">
+                <h5 class="card-title">Cola</h5>
+                <h5>
+                  <button
+                    class="btn btn-light btn-sm mt-3 itemsAddButtons"
+                    onclick="addItem(new Drink(drinkOptions.COLA))"
+                    type="button"
+                  >
+                    Add
+                  </button>
+                </h5>
+              </div>
             </div>
-            <div class="card col-5 p-0">
-                <div class="card-img-overlay p-1">
-                    <div class="card-img-overlay-content text-center">
-                        <h5 class="card-title">Coffee</h5>
-                        <h5>
-                            <button class="btn btn-light btn-sm mt-3" onclick="addDrink('coffee')" type="button">Add
-                            </button>
-                        </h5>
-                    </div>
-                </div>
-                <img alt="Coffee" class="card-img" src="./media/images/coffe.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Coffee</h5>
-                    <p class="card-text">This is a small cup of Coffee.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted float-left">20 Kcal</small><small class="text-muted float-right"> 80
-                    &#x20bd;</small>
-                </div>
+            <img alt="Cola" class="card-img" src="./media/images/cola.jpg" />
+            <div class="card-body">
+              <h5 class="card-title">Cola</h5>
+              <p class="card-text">This is a cola in the bottle.</p>
             </div>
-
+            <div class="card-footer">
+              <small class="text-muted float-left">40 Kcal</small
+              ><small class="text-muted float-right"> 50 &#x20bd;</small>
+            </div>
+          </div>
+          <div class="card col-5 p-0">
+            <div class="card-img-overlay p-1">
+              <div class="card-img-overlay-content text-center">
+                <h5 class="card-title">Coffee</h5>
+                <h5>
+                  <button
+                    class="btn btn-light btn-sm mt-3 itemsAddButtons"
+                    onclick="addItem(new Drink(drinkOptions.COFFEE))"
+                    type="button"
+                  >
+                    Add
+                  </button>
+                </h5>
+              </div>
+            </div>
+            <img alt="Coffee" class="card-img" src="./media/images/coffe.jpg" />
+            <div class="card-body">
+              <h5 class="card-title">Coffee</h5>
+              <p class="card-text">This is a small cup of Coffee.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted float-left">20 Kcal</small
+              ><small class="text-muted float-right"> 80 &#x20bd;</small>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.0.min.js" type="text/javascript"></script>
-<script src="scripts/classes/menuItem.js" type="text/javascript"></script>
-<script src="scripts/classes/order.js" type="text/javascript"></script>
-<script src="scripts/classes/salad.js" type="text/javascript"></script>
-<script src="scripts/classes/hamburger.js" type="text/javascript"></script>
-<script src="scripts/classes/drink.js" type="text/javascript"></script>
-<script src="./scripts/script.js" type="text/javascript"></script>
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.5.0.min.js"
+      type="text/javascript"
+    ></script>
+    <script src="scripts/classes/menuItem.js" type="text/javascript"></script>
+    <script src="scripts/classes/order.js" type="text/javascript"></script>
+    <script src="scripts/classes/salad.js" type="text/javascript"></script>
+    <script src="scripts/classes/hamburger.js" type="text/javascript"></script>
+    <script src="scripts/classes/stuffing.js" type="text/javascript"></script>
+    <script src="scripts/classes/drink.js" type="text/javascript"></script>
+    <script src="./scripts/script.js" type="text/javascript"></script>
+  </body>
 </html>

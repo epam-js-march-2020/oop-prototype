@@ -6,8 +6,8 @@
  * @param stuffing    stuffing of burger
  */
 function Hamburger(size, stuffing) {
-    this.size = size;
-    this.stuffing = stuffing;
+    this.stuffing = new Stuffing(stuffing);
+    MenuItem.call(this, size);
 }
 
 Hamburger.prototype = Object.create(MenuItem.prototype);
@@ -25,29 +25,7 @@ hamburgerOptions.SIZE_LARGE = {
     price: 100,
     calories: 40
 };
-hamburgerOptions.STUFFING_CHEESE = {
-    name: 'cheese',
-    price: 10,
-    calories: 20
-};
-hamburgerOptions.STUFFING_SALAD = {
-    name: 'salad',
-    price: 20,
-    calories: 5
-};
-hamburgerOptions.STUFFING_POTATO = {
-    name: 'potato',
-    price: 15,
-    calories: 10
-};
 
-
-Hamburger.prototype.getName = function () {
-    if (!this.size.name) {
-        return "name not set";
-    }
-    return this.size.name;
-};
 
 Hamburger.prototype.getStuffing = function () {
     var stuffing = this.stuffing;
@@ -56,13 +34,9 @@ Hamburger.prototype.getStuffing = function () {
 
 
 Hamburger.prototype.getPrice = function () {
-    var stufPrice = this.stuffing.price
-    this.price = this.size.price + stufPrice;
-    return this.price;
+    return this.price + this.stuffing.price;
 };
 
 Hamburger.prototype.getCalories = function () {
-    var stufCalories = this.stuffing.calories;
-    this.calories = this.size.calories + stufCalories;
-    return this.calories;
+    return this.calories+this.stuffing.calories;
 };
