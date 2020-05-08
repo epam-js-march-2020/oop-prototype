@@ -16,6 +16,9 @@ function OrderItem(options) {
 OrderItem.prototype.getName = function () {
     return this.name;
 };
+OrderItem.prototype.getFullName = function () {
+    return this.getName();
+};
 
 OrderItem.prototype.getPrice = function () {
     return this.price;

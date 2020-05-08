@@ -28,7 +28,7 @@ function updateOrderDisplay(items) {
     orderlist.forEach(function (item) {
       res +="<div class='row border-bottom pb-1 itemInCart'>  <div class='col-sm-7'>";
 
-      res += typeof item.getFullName === "function" ? item.getFullName() : item.getName();
+      res += item.getFullName();
 
       res +=
         "</div><div class='col-sm'>" +
