@@ -38,9 +38,7 @@ function updateOrderDisplay(items) {
         "<small> &#x20bd;</small></div>";
 
       res +=
-        "<div class='removeItemButton '> <input class ='mybtnRemove display-4' type='button' value='Remove' onclick='removeItemFromOrder(\"" +
-        item.id +
-        "\")'></div></div>";
+        "<div class='removeItemButton '> <input class ='mybtnRemove display-4' type='button' value='Remove' onclick='removeItemFromOrder("+item.id +")'></div></div>";
     });
 
     var resTotal =
@@ -56,6 +54,7 @@ function updateOrderDisplay(items) {
 
   } else {
       $("#cart").html("Cart is empty. Add something.");
+      $("#totalSum").html("");
       $("#purchaseButton").hide();
   }
 }

@@ -31,14 +31,13 @@ Hamburger.prototype.getFullName = function () {
 };
 
 Hamburger.prototype.getStuffing = function () {
-    var stuffing = this.stuffing;
-    return stuffing;
+    return this.stuffing;
 };
 
 Hamburger.prototype.getPrice = function () {
-    return this.price + this.stuffing.price;
+    return this.price + this.stuffing.getPrice();
 };
 
 Hamburger.prototype.getCalories = function () {
-    return this.calories+this.stuffing.calories;
+    return this.calories+this.stuffing.getCalories();
 };
