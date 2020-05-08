@@ -2,15 +2,13 @@
  * Class stuffing.
  *
  * @constructor
- * @param size        size of burger
- * @param stuffing    stuffing of burger
+ * @param options.stuffing
  */
-function Stuffing(options,stuffing) {
-    MenuItem.call(this, options);
+function Stuffing(options) {
+    OrderItem.call(this, options);
 }
 
-Stuffing.prototype = Object.create(MenuItem.prototype);
-
+Stuffing.prototype = Object.create(OrderItem.prototype);
 
 var stuffingOptions = {};
 

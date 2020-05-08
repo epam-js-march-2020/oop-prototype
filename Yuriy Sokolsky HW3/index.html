@@ -36,7 +36,7 @@
             Cart is empty. Add something.
           </div>
         </div>
-        <div id="prices"></div>
+        <div id="totalSum"></div>
         <h5 class="float-right">
           <button
             class="btn btn-outline-success btn-sm mt-3 d-none"
@@ -172,7 +172,7 @@
                 <div class="def-number-input number-input">
                   <button
                     class="minus itemsAddButtons"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                    onclick="$('#caesarWeight')[0].stepDown()"
                   ></button>
                   <input
                     class="quantity form-control itemsAddButtons"
@@ -183,17 +183,18 @@
                     step="50"
                     type="number"
                     value="100"
+                    id="caesarWeight"
                     readonly
                   />
                   <button
                     class="plus itemsAddButtons"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                    onclick="$('#caesarWeight')[0].stepUp()"
                   ></button>
                 </div>
                 <h5>
                   <button
                     class="btn btn-light btn-sm mt-3 itemsAddButtons"
-                    onclick="addItem(new Salad(saladOptions.CEASAR, parseInt($(this).parent().prev().find('input[type=number]').val())))"
+                    onclick="addItem(new Salad(saladOptions.CEASAR, parseInt($('#caesarWeight').val())))"
                     type="button"
                   >
                     Add
@@ -229,7 +230,7 @@
                 <div class="def-number-input number-input">
                   <button
                     class="minus itemsAddButtons btn"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                    onclick="$('#olivieWeight')[0].stepDown()"
                   ></button>
                   <input
                     class="quantity form-control itemsAddButtons"
@@ -240,17 +241,18 @@
                     step="50"
                     type="number"
                     value="100"
+                    id="olivieWeight"
                     readonly
                   />
                   <button
                     class="plus itemsAddButtons btn"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                    onclick="$('#olivieWeight')[0].stepUp()"
                   ></button>
                 </div>
                 <h5>
                   <button
                     class="btn btn-light btn-sm mt-3 itemsAddButtons"
-                    onclick="addItem(new Salad(saladOptions.OLIVIE, parseInt($(this).parent().prev().find('input[type=number]').val())))"
+                    onclick="addItem(new Salad(saladOptions.OLIVIE, parseInt($('#olivieWeight').val())))"
                     type="button"
                   >
                     Add
@@ -337,7 +339,7 @@
       src="https://code.jquery.com/jquery-3.5.0.min.js"
       type="text/javascript"
     ></script>
-    <script src="scripts/classes/menuItem.js" type="text/javascript"></script>
+    <script src="scripts/classes/orderItem.js" type="text/javascript"></script>
     <script src="scripts/classes/order.js" type="text/javascript"></script>
     <script src="scripts/classes/salad.js" type="text/javascript"></script>
     <script src="scripts/classes/hamburger.js" type="text/javascript"></script>

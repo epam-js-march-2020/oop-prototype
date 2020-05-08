@@ -5,10 +5,10 @@
  * @param options.drink
  */
 function Drink(options) {
-    MenuItem.call(this, options);
+    OrderItem.call(this, options);
 }
 
-Drink.prototype = Object.create(MenuItem.prototype);
+Drink.prototype = Object.create(OrderItem.prototype);
 
 var drinkOptions = {};
 

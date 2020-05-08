@@ -209,6 +209,10 @@
     right: 0;
     visibility: visible;
     opacity: .9;
+}
 
-
+.cart{
+    overflow-y: overlay ;
+    overflow-x: hidden;
+    max-height: 600px;
 }

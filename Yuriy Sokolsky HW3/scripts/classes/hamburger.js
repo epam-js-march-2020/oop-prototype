@@ -7,10 +7,10 @@
  */
 function Hamburger(size, stuffing) {
     this.stuffing = new Stuffing(stuffing);
-    MenuItem.call(this, size);
+    OrderItem.call(this, size);
 }
 
-Hamburger.prototype = Object.create(MenuItem.prototype);
+Hamburger.prototype = Object.create(OrderItem.prototype);
 
 
 var hamburgerOptions = {};
@@ -26,12 +26,14 @@ hamburgerOptions.SIZE_LARGE = {
     calories: 40
 };
 
+Hamburger.prototype.getFullName = function () {
+    return this.name + " with " + this.stuffing.name;
+};
 
 Hamburger.prototype.getStuffing = function () {
     var stuffing = this.stuffing;
     return stuffing;
 };
-
 
 Hamburger.prototype.getPrice = function () {
     return this.price + this.stuffing.price;

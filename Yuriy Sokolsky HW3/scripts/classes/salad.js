@@ -6,11 +6,11 @@
  * @param weight    weight of salad
  */
 function Salad(options, weight) {
-    MenuItem.call(this, options);
+    OrderItem.call(this, options);
     this.weight = weight;
 }
 
-Salad.prototype = Object.create(MenuItem.prototype);
+Salad.prototype = Object.create(OrderItem.prototype);
 
 var saladOptions = {};
 
@@ -25,6 +25,9 @@ saladOptions.OLIVIE = {
     calories: 80
 };
 
+Salad.prototype.getFullName = function () {
+    return this.name + " (" + this.weight + "g.) ";
+};
 
 Salad.prototype.getPrice = function () {
     return this.price / 100 * this.weight;

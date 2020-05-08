@@ -19,38 +19,43 @@ function newOrder() {
   $(".itemsAddButtons").attr("disabled", false).removeClass("disabled");
 }
 function updateOrderDisplay(items) {
+
   if (items.length) {
     var orderlist = items;
     var res = "";
+
     orderlist.forEach(function (item) {
+      res +="<div class='row border-bottom pb-1 itemInCart'>  <div class='col-sm-7'>";
+
+      res += typeof item.getFullName === "function" ? item.getFullName() : item.getName();
+
       res +=
-        "<div class='row border-bottom pb-1 itemInCart'>  <div class='col-sm-7'>";
-      if (item.stuffing) res += item.name + " with " + item.stuffing.name;
-      else if (item.weight) res += item.name + " (" + item.weight + "g.) ";
-      else res += item.name;
-      res += " </div>";
-      res +=
-        "<div class='col-sm'>" +
+        "</div><div class='col-sm'>" +
         item.getCalories() +
-        " <small>Kcal</small></div><div class='col-sm'>" +
+        "<small>Kcal</small></div><div class='col-sm'>" +
         item.getPrice() +
         "<small> &#x20bd;</small></div>";
+
       res +=
         "<div class='removeItemButton '> <input class ='mybtnRemove display-4' type='button' value='Remove' onclick='removeItemFromOrder(\"" +
         item.id +
         "\")'></div></div>";
     });
-    res +=
-      "<div class='row border-top pt-5'><div class='col-sm-7'>Total sum </div><div class='col-sm'>" +
+
+    var resTotal =
+      "<div class='row border-top pt-5'><div class='col-sm-6'>Total sum </div><div class='col-sm'>" +
       order.getTotalCalories() +
       "<small> Kcal</small></div><div class='col-sm'>" +
       order.getTotalPrice() +
       "<small> &#x20bd;</small> </div>";
+
     $("#purchaseButton").attr("style", "display: block !important;");
+    $("#totalSum").html(resTotal);
     $("#cart").html(res);
+
   } else {
-    $("#cart").html("Cart is empty. Add something.");
-    $("#purchaseButton").hide();
+      $("#cart").html("Cart is empty. Add something.");
+      $("#purchaseButton").hide();
   }
 }
 
