@@ -27,7 +27,7 @@ hamburgerOptions.SIZE_LARGE = {
 };
 
 Hamburger.prototype.getFullName = function () {
-    return this.name + " with " + this.stuffing.name;
+    return this.name + " with " + this.stuffing.getName();
 };
 
 Hamburger.prototype.getStuffing = function () {
