@@ -16,6 +16,7 @@ function newOrder() {
   order = new Order();
   $("#newOrderButton").hide();
   updateOrderDisplay(order.items);
+  $("#totalSum").html("");
   $(".itemsAddButtons").attr("disabled", false).removeClass("disabled");
 }
 function updateOrderDisplay(items) {

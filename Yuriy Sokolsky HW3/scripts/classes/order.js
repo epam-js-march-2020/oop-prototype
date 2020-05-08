@@ -4,7 +4,7 @@
 
 const OrderStatus={
     COMPLETED:"Completed",
-    NEW:"NEW"
+    NEW:"New"
 }
 
 function Order() {
