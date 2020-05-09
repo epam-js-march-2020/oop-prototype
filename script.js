@@ -1,7 +1,11 @@
 var burger = new Burger;
     ui = new UI;
+    salad = new Salad;
+    drink = new Drink;
+    order = new Order;
+    items = []
     cheese = document.getElementById('cheese');
-    salad = document.getElementById('salad');
+    saladBrg = document.getElementById('salad');
     potato = document.getElementById('potato');
     stuffCheese = document.getElementById('stuffCheese');
     stuffSalad = document.getElementById('stuffSalad');
@@ -16,18 +20,55 @@ var burger = new Burger;
     sld = document.getElementById('show-sld');
     addBrg = document.getElementById('add-brg');
     brgSize = document.querySelector('.size').childNodes;
-    brgStuffing = document.querySelector('.stuffing').childNodes
+    brgStuffing = document.querySelector('.stuffing').childNodes;
+    type1 = document.getElementById('type1');
+    type2 = document.getElementById('type2');
+    price1 = document.getElementById('price1');
+    price2 = document.getElementById('price2');
+    calorie1 = document.getElementById('calorie1');
+    calorie2 = document.getElementById('calorie2');
+    count1 = document.getElementById("count1");
+    count2 = document.getElementById("count2");
+    drnk = document.getElementById('show-drk');
+    totalPrice = document.getElementById('totalPriceSld');
+    totalCalorie = document.getElementById('totalCalorieSld');
+    add = document.getElementById('add');
+    orderPrice = document.getElementById('orderPrice');
+    orderCalorie = document.getElementById('orderCalorie');
+    drop = document.getElementById('dropOrder')
+   
 
 //addEventListeners
 cheese.addEventListener('click', chooseCheese);
-salad.addEventListener('click', chooseSalad);
+saladBrg.addEventListener('click', chooseSalad);
 potato.addEventListener('click', choosePotato);
 brgCount.addEventListener('change', changeCount);
 cancel.addEventListener('click', cancelOrder);
 l.addEventListener('click', chooseLargeBrg);
 s.addEventListener('click', chooseSmallBrg);
 sld.addEventListener('click', showSaladMenu);
+drnk.addEventListener('click', showDrinkMenu)
 addBrg.addEventListener('click', addBrgInOrder);
+count1.addEventListener('change', calcPriceCalorie);
+count2.addEventListener('change', calcPriceCalorie);
+add.addEventListener('click', addItemInOrder);
+drop.addEventListener('click', dropOrder);
+
+
+
+function calcPriceCalorie() {
+    if(sld.classList.contains('bg-success')) {
+        salad.getPrice(); 
+        salad.getCalorie();
+        calcTotalPrice();
+        calcTotalCalorie();
+    } else {
+        drink.getPrice();
+        drink.getCalorie();
+        calcTotalPrice();
+        calcTotalCalorie();
+    }
+}
 
 // choose stuffing
 function chooseCheese() {
@@ -49,14 +90,14 @@ function chooseCheese() {
 
 function chooseSalad() {
     if(size !== 'N') {
-        burger.getSize(brgSize);  
+        // burger.getSize(brgSize);  
 
         if(stuffSalad.style.display=='none'){
             stuffSalad.style.display='block';
-            salad.classList.add('badge-pill' ,'badge-warning');
+            saladBrg.classList.add('badge-pill' ,'badge-warning');
         } else {
             stuffSalad.style.display='none';
-            salad.classList.remove('badge-pill' ,'badge-warning');
+            saladBrg.classList.remove('badge-pill' ,'badge-warning');
         }
         burger.calculatePrice();
         burger.calculateCalorie()
@@ -67,7 +108,7 @@ function chooseSalad() {
 
 function choosePotato() {
     if(size !== 'N') {
-        burger.getSize(brgSize);
+        // burger.getSize(brgSize);
 
         if(stuffPotato.style.display=='none'){
             stuffPotato.style.display='block';
@@ -165,9 +206,6 @@ document.getElementById('table').addEventListener('click', function(e){
     ui.deleteItem(e.target)
     
 e.preventDefault()})
-
-//##########################
-
     
 
 // console.log(parseInt(brgCount.value))
@@ -175,7 +213,7 @@ e.preventDefault()})
 
 
 function addBrgInOrder() {
-    try {
+    if(size !== 'N') {
         burger.getSize(brgSize);
         burger.getStuffing(brgStuffing);
         burger.calculatePrice();
@@ -183,13 +221,55 @@ function addBrgInOrder() {
         count = parseInt(brgCount.value);
     name = 'Burger'+' '+size+' '+ stuffing
     var item = new Item(name, count, calorie, price)
-    ui.addItemToTable(item)
-    console.log(item)
-    }
-    catch{
+    order.checkItems(item)
+    // ui.addItemToTable(item)
+    // ui.calcOrderPrice();
+    // ui.calcOrderCalorie()
+    } else {
     ui.showAlert('Please, choose the size of your burger') 
 }
 }
+function addItemInOrder() {
+    if(count1.value > 0) {
+        name = type1.textContent;
+        count = parseInt(count1.value);
+        calorie = parseInt(calorie1.value);
+        price = parseInt(price1.value);
+        var item = new Item(name, count, calorie, price)
+        order.checkItems(item)
+        // ui.calcOrderPrice();
+        // ui.calcOrderCalorie()
+    } if(count2.value > 0) {
+        name = type2.textContent;
+        count =  parseInt(count2.value);
+        calorie =  parseInt(calorie2.value);
+        price =  parseInt(price2.value);
+        var item = new Item(name, count, calorie, price)
+        // ui.addItemToTable(item);
+        // order.items.push(item)
+        order.checkItems(item)
+    //     ui.calcOrderPrice();
+    // ui.calcOrderCalorie()
+    }
+}
+$('#order').click(function(){
+
+    page.change(new homeState);
+    brg.setAttribute('disabled', "disabled");
+    sld.setAttribute('disabled', "disabled");
+    drnk.setAttribute('disabled', "disabled")
+    document.querySelectorAll('.delete-item').forEach(element => element.setAttribute('disabled', "disabled"))
+    
+    //  ui.getItems()
+    })
+
+
+    function dropOrder(){
+        brg.removeAttribute("disabled");
+        sld.removeAttribute("disabled");
+        drnk.removeAttribute("disabled")
+        document.querySelectorAll('.delete-item').forEach(element => element.removeAttribute("disabled"))
+    }
 
 
 const PageState = function() {
@@ -208,7 +288,7 @@ const homeState = function(page) {
     n.classList.add('badge-pill' ,'badge-warning')
     burger.getSize(brgSize)
     cheese.classList.remove('badge-pill', 'badge-warning');
-    salad.classList.remove('badge-pill', 'badge-warning');
+    saladBrg.classList.remove('badge-pill', 'badge-warning');
     potato.classList.remove('badge-pill', 'badge-warning')
     burger.getStuffing(brgStuffing)
     burger.calculatePrice();
@@ -227,20 +307,41 @@ const homeState = function(page) {
     // console.log( document.querySelectorAll('.cheese, .potato, .salad'))
     brg.classList.remove('bg-warning');
     sld.classList.remove('bg-success');
+    drnk.classList.remove('bg-info')
   };
   
   // brg State
   const brgState = function(page) {
     brgMenu.style.display ='block';
     sldMenu.style.display = 'none';
-    document.querySelector('.cheese').style.display = 'none'
- 
   };
   
   // Salad State
   const saladState = function(page) {
     sldMenu.style.display = 'block';
+    type1.textContent = Salad.CESAR_TYPE;
+    type2.textContent = Salad.OLIVIE_TYPE;
+    // price1.value = Salad.CESAR_PRICE;
+    // price2.value = Salad.OLIVIE_PRICE;
+    // calorie1.value = Salad.CESAR_CALORIE
+    // calorie2.value = Salad.OLIVIE_CALORIE
+    // salad.getPrice()
   };
+function  calcTotalPrice() {
+    totalPrice.value = parseInt(price1.value) + parseInt(price2.value)
+}
+
+function  calcTotalCalorie() {
+    totalCalorie.value = parseInt(calorie1.value) + parseInt(calorie2.value)
+}
+  const drinkState = function(page) {
+    sldMenu.style.display = 'block';
+    type1.textContent = Drink.COLA_TYPE;
+    type2.textContent = Drink.COFFEE_TYPE;
+    // drink.getCalorie();
+    // drink.getPrice()
+  }
+
   
   // Instantiate pageState
   const page = new PageState();
@@ -257,6 +358,7 @@ const homeState = function(page) {
         page.change(new brgState);
         brg.classList.add('bg-warning');
         sld.classList.remove('bg-success');
+        drnk.classList.remove('bg-info');
     } else {
         // sld.classList.remove('bg-success');
         // brgMenu.style.display ='none';
@@ -266,17 +368,51 @@ const homeState = function(page) {
 })
 function showSaladMenu(e){
     e.preventDefault();
-    if(sldMenu.style.display === 'none') {
+    if(sldMenu.style.display === 'none' || drnk.classList.contains('bg-info')) {
         page.change(new saladState);
         sld.classList.add('bg-success')
         brgMenu.style.display = 'none'
-        brg.classList.remove('bg-warning')
+        brg.classList.remove('bg-warning');
+        drnk.classList.remove('bg-info');
+        count1.value = 0;
+        count2.value = 0;
+        salad.getPrice();
+        salad.getCalorie();
+        calcTotalPrice();
+        calcTotalCalorie()
     } else {
         page.change(new homeState);
         // sld.classList.remove('bg-success');
         // brg.classList.remove('bg-warning')
     }
 }
+function showDrinkMenu(e){
+    e.preventDefault()
+    if(sldMenu.style.display === 'none' || sld.classList.contains('bg-success')) {
+        page.change(new drinkState);
+        drnk.classList.add('bg-info')
+        brgMenu.style.display = 'none'
+        brg.classList.remove('bg-warning')
+        sld.classList.remove('bg-success');
+        count1.value = 0;
+        count2.value = 0;
+        drink.getPrice();
+        drink.getCalorie();
+        calcTotalPrice();
+        calcTotalCalorie()
+    } else {
+        // page.change(new drinkState);
+        // drink.classList.add('bg-info')
+        // brgMenu.style.display = 'none'
+        // brg.classList.remove('bg-warning')
+        // sld.classList.remove('bg-success')
+    // } else if(!saladState){
+        page.change(new homeState);
+        // sld.classList.remove('bg-success');
+        // brg.classList.remove('bg-warning')
+    }
+}
+
 
 function cancelOrder(e) {
     e.preventDefault();
