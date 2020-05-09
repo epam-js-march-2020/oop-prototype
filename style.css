@@ -1,0 +1,55 @@
+.button-border {
+    border-color: #4CAF50;
+    color: green;}
+
+button {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 10px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  h5 {
+      margin: 5px;
+  }
+
+  /* #menu  {
+      width: 60%;
+  } */
+
+  .order  {
+margin-left: 20px;
+margin-bottom: 10px;
+
+}
+
+.order_list {
+width: 20%; 
+padding-bottom: 15px; 
+border-bottom: 1px dashed black;
+}
+
+.btn_order_list {
+    float: right;
+}
+
+.burgers img {
+    padding-bottom: 12px;
+}
+
+.burgers img:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+}
+
+.menu-column {
+    display: flex; flex-direction: column; width: 200px; align-items: center;
+    padding: 20px;
+}
+
+.product-border {
+    border: 2px dashed gray;
+}
