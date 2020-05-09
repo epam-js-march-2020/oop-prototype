@@ -1,0 +1,99 @@
+.fullfilled {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.course {
+    height: 100px;
+}
+
+.option {
+    height: 100px;
+}
+
+.displayNone {
+    display: none;
+}
+
+.cover{
+    background-size: cover;
+}
+.opacity-low {
+    opacity: .3;
+}
+.opacity-light{
+    opacity: .7;
+}
+.pointer {
+    cursor: pointer;
+}
+.order {
+    height: 50px;
+    width: 100px;
+}
+.orderShower {
+    height: 450px;
+}
+
+.bg-paid {
+    background-color: rgb(232, 255, 240);
+}
+
+.bg-active {
+    background-color: rgb(255, 235, 232);
+}
+
+#big {
+    background-image: url("../img/big-burger.png");
+    background-position:    center;
+}
+#small {
+    background-image: url("../img/smal-burger.png");
+    background-position:    center;
+}
+#potato {
+    background-image: url("../img/potato.jpg");
+    background-position:    center;
+}
+
+#cheese {
+    background-image: url("../img/cheese.png");
+    background-position:    center;
+}
+
+#salad {
+    background-image: url("../img/salad.png");
+    background-position:    center;
+}
+
+#cesar {
+    background-image: url("../img/cesar.jpg");
+    background-position:    center;
+}
+
+#olivier {
+    background-image: url("../img/olivier.jpg");
+    background-position:    center;
+}
+
+#coffee {
+    background-image: url("../img/coffee.png");
+    background-position:    center;
+}
+
+#cola {
+    background-image: url("../img/cola.png");
+    background-position:    center;
+}
+
+.fixed {
+    position: fixed;
+    left: 5px;
+    bottom: 5px;
+}
+
+.actionButton {
+    width: 80px;
+}
