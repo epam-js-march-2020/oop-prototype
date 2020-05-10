@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    margin: 1%;
+    display: flow;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 25%;
+    height: 100px;
+    background-color: #f3f3f3;
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 35%;
+    height: 320px;
+    background-color: #f3f3f3;
+}
+
+.delete-position {
+    cursor: pointer;
+    font-size: 25px;
+}

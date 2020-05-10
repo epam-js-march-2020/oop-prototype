@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Cafe Menu</title>
+
+</head>
+<body>
+    <container class="container">
+        <span>Маленький гамбургер (+50 тугриков, +20 калорий)</span>
+        <button class="stuffing_cheese_small" id="block">сыром (+10 тугриков, +20 калорий)</button>
+        <button class="stuffing_potato_small" id="block">картофелем (+15 тугриков, +10 калорий)</button>
+        <button class="stuffing_salad_small" id="block">салатом (+20 тугриков, +5 калорий)</button>
+    </container>
+
+    <container class="container">
+        <span>Большой гамбургер (+100 тугриков, +40 калорий)</span>
+        <button class="stuffing_cheese_large" id="block">сыром (+10 тугриков, +20 калорий)</button>
+        <button class="stuffing_potato_large" id="block">картофелем (+15 тугриков, +10 калорий)</button>
+        <button class="stuffing_salad_large" id="block">салатом (+20 тугриков, +5 калорий)</button>
+    </container>
+
+    <container class="container">
+        <span>Салат (цена и калории указаны за 100г)</span>
+        <button class="caesar" id="block">Цезарь (+100 тугриков, +20 калорий)</button>
+        <button class="olive" id="block">Оливье (+50 тугриков, +80 калорий)</button>
+    </container>
+
+    <container class="container">
+        <span>Напиток</span>
+        <button class="cola" id="block">Кола (+50 тугриков, +40 калорий)</button>
+        <button class="coffee" id="block">Кофе (+80 тугриков, +20 калорий)</button>
+    </container>
+    <span>Ваш заказ:</span>
+    <container class="order">  
+        <button class="result">Итого</button>
+        <button class="payed">Оплатить</button>
+        <p class="result-price"></p>
+        <p class="result-calories"></p>
+    </container>
+
+    <script src="js/hamburger.js"></script> 
+    <script src="js/salad.js"></script> 
+    <script src="js/drinks.js"></script> 
+    <script src="js/order.js"></script>
+    <script src="js/block.js"></script>
+
+</body>
+</html>
+
