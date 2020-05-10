@@ -4,13 +4,13 @@ var cartTemplate = _.template(
   `<div class="container">
     <h2 class="text-center">Cart</h2>
     <hr>
-    <div class="container overflow-auto" style="height: 415px">
+    <div class="container overflow-auto" style="height: 340px">
       <% items.forEach(function(item) { %>
         <div class="card mb-2 text-center" id="productCard<%-item.cardId%>">
           <div class="card-body">
             <p class="card-text"><%-item.size%> <%-item.type%> <%-item.name%></p>
             <div class="d-flex">
-              <div class="input-group">
+              <div class="input-group input-group-sm">
                 <div class="input-group-prepend">
                   <span class="input-group-text rounded-left"><%-item.price%> ₮</span>
                 </div>
