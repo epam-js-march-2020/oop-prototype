@@ -1,0 +1,4 @@
+when I had started to make this task, I didn't think that I will make a webpack application.
+I decided to make a console application and browser one.
+Then I have a little left time before the deadline, so I dedicated myself to learning webpack. 
+Now I have made the webpack version. As all the js files in browser are recompound by webpack, console application dosn't work. So I put two versions into the project.

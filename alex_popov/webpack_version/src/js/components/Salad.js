@@ -24,6 +24,18 @@ function Salad(type, weight) {
 
     this.type = type;
     this.weight = weight;
+
+    Object.defineProperties(this, {
+        type: {
+            writable:false,
+            configurable: false
+        }, 
+        weight: {
+            writable:false,
+            configurable: false
+        }
+    } );
+    
     console.log('new ' + this.name + ' created. Type - ' + this.type + '. Weight - ' + this.weight)
 }
 

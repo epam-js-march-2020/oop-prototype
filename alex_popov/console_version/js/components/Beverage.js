@@ -16,6 +16,14 @@ function Beverage(type) {
     }
 
     this.type = type;
+
+    Object.defineProperties(this, {
+        type: {
+            writable:false,
+            configurable: false
+        }
+    } );
+
     console.log('new ' + this.name + ' was created. Type - ' + this.type)
 }
 

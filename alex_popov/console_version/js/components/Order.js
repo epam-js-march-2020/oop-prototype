@@ -9,6 +9,7 @@ function Order() {
 
     this.payment = false;
     this.items = [];
+
     console.log('new empty order was created')
 }
 
@@ -174,7 +175,11 @@ Object.defineProperties( Order.prototype, {
             Object.defineProperty(this, "payment", {
                 writable: false,
                 configurable: false
-            })
+            });
+            Object.defineProperty(this, "items", {
+                writable: false,
+                configurable: false
+            });
             console.log('The order is closed');
         }
     },

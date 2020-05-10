@@ -23,6 +23,18 @@ function Burger(type, size) {
 
     this.size = size;
     this.type = type;
+
+    Object.defineProperties(this, {
+        type: {
+            writable:false,
+            configurable: false
+        }, 
+        size: {
+            writable:false,
+            configurable: false
+        }
+    } );
+
     console.log('new ' + this.name + ' was created. Type - ' + this.type + '. Size - ' + this.size)
 }
 
