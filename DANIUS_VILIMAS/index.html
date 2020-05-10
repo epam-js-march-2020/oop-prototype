@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Меню закусочной</title>
+</head>
+
+<body>
+    Управление через консоль:
+    <ul>
+        <li>Создание новой позиции:<ul>
+                <li>Гамбургер: new Hamburger(Hamburger.SIZE_(SMALL/LARGE),Hamburger.STUFFING_(CHEESE/SALAD/POTATO))</li>
+                <li>Салат: new Salad(количество в граммах, Salad.(CAESAR/OLIVIE))</li>
+                <li>Напиток: new Drink(Drink.(COFFEE/COKE))</li>
+            </ul>
+        <li>
+            Добавление позиции в заказ:<ul>
+                <li>addPosition(new Drink(Drink.COFFEE))</li>
+            </ul>
+        <li>Удаление позиции из заказа:</li>
+        <ul>
+            <li>deletePosition(new Drink(Drink.COFFEE))</li>
+        </ul>
+        <li>Оплата заказа:</li>
+        <ul>
+            <li>pay()</li>
+        </ul>
+        <li>Получение итоговой калорийности/цены</li>
+        <ul>
+            <li>calculateTotal(Calories/Price)</li>
+        </ul>
+        <li>Получение состава заказа</li>
+        <ul>
+            <li>getOrderInfo()</li>
+        </ul>
+    </ul>
+    <script src="src/menuPosition.js"></script>
+    <script src="src/hamburger.js"></script>
+    <script src="src/salad.js"></script>
+    <script src="src/drink.js"></script>
+    <script src="src/order.js"></script>
+    <script src="src/main.js"></script>
+</body>
+
+</html>
