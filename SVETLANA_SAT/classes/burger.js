@@ -1,36 +1,33 @@
 //Burger constructor
-
-function Burger(size, stuffing, count, calorie, price) {
+function Burger(size, stuffing, count, calories, price) {
     this.size = size;
     this.stuffing = stuffing;
     this.count = count;
-    this.calorie = calorie;
+    this.calories = calories;
     this.price = price;
 }
 
 Burger.SIZE_SMALL_PRICE = 50;
-Burger.SIZE_SMALL_CALORIE = 20;
+Burger.SIZE_SMALL_CALORIES = 20;
 Burger.SIZE_SMALL = 'Small';
 
 Burger.SIZE_LARGE_PRICE = 100;
-Burger.SIZE_LARGE_CALORIE = 40;
+Burger.SIZE_LARGE_CALORIES = 40;
 Burger.SIZE_LARGE = 'Large'
 
 Burger.STUFFING_CHEESE_PRICE = 10;
-Burger.STUFFING_CHEESE_CALORIE = 20;
+Burger.STUFFING_CHEESE_CALORIES = 20;
 Burger.STUFFING_CHEESE = 'Cheese'
 
 Burger.STUFFING_SALAD_PRICE = 20;
-Burger.STUFFING_SALAD_CALORIE = 5;
+Burger.STUFFING_SALAD_CALORIES = 5;
 Burger.STUFFING_SALAD = 'Salad'
 
 Burger.STUFFING_POTAT_PRICE= 15;
-Burger.STUFFING_POTAT_CALORIE = 10;
+Burger.STUFFING_POTAT_CALORIES = 10;
 Burger.STUFFING_POTAT = 'Potato'
 
-
-    brgCount = document.getElementById('brg-count');
-
+// Calculate price for burger
 Burger.prototype.calculatePrice = function(){
     price = 0
         burger.getStuffing(brgStuffing);
@@ -61,33 +58,35 @@ Burger.prototype.calculatePrice = function(){
         return price
 }
 
-Burger.prototype.calculateCalorie = function() {
-    calorie = 0
+// Calculate calories for burger
+Burger.prototype.calculateCalories = function() {
+    calories = 0
         burger.getStuffing(brgStuffing);
         burger.getSize(brgSize);
         stuffing.forEach(element => {
             if(element === Burger.STUFFING_CHEESE){
-                calorie += Burger.STUFFING_CHEESE_CALORIE;
+                calories += Burger.STUFFING_CHEESE_CALORIES;
             } else if (element === Burger.STUFFING_SALAD) {
-                calorie += Burger.STUFFING_SALAD_CALORIE;
+                calories += Burger.STUFFING_SALAD_CALORIES;
             } else if (element === Burger.STUFFING_POTAT) {
-                calorie += Burger.STUFFING_POTAT_CALORIE
+                calories += Burger.STUFFING_POTAT_CALORIES
             } else { 
                 return null 
             }
         })
         if(size === Burger.SIZE_SMALL) {
-            calorie += Burger.SIZE_SMALL_CALORIE;
+            calories += Burger.SIZE_SMALL_CALORIES;
 
         } if (size === Burger.SIZE_LARGE) {
-            calorie += Burger.SIZE_LARGE_CALORIE
+            calories += Burger.SIZE_LARGE_CALORIES
         } else {
-            calorie += 0
+            calories += 0
         }
-        calorie = calorie * brgCount.value;
-        document.getElementById('brg-calorie').value=calorie;
+        calories = calories * brgCount.value;
+        document.getElementById('brg-calories').value=calories;
 }
 
+// Get burger size
 Burger.prototype.getSize = function(brgS) {
     brgS.forEach(element => {
         element.className === 'badge-pill badge-warning'? x = element.id:null
@@ -102,6 +101,7 @@ Burger.prototype.getSize = function(brgS) {
     return size
 }
 
+// Get burger stuffing
 Burger.prototype.getStuffing = function(brgStuf) {
     stuffing = []
     brgStuf.forEach(function(element) {
