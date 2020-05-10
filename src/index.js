@@ -83,10 +83,19 @@ function setRemoveItemListeners() {
   });
 }
 
+// Отрисовка параметров заказа
+function renderOrderTotal() {
+  var orderTotal = $('#orderTotal');
+  state.order.length > 0 ? $(orderTotal).removeClass('d-none') : $(orderTotal).addClass('d-none');
+  $('#totalOrderCalories').text(state.order.reduce((acc, [curr]) => acc + curr.calculateCalories(), 0));
+  $('#totalOrderPrice').text(state.order.reduce((acc, [curr]) => acc + curr.calculatePrice(), 0));
+}
+
 // Отрисовка корзины
 function renderCart() {
   $('#cartSection').empty().append(cart(state.order));
   setRemoveItemListeners();
+  renderOrderTotal();
 }
 
 // Валидация продукта
