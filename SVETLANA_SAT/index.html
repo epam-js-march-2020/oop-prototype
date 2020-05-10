@@ -125,7 +125,7 @@
                                 </tr>
                             </tbody>
                         </table> 
-                        <div class="d-flex justify-content-between bottom-row">
+                        <div class="d-flex justify-content-between bottom-row flex-wrap">
                             <div class="">
                                 <button type="button" class="btn btn-success" id="add">
                                     Add to order
@@ -134,17 +134,21 @@
                                     Cancel
                                 </button>
                             </div>
-                            <span class="d-flex">
-                                <p class="h4 mr-1">Total calories:</p>
-                                <input type="text" 
-                                       class="border-secondary text-center h4" 
-                                       id="totalCaloriesSld" 
-                                       readonly>
-                                <p class="h4 mr-1">Total price:</p>
-                                <input type="text" 
-                                       class="border-secondary  mr-2 text-center h4" 
-                                       id="totalPriceSld" 
-                                       readonly>
+                            <span class="d-flex w-75">
+                                <span class="d-flex justify-content-end">
+                                    <p class="h4 mr-1">Total calories:</p>
+                                    <input type="text" 
+                                        class="border-secondary text-center h4 w-25" 
+                                        id="totalCaloriesSld" 
+                                        readonly>
+                                </span>
+                                <span class="d-flex justify-content-end">
+                                    <p class="h4 mr-1">Total price:</p>
+                                    <input type="text" 
+                                        class="border-secondary  mr-2 text-center h4 w-25" 
+                                        id="totalPriceSld" 
+                                        readonly>
+                                </span>
                             </span>
                         </div>
                     </div>
@@ -172,22 +176,26 @@
 
             <hr class="my-4">
 
-            <div class="lead d-flex justify-content-between">
+            <div class="lead d-flex justify-content-between flex-wrap">
                 <div class="group">
                     <button class="btn btn-success btn-lg" id="pay">Pay</button>
                     <button class="btn btn-outline-warning btn-lg" id="dropOrder">Cancel</button>
                 </div>
-                <span class="d-flex">
+                <span class="d-flex w-75">
+                    <span class="d-flex justify-content-end">
                     <p class="h4 mr-1">Total calories:</p>
-                    <input type="text" 
-                           class="border-secondary text-center h4" 
-                           id="orderCalories"
-                           readonly>
-                    <p class="h4 mr-1">Total price:</p>
-                    <input type="text" 
-                           class="border-secondary  mr-2 text-center h4" 
-                           id="orderPrice" 
-                           readonly>     
+                        <input type="text" 
+                            class="border-secondary text-center h4 w-25" 
+                            id="orderCalories"
+                            readonly>
+                    </span>
+                    <span class="d-flex justify-content-end">
+                        <p class="h4 mr-1">Total price:</p>
+                        <input type="text" 
+                            class="border-secondary  mr-2 text-center h4 w-25" 
+                            id="orderPrice" 
+                            readonly> 
+                    </span>    
                 </span>
             </div>
         </div>

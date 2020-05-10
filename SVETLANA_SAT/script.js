@@ -80,6 +80,11 @@ function homeState(page) {
     // set burger size to default
     n.classList.add('badge-pill' ,'badge-warning'); 
 
+    // clear stuffing 
+    cheese.classList.remove('badge-pill', 'badge-warning');
+    saladBrg.classList.remove('badge-pill', 'badge-warning');
+    potato.classList.remove('badge-pill', 'badge-warning');
+
     // get default values
     burger.getSize(brgSize); 
     burger.getStuffing(brgStuffing);
@@ -87,9 +92,6 @@ function homeState(page) {
     burger.calculateCalories();
 
     // clean UI
-    cheese.classList.remove('badge-pill', 'badge-warning');
-    saladBrg.classList.remove('badge-pill', 'badge-warning');
-    potato.classList.remove('badge-pill', 'badge-warning');
     s.classList.remove('badge-pill', 'badge-warning')
     l.classList.remove('badge-pill', 'badge-warning')
     brgMenu.style.display ='none';
@@ -160,6 +162,8 @@ function showSaladMenu(){
         brgMenu.style.display = 'none'
         brg.classList.remove('bg-warning');
         drnk.classList.remove('bg-info');
+        count1.value = 0;
+        count2.value = 0;
         salad.getPrice();
         salad.getCalories();
         ui.calcTotalPrice();
