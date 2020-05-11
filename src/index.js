@@ -127,6 +127,7 @@ function addProduct() {
 
 // Инициализация приложения
 $('#app').append(app({ menu, options: options('init'), cart: cart([]) }));
+$('#backdrop').hide();
 
 // Подписка на клик по каждому из продуктов
 ['burgers', 'salads', 'drinks'].forEach(function(product) {
@@ -143,4 +144,9 @@ $('#app').append(app({ menu, options: options('init'), cart: cart([]) }));
     setButtonsListeners();
     renderProductTotal();
   });
+});
+
+$('#placeOrder').on('click', function() {
+  $('#backdrop').show();
+  $('#messageModal').show();
 });
