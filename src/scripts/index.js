@@ -48,9 +48,8 @@ Product.prototype.setStuff = function (stuff) {
  */
 Product.prototype.calculatePrice = function () {
     var price = 0;
-    this.stuff.forEach(function (item) {
-        price += item.price;
-    });
+
+    price += this.stuff.price;
     if (this.size.coefficient) {
         price *= this.size.coefficient;
     } else {
@@ -65,9 +64,8 @@ Product.prototype.calculatePrice = function () {
  */
 Product.prototype.calculateCalories = function () {
     var calories = 0;
-    this.stuff.forEach(function (item) {
-        calories += item.calories;
-    });
+
+    calories += this.stuff.calories;
     if (this.size.coefficient) {
         calories *= this.size.coefficient;
     } else {
@@ -86,6 +84,7 @@ Product.prototype.calculateCalories = function () {
  */
 function Hamburger(size, stuff) {
     Product.call(this, size, stuff);
+    this.name = 'hamburger';
 }
 
 Hamburger.prototype = Object.create(Product.prototype);
@@ -107,6 +106,7 @@ Hamburger.prototype.STUFF_POTATO = { name: "potato", price: 15, calories: 10 };
  */
 function Salad(size, stuff) {
     Product.call(this, size, stuff);
+    this.name = 'salad';
 }
 
 Salad.prototype = Object.create(Product.prototype);
@@ -127,6 +127,7 @@ Salad.prototype.STUFF_OLIVIE = { name: "olivie", price: 50, calories: 80 };
  */
 function Drink(size, stuff) {
     Product.call(this, size, stuff);
+    this.name = 'drink';
 }
 
 Drink.prototype = Object.create(Product.prototype);
@@ -182,32 +183,151 @@ Order.prototype.calculateOrderCalories = function () {
     return calories;
 };
 
+var renderOrder = function () {
+    console.log(order);
+    var { products } = order;
 
-var product1 = new Hamburger();
-product1.setSize(product1.SIZE_LARGE);
-product1.setStuff([product1.STUFF_SALAD, product1.STUFF_POTATO]);
-console.log(product1);
-console.log(product1.calculatePrice());
-console.log(product1.calculateCalories());
+    var tmpl = _.template($('#productsTableTemplate').html());
 
-var product2 = new Salad();
-product2.setSize(product2.SIZE_LARGE);
-product2.setStuff([product2.STUFF_OLIVIE]);
-console.log(product2);
-console.log(product2.calculatePrice());
-console.log(product2.calculateCalories());
+    $('#productsTable').html(tmpl({
+        order,
+        products
+    }));
 
-var product3 = new Drink();
-product3.setSize(product3.SIZE_MEDIUM);
-product3.setStuff([product3.STUFF_COLA]);
-console.log(product3);
-console.log(product3.calculatePrice());
-console.log(product3.calculateCalories());
+    products.forEach(function (product) {
+        $('#' + products.indexOf(product)).click({ product }, function (event) {
+            var { product } = event.data;
+
+            switch (product.name) {
+                case 'hamburger': renderHamburgerEdit(product); break;
+                case 'salad': renderSaladEdit(product); break;
+                case 'drink': renderDrinkEdit(product); break;
+            }
+        });
+    });
+};
+
+var closeAllEdits = function () {
+    $('#hamburgerEdit').hide();
+    $('#saladEdit').hide();
+    $('#drinkEdit').hide();
+};
+
+var renderHamburgerEdit = function (product) {
+    closeAllEdits();
+    var tmpl = _.template($('#hamburgerEditTemplate').html());
+
+    $('#hamburgerEdit').html(tmpl({
+        product
+    })).show();
+
+    $('input[name*="radio"]').each(function (index, tag) {
+        $(tag).click({ tag }, function (event) {
+            var { tag } = event.data;
+            if ($(tag).val().includes('SIZE')){
+                product.setSize(product[$(tag).val()]);
+            } else {
+                product.setStuff(product[$(tag).val()]);
+            }
+            renderOrder();
+        })
+    });
+    $('input[name =productDelete]').click(function (){
+        order.removeProduct(product);
+        closeAllEdits();
+        renderOrder();
+    });
+    $('input[name =doneButton]').click(function () {
+        closeAllEdits();
+    });
+};
+
+var renderSaladEdit = function (product) {
+    closeAllEdits();
+    var tmpl = _.template($('#saladEditTemplate').html());
+
+    $('#saladEdit').html(tmpl({
+        product
+    })).show();
+
+    $('input[name*="radio"]').each(function (index, tag) {
+        $(tag).click({ tag }, function (event) {
+            var { tag } = event.data;
+            if ($(tag).val().includes('SIZE')){
+                product.setSize(product[$(tag).val()]);
+            } else {
+                product.setStuff(product[$(tag).val()]);
+            }
+            renderOrder();
+        })
+    });
+    $('input[name =productDelete]').click(function (){
+        order.removeProduct(product);
+        closeAllEdits();
+        renderOrder();
+    });
+    $('input[name =doneButton]').click(function () {
+        closeAllEdits();
+    });
+};
+
+var renderDrinkEdit = function (product) {
+    closeAllEdits();
+    var tmpl = _.template($('#drinkEditTemplate').html());
+
+    $('#drinkEdit').html(tmpl({
+        product
+    })).show();
+
+    $('input[name*="radio"]').each(function (index, tag) {
+        $(tag).click({ tag }, function (event) {
+            var { tag } = event.data;
+            if ($(tag).val().includes('SIZE')){
+                product.setSize(product[$(tag).val()]);
+            } else {
+                product.setStuff(product[$(tag).val()]);
+            }
+            renderOrder();
+        })
+    });
+    $('input[name =productDelete]').click(function (){
+        order.removeProduct(product);
+        closeAllEdits();
+        renderOrder();
+    });
+    $('input[name =doneButton]').click(function () {
+        closeAllEdits();
+    });
+};
+
+var addHamburger = function () {
+    var newHamburger = new Hamburger();
+    newHamburger.setSize(newHamburger.SIZE_SMALL);
+    newHamburger.setStuff(newHamburger.STUFF_POTATO);
+    order.addProduct(newHamburger);
+    renderOrder();
+};
+
+var addSalad = function () {
+    var newSalad = new Salad();
+    newSalad.setSize(newSalad.SIZE_SMALL);
+    newSalad.setStuff(newSalad.STUFF_CAESAR);
+    order.addProduct(newSalad);
+    renderOrder();
+};
+var addDrink = function () {
+    var newDrink = new Drink();
+    newDrink.setSize(newDrink.SIZE_SMALL);
+    newDrink.setStuff(newDrink.STUFF_COLA);
+    order.addProduct(newDrink);
+    renderOrder();
+};
 
 var order = new Order();
-order.addProduct(product1);
-order.addProduct(product2);
-order.addProduct(product3);
-console.log(order);
-console.log(order.calculateOrderPrice());
-console.log(order.calculateOrderCalories());
+
+$(document).ready(function () {
+    $('#addHamburger').click(addHamburger);
+    $('#addSalad').click(addSalad);
+    $('#addDrink').click(addDrink);
+    renderOrder();
+});
