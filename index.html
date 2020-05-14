@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Burger House</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="script.js"></script> 
+</head>
+<body>
+
+<img src="src/jsburger_logo.png" />
+
+<div id="menu" style="border: 1px dashed gray; margin: 10px; padding: 10px;">
+<h3>Make your order:</h3>
+<div style="display: flex; flex-direction: row; justify-content: start;">
+    <h5 id="cart">Cart: 0</h5>
+    <h5 id="totalPrice">Price: 0</h5>
+    <h5 id="totalCalories">Calories: 0</h5>
+    </div>
+        <button id="reset" onclick="newOrder()" type="button" style="display: none;" class="btn btn-danger">Reset</button>
+        <button type="button" data-backdrop="static" data-toggle="modal" data-target="#order_completed_modal" id="order_button" style="display: none; margin-top: 10px" class="btn btn-info" onclick="renderOrderInfo()">Confirm order</button>
+
+
+<div class="burgers" style="display: flex; justify-content: center; align-items: flex-end;">
+
+
+<div class="menu-column" onclick="makeCurrentBurger()">
+<img src="src/burger.png" data-type="big" style="width: 180px" />
+<button style="outline:none" data-type="big"  >Big Burger</button>
+</div>
+
+
+<div class="menu-column" onclick="makeCurrentBurger()">
+    <img src="src/burger.png" data-type="small" style="width: 130px; margin-bottom: 5px;" />
+    <button style="outline:none" data-type="small">Small Burger</button>
+</div>
+
+<div class="menu-column" onclick="showSalad()">
+    <img src="src/vegetarian.png" style="width: 100px; margin-bottom: 10px;" data-type="salad"/>
+    <button style="outline:none" data-type="salad">Salad</button>
+</div>
+
+
+<div class="menu-column" onclick="makeDrink()">
+    <img src="src/cola.png" data-type="cola" style="width: 100px; margin-bottom: 10px;" />
+    <button data-type="cola">Cola</button>
+</div>
+
+<div class="menu-column" onclick="makeDrink()">
+    <img src="src/coffee.jpg" style="width: 120px;" data-type="coffee" />
+    <button data-type="coffee">Coffee</button>
+</div>
+
+</div>
+
+
+<div onclick="finishBurgerOrder()" class="stuffing" style="display: none; text-align: center;"> 
+    <h3 style="margin-top: 15px;">Choose your stuffing:</h3>
+    <button data-type="cheese">Cheese</button>
+    <button data-type="salad">Salad</button>
+    <button data-type="potato">Potato</button>
+</div>
+
+<div class="salads" onclick="makeSalad()" style="display: none; text-align: center;">
+    <h3 style="margin-top: 15px;">Choose your salad:</h3>
+    <button data-type="caesar">Caesar</button>
+    <button data-type="olivie">Olivie</button>
+    </div>
+</div>
+
+
+<div class="order">
+<h2>Your order:</h2>
+
+</div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="order_completed_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="display: flex; align-items: center;">
+          <h5 class="modal-title" id="exampleModalLongTitle">Thanks for order!</h5>
+          <img src="src/jsburger_logo.png" style='width: 250px;' />
+          </div>
+
+                 </div>
+        <div class="modal-body">
+          <p id="order_completed_info"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal" onclick="newOrder()">New Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <audio id="myAudio">
+    <source src="/src/kassa.mp3" type="audio/mpeg">
+  </audio>
+  
+</body>
+</html>
