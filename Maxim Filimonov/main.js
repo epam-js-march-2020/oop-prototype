@@ -111,7 +111,7 @@ var BasketModule = (function(){// pattern module
             var kkal = 0;
             console.log('Current receipt:')
             for (var key in receipt){
-                console.log('id: ' + receipt.indexOf(receipt[key]) +' '+'Item: ' +  receipt[key].name +' '+ 'price: ' + receipt[key].price +' '+'kkal: ' +  receipt[key].kkal);
+                console.log('id: ' + key /*    receipt.indexOf(receipt[key]) ahahahahahahh didnt notice that before commiting*/ +' '+'Item: ' +  receipt[key].name +' '+ 'price: ' + receipt[key].price +' '+'kkal: ' +  receipt[key].kkal);
                 if (receipt[key].mass != undefined){
                     console.log ('                             Mass: '+ receipt[key].mass);
                 }else if (receipt[key].size != undefined){
