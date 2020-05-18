@@ -1,0 +1,211 @@
+
+function Hamburger(type, count,stuffing){
+  this.name = this[type].name;
+  this.count = count;
+  this.stuffingName = this[stuffing].name;
+  this.price = this[type].price + this[stuffing].price;
+  this.calories = this[type].calories + this[stuffing].calories;
+}
+
+Hamburger.prototype.LARGE_SIZE= { 
+  name:"Big hamburger",
+  price: 100,
+  calories: 40
+};
+
+Hamburger.prototype.SMALL_SIZE= {
+  name:"Small hamburger",
+  price: 50,
+  calories: 20
+  };
+
+Hamburger.prototype.STUFFING_CHEESE = {
+  name: 'Cheese',
+  price: 10,
+  calories: 20
+};
+
+Hamburger.prototype.STUFFING_SALAD = {
+  name: 'Salad',
+  price: 20,
+  calories: 5
+};
+
+Hamburger.prototype.STUFFING_POTATO = {
+  name: 'Potato',
+  price: 15,
+  calories: 10
+};
+
+Hamburger.prototype.calculatePrice = function(){
+  return this.price*this.count;
+}
+
+Hamburger.prototype.calculateCalories = function(){
+  return this.calories*this.count;
+}
+
+Hamburger.prototype.getName = function(){
+  return this.name +' '+ this.stuffingName;
+}
+
+Hamburger.prototype.getCount = function(){
+  return this.count;
+}
+
+function SaladAndDrink(type, count){
+  this.name = this[type].name;
+  this.count = count;
+  this.price = this[type].price;
+  this.calories = this[type].calories;
+}
+
+SaladAndDrink.prototype.calculatePrice = function(){
+  return this.price*this.count;
+}
+
+SaladAndDrink.prototype.calculateCalories = function(){
+  return this.calories*this.count;
+}
+
+SaladAndDrink.prototype.getName = function(){
+  return this.name;
+}
+
+SaladAndDrink.prototype.getCount = function(){
+  return this.count;
+}
+
+SaladAndDrink.prototype.SALAD_CAESAR= { 
+  name:"Salad Caesar",
+  price: 1,
+  calories: 0.2
+};
+
+SaladAndDrink.prototype.RUSSIAN_SALAD= { 
+  name:"Russian salad",
+  price: 0.5,
+  calories: 0.8
+};
+
+SaladAndDrink.prototype.DRINK_COLA = {
+  name: 'Cola',
+  price: 50,
+  calories: 40
+};
+
+SaladAndDrink.prototype.DRINK_COFFEE = {
+  name: 'Coffee',
+  price: 80,
+  calories: 20
+};
+
+       //// different functions for a big and a small because it is more conviniently 
+let arrOrder = [];
+   
+function addBigHamburger(){
+  let count = document.getElementById('bigHamburgerCount').value;
+  let stuffing = document.getElementById('bigHamburgeStuffing').value;
+  let order = new Hamburger('LARGE_SIZE', count, stuffing);
+  if(count!=0) addCurrent(order);
+  if(!count) alert('Please enter the number');
+     //// fill the table
+  orderList();
+   /// count totall summ and calories
+   totall();
+}
+    
+function addSmallHamburger(){
+  let count = document.getElementById('smallHamburgerCount').value;
+  let stuffing = document.getElementById('smallHamburgerStuffing').value;
+  let order = new Hamburger('SMALL_SIZE', count, stuffing);
+  if(count !=0) addCurrent(order);
+  if(!count) alert('Please enter the number')
+  orderList();
+  totall();      
+}
+
+function addSalad(){
+  let type  = document.getElementById('chooseSalad').value;
+  let count = document.getElementById('saladCount').value;
+  let order = new SaladAndDrink(type, count);
+  if(count !=0) addCurrent(order);
+  if(!count) alert('Please enter the number')
+  orderList();
+  totall();
+}
+
+function addDrink(){
+  let type= document.getElementById('chooseDrink').value;
+  let count = document.getElementById('drinkCount').value;
+  let order = new SaladAndDrink(type, count);
+  if(count !=0) addCurrent(order);
+  if(!count) alert('Please enter the number');
+  orderList();
+  totall();
+}
+
+function orderList(){
+ var tmpl = document.getElementById('grid-template').innerHTML.trim();
+ tmpl = _.template(tmpl);
+
+
+ document.getElementById('grid-holder').innerHTML = tmpl({
+   list: arrOrder
+ }); 
+}
+ 
+
+function totall() {
+  let summ =0;
+  let energy =0;
+  for (let i=0; i<arrOrder.length; i++) {
+    summ = summ + arrOrder[i].calculatePrice();
+    energy = energy + arrOrder[i].calculateCalories();
+  }
+  document.getElementById('totallSumm').innerHTML = summ;
+  document.getElementById('totallCalories').innerHTML = energy;
+}
+
+function deleteCurrentItem() {
+  $('td').on('click', function () {
+    var $td = $(this),
+    $tr = $td.parent();
+    arrOrder.splice($tr.index(),1);
+    orderList();
+    totall();
+  });
+}
+
+function addCurrent(order) {
+  arrOrder.push(order);
+  let t = arrOrder.length-1;
+  if (t ==0) { return;}
+  for (let i= t-1; i>=0; i--){
+    if (arrOrder[i].getName()==arrOrder[t].getName()) {
+      arrOrder[i].count = (+arrOrder[i].count)+(+arrOrder[t].count);
+      arrOrder.pop();
+      return;
+    }
+  }
+}
+
+function openOrder (){
+  arrOrder = [];
+  orderList();
+  totall();
+  document.getElementById("hasPaid").innerHTML = " ";
+  let inputNumber =  document
+  .querySelectorAll("input[type='number']");
+  for (let element of inputNumber){
+    element.value=0;
+  }
+}
+
+function freezeOrder(){
+  for (let i=0; i<arrOrder.length; i++){
+    Object.freeze(arrOrder[i]);
+  }
+  Object.freeze(arrOrder);
+  document.getElementById("hasPaid").innerHTML ="The order is paid";
+}
