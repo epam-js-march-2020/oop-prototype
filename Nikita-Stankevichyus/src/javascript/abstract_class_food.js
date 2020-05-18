@@ -1,71 +1,73 @@
-/*
- * OPTIONS' NAMES
-*/
+// /*
+//  * OPTIONS' NAMES
+// */
 
 
-// Hamburgers
-const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
-const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
+// // Hamburgers
+// const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
+// const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
 
-// Stuffings
-const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
-const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
-const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
+// // Stuffings
+// const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
+// const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
+// const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
 
-// Salads
-const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
-const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
+// // Salads
+// const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
+// const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
 
-// Drinks
-const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
-const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
-
-
-
-/*
- * PRICES
-*/
+// // Drinks
+// const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
+// const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
 
 
-const BURGER_SM_PRICE = require('./consts_food_params.js').BURGER_SM_PRICE;
-const BURGER_BIG_PRICE = require('./consts_food_params.js').BURGER_BIG_PRICE;
 
-// Stuffings
-const STUFF_CHEESE_PRICE = require('./consts_food_params.js').STUFF_CHEESE_PRICE;
-const STUFF_SALAD_PRICE = require('./consts_food_params.js').STUFF_SALAD_PRICE;
-const STUFF_POTATO_PRICE = require('./consts_food_params.js').STUFF_POTATO_PRICE;
-
-// Salads
-const SALAD_CEASER_PRICE = require('./consts_food_params.js').SALAD_CEASER_PRICE;
-const SALAD_OLIVIE_PRICE = require('./consts_food_params.js').SALAD_OLIVIE_PRICE;
-
-// Drinks
-const DRINK_COLA_PRICE = require('./consts_food_params.js').DRINK_COLA_PRICE;
-const DRINK_COFFEE_PRICE = require('./consts_food_params.js').DRINK_COFFEE_PRICE;
+// /*
+//  * PRICES
+// */
 
 
-/*
- * CALORIES
-*/
+// const BURGER_SM_PRICE = require('./consts_food_params.js').BURGER_SM_PRICE;
+// const BURGER_BIG_PRICE = require('./consts_food_params.js').BURGER_BIG_PRICE;
 
-// Hamburgers
-const BURGER_SM_CALS = require('./consts_food_params.js').BURGER_SM_CALS;
-const BURGER_BIG_CALS = require('./consts_food_params.js').BURGER_BIG_CALS;
+// // Stuffings
+// const STUFF_CHEESE_PRICE = require('./consts_food_params.js').STUFF_CHEESE_PRICE;
+// const STUFF_SALAD_PRICE = require('./consts_food_params.js').STUFF_SALAD_PRICE;
+// const STUFF_POTATO_PRICE = require('./consts_food_params.js').STUFF_POTATO_PRICE;
 
-// Stuffings
-const STUFF_CHEESE_CALS = require('./consts_food_params.js').STUFF_CHEESE_CALS;
-const STUFF_SALAD_CALS = require('./consts_food_params.js').STUFF_SALAD_CALS;
-const STUFF_POTATO_CALS = require('./consts_food_params.js').STUFF_POTATO_CALS;
+// // Salads
+// const SALAD_CEASER_PRICE = require('./consts_food_params.js').SALAD_CEASER_PRICE;
+// const SALAD_OLIVIE_PRICE = require('./consts_food_params.js').SALAD_OLIVIE_PRICE;
 
-// Salads
-const SALAD_CEASER_CALS = require('./consts_food_params.js').SALAD_CEASER_CALS;
-const SALAD_OLIVIE_CALS = require('./consts_food_params.js'). SALAD_OLIVIE_CALS;
-
-// Drinks
-const DRINK_COLA_CALS = require('./consts_food_params.js').DRINK_COLA_CALS;
-const DRINK_COFFEE_CALS = require('./consts_food_params.js').DRINK_COFFEE_CALS;
+// // Drinks
+// const DRINK_COLA_PRICE = require('./consts_food_params.js').DRINK_COLA_PRICE;
+// const DRINK_COFFEE_PRICE = require('./consts_food_params.js').DRINK_COFFEE_PRICE;
 
 
+// /*
+//  * CALORIES
+// */
+
+// // Hamburgers
+// const BURGER_SM_CALS = require('./consts_food_params.js').BURGER_SM_CALS;
+// const BURGER_BIG_CALS = require('./consts_food_params.js').BURGER_BIG_CALS;
+
+// // Stuffings
+// const STUFF_CHEESE_CALS = require('./consts_food_params.js').STUFF_CHEESE_CALS;
+// const STUFF_SALAD_CALS = require('./consts_food_params.js').STUFF_SALAD_CALS;
+// const STUFF_POTATO_CALS = require('./consts_food_params.js').STUFF_POTATO_CALS;
+
+// // Salads
+// const SALAD_CEASER_CALS = require('./consts_food_params.js').SALAD_CEASER_CALS;
+// const SALAD_OLIVIE_CALS = require('./consts_food_params.js'). SALAD_OLIVIE_CALS;
+
+// // Drinks
+// const DRINK_COLA_CALS = require('./consts_food_params.js').DRINK_COLA_CALS;
+// const DRINK_COFFEE_CALS = require('./consts_food_params.js').DRINK_COFFEE_CALS;
+
+const OPTIONS = require('./consts_food_params.js').OPTIONS;
+const PRICES = require('./consts_food_params.js').PRICES;
+const CALORIES = require('./consts_food_params.js').CALORIES;
 
 function FOOD(type, option) {
 
@@ -132,35 +134,35 @@ FOOD.prototype.getStuffing = function(){
 
 FOOD.prototype._prices = {
 
-  [BURGER_SM_NAME]: BURGER_SM_PRICE,
-  [BURGER_BIG_NAME]: BURGER_BIG_PRICE,
+  [OPTIONS.BURGER_SM_NAME]: PRICES.BURGER_SM_PRICE,
+  [OPTIONS.BURGER_BIG_NAME]: PRICES.BURGER_BIG_PRICE,
 
-  [STUFF_CHEESE_NAME]: STUFF_CHEESE_PRICE,
-  [STUFF_SALAD_NAME]: STUFF_SALAD_PRICE,
-  [STUFF_POTATO_NAME]: STUFF_POTATO_PRICE,
+  [OPTIONS.STUFF_CHEESE_NAME]: PRICES.STUFF_CHEESE_PRICE,
+  [OPTIONS.STUFF_SALAD_NAME]: PRICES.STUFF_SALAD_PRICE,
+  [OPTIONS.STUFF_POTATO_NAME]: PRICES.STUFF_POTATO_PRICE,
 
-  [SALAD_CEASER_NAME]: SALAD_CEASER_PRICE,
-  [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_PRICE,
+  [OPTIONS.SALAD_CEASER_NAME]: PRICES.SALAD_CEASER_PRICE,
+  [OPTIONS.SALAD_OLIVIE_NAME]: PRICES.SALAD_OLIVIE_PRICE,
 
-  [DRINK_COLA_NAME]: DRINK_COLA_PRICE,
-  [DRINK_COFFEE_NAME]: DRINK_COFFEE_PRICE,
+  [OPTIONS.DRINK_COLA_NAME]: PRICES.DRINK_COLA_PRICE,
+  [OPTIONS.DRINK_COFFEE_NAME]: PRICES.DRINK_COFFEE_PRICE,
 
 }
 
 FOOD.prototype._calories ={
 
-  [BURGER_SM_NAME]: BURGER_SM_CALS,
-  [BURGER_BIG_NAME]: BURGER_BIG_CALS,
+  [OPTIONS.BURGER_SM_NAME]: CALORIES.BURGER_SM_CALS,
+  [OPTIONS.BURGER_BIG_NAME]: CALORIES.BURGER_BIG_CALS,
 
-  [STUFF_CHEESE_NAME]: STUFF_CHEESE_CALS,
-  [STUFF_SALAD_NAME]: STUFF_SALAD_CALS,
-  [STUFF_POTATO_NAME]: STUFF_POTATO_CALS,
+  [OPTIONS.STUFF_CHEESE_NAME]: CALORIES.STUFF_CHEESE_CALS,
+  [OPTIONS.STUFF_SALAD_NAME]: CALORIES.STUFF_SALAD_CALS,
+  [OPTIONS.STUFF_POTATO_NAME]: CALORIES.STUFF_POTATO_CALS,
 
-  [SALAD_CEASER_NAME]: SALAD_CEASER_CALS,
-  [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_CALS,
+  [OPTIONS.SALAD_CEASER_NAME]: CALORIES.SALAD_CEASER_CALS,
+  [OPTIONS.SALAD_OLIVIE_NAME]: CALORIES.SALAD_OLIVIE_CALS,
 
-  [DRINK_COLA_NAME]: DRINK_COLA_CALS,
-  [DRINK_COFFEE_NAME]: DRINK_COFFEE_CALS,
+  [OPTIONS.DRINK_COLA_NAME]: CALORIES.DRINK_COLA_CALS,
+  [OPTIONS.DRINK_COFFEE_NAME]: CALORIES.DRINK_COFFEE_CALS,
   
 }
 

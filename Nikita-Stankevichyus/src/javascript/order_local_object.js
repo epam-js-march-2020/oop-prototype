@@ -1,24 +1,4 @@
-/*
- * OPTIONS' NAMES
-*/
-
-
-// Hamburgers
-const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
-const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
-
-// Stuffings
-const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
-const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
-const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
-
-// Salads
-const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
-const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
-
-// Drinks
-const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
-const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
+const OPTIONS = require('./consts_food_params').OPTIONS;
 
 
 // Additional class for storagin position html-element and reference to corresponding food item
@@ -96,19 +76,19 @@ module.exports.ORDER = {
     */
 
     // Hamburgers (+stuffings)
-    this.inputInit(this.hamburgersForm, '#size--big', BURGER_BIG_NAME);
-    this.inputInit(this.hamburgersForm, '#size--small', BURGER_SM_NAME);
-    this.inputInit(this.hamburgersForm, '#stuffing--cheese', STUFF_CHEESE_NAME);
-    this.inputInit(this.hamburgersForm, '#stuffing--salad',  STUFF_SALAD_NAME);
-    this.inputInit(this.hamburgersForm, '#stuffing--potato', STUFF_POTATO_NAME);
+    this.inputInit(this.hamburgersForm, '#size--big', OPTIONS.BURGER_BIG_NAME);
+    this.inputInit(this.hamburgersForm, '#size--small', OPTIONS.BURGER_SM_NAME);
+    this.inputInit(this.hamburgersForm, '#stuffing--cheese', OPTIONS.STUFF_CHEESE_NAME);
+    this.inputInit(this.hamburgersForm, '#stuffing--salad',  OPTIONS.STUFF_SALAD_NAME);
+    this.inputInit(this.hamburgersForm, '#stuffing--potato', OPTIONS.STUFF_POTATO_NAME);
 
     // Salads
-    this.inputInit(this.saladsForm, '#salad--ceaser', SALAD_CEASER_NAME);
-    this.inputInit(this.saladsForm, '#salad--olivie', SALAD_OLIVIE_NAME);
+    this.inputInit(this.saladsForm, '#salad--ceaser', OPTIONS.SALAD_CEASER_NAME);
+    this.inputInit(this.saladsForm, '#salad--olivie', OPTIONS.SALAD_OLIVIE_NAME);
 
     // Drinks
-    this.inputInit(this.drinksForm, '#drink--coffee', DRINK_COFFEE_NAME);
-    this.inputInit(this.drinksForm, '#drink--cola', DRINK_COLA_NAME);
+    this.inputInit(this.drinksForm, '#drink--coffee', OPTIONS.DRINK_COFFEE_NAME);
+    this.inputInit(this.drinksForm, '#drink--cola', OPTIONS.DRINK_COLA_NAME);
 
     // Thus ES5 functions can find info storaged in this (meaning ORDER)
     const positionTemplate = this.positionTemplate;

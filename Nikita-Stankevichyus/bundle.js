@@ -119,74 +119,76 @@ $('.aside__drinks_form').submit( function(event) {
 // First render to initialize dynamic elements
 ORDER.render();
 },{"./src/javascript/class_drink.js":3,"./src/javascript/class_hamburger.js":4,"./src/javascript/class_salad.js":5,"./src/javascript/order_local_object.js":7}],2:[function(require,module,exports){
-/*
- * OPTIONS' NAMES
-*/
+// /*
+//  * OPTIONS' NAMES
+// */
 
 
-// Hamburgers
-const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
-const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
+// // Hamburgers
+// const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
+// const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
 
-// Stuffings
-const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
-const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
-const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
+// // Stuffings
+// const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
+// const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
+// const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
 
-// Salads
-const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
-const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
+// // Salads
+// const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
+// const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
 
-// Drinks
-const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
-const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
-
-
-
-/*
- * PRICES
-*/
+// // Drinks
+// const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
+// const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
 
 
-const BURGER_SM_PRICE = require('./consts_food_params.js').BURGER_SM_PRICE;
-const BURGER_BIG_PRICE = require('./consts_food_params.js').BURGER_BIG_PRICE;
 
-// Stuffings
-const STUFF_CHEESE_PRICE = require('./consts_food_params.js').STUFF_CHEESE_PRICE;
-const STUFF_SALAD_PRICE = require('./consts_food_params.js').STUFF_SALAD_PRICE;
-const STUFF_POTATO_PRICE = require('./consts_food_params.js').STUFF_POTATO_PRICE;
-
-// Salads
-const SALAD_CEASER_PRICE = require('./consts_food_params.js').SALAD_CEASER_PRICE;
-const SALAD_OLIVIE_PRICE = require('./consts_food_params.js').SALAD_OLIVIE_PRICE;
-
-// Drinks
-const DRINK_COLA_PRICE = require('./consts_food_params.js').DRINK_COLA_PRICE;
-const DRINK_COFFEE_PRICE = require('./consts_food_params.js').DRINK_COFFEE_PRICE;
+// /*
+//  * PRICES
+// */
 
 
-/*
- * CALORIES
-*/
+// const BURGER_SM_PRICE = require('./consts_food_params.js').BURGER_SM_PRICE;
+// const BURGER_BIG_PRICE = require('./consts_food_params.js').BURGER_BIG_PRICE;
 
-// Hamburgers
-const BURGER_SM_CALS = require('./consts_food_params.js').BURGER_SM_CALS;
-const BURGER_BIG_CALS = require('./consts_food_params.js').BURGER_BIG_CALS;
+// // Stuffings
+// const STUFF_CHEESE_PRICE = require('./consts_food_params.js').STUFF_CHEESE_PRICE;
+// const STUFF_SALAD_PRICE = require('./consts_food_params.js').STUFF_SALAD_PRICE;
+// const STUFF_POTATO_PRICE = require('./consts_food_params.js').STUFF_POTATO_PRICE;
 
-// Stuffings
-const STUFF_CHEESE_CALS = require('./consts_food_params.js').STUFF_CHEESE_CALS;
-const STUFF_SALAD_CALS = require('./consts_food_params.js').STUFF_SALAD_CALS;
-const STUFF_POTATO_CALS = require('./consts_food_params.js').STUFF_POTATO_CALS;
+// // Salads
+// const SALAD_CEASER_PRICE = require('./consts_food_params.js').SALAD_CEASER_PRICE;
+// const SALAD_OLIVIE_PRICE = require('./consts_food_params.js').SALAD_OLIVIE_PRICE;
 
-// Salads
-const SALAD_CEASER_CALS = require('./consts_food_params.js').SALAD_CEASER_CALS;
-const SALAD_OLIVIE_CALS = require('./consts_food_params.js'). SALAD_OLIVIE_CALS;
-
-// Drinks
-const DRINK_COLA_CALS = require('./consts_food_params.js').DRINK_COLA_CALS;
-const DRINK_COFFEE_CALS = require('./consts_food_params.js').DRINK_COFFEE_CALS;
+// // Drinks
+// const DRINK_COLA_PRICE = require('./consts_food_params.js').DRINK_COLA_PRICE;
+// const DRINK_COFFEE_PRICE = require('./consts_food_params.js').DRINK_COFFEE_PRICE;
 
 
+// /*
+//  * CALORIES
+// */
+
+// // Hamburgers
+// const BURGER_SM_CALS = require('./consts_food_params.js').BURGER_SM_CALS;
+// const BURGER_BIG_CALS = require('./consts_food_params.js').BURGER_BIG_CALS;
+
+// // Stuffings
+// const STUFF_CHEESE_CALS = require('./consts_food_params.js').STUFF_CHEESE_CALS;
+// const STUFF_SALAD_CALS = require('./consts_food_params.js').STUFF_SALAD_CALS;
+// const STUFF_POTATO_CALS = require('./consts_food_params.js').STUFF_POTATO_CALS;
+
+// // Salads
+// const SALAD_CEASER_CALS = require('./consts_food_params.js').SALAD_CEASER_CALS;
+// const SALAD_OLIVIE_CALS = require('./consts_food_params.js'). SALAD_OLIVIE_CALS;
+
+// // Drinks
+// const DRINK_COLA_CALS = require('./consts_food_params.js').DRINK_COLA_CALS;
+// const DRINK_COFFEE_CALS = require('./consts_food_params.js').DRINK_COFFEE_CALS;
+
+const OPTIONS = require('./consts_food_params.js').OPTIONS;
+const PRICES = require('./consts_food_params.js').PRICES;
+const CALORIES = require('./consts_food_params.js').CALORIES;
 
 function FOOD(type, option) {
 
@@ -253,35 +255,35 @@ FOOD.prototype.getStuffing = function(){
 
 FOOD.prototype._prices = {
 
-  [BURGER_SM_NAME]: BURGER_SM_PRICE,
-  [BURGER_BIG_NAME]: BURGER_BIG_PRICE,
+  [OPTIONS.BURGER_SM_NAME]: PRICES.BURGER_SM_PRICE,
+  [OPTIONS.BURGER_BIG_NAME]: PRICES.BURGER_BIG_PRICE,
 
-  [STUFF_CHEESE_NAME]: STUFF_CHEESE_PRICE,
-  [STUFF_SALAD_NAME]: STUFF_SALAD_PRICE,
-  [STUFF_POTATO_NAME]: STUFF_POTATO_PRICE,
+  [OPTIONS.STUFF_CHEESE_NAME]: PRICES.STUFF_CHEESE_PRICE,
+  [OPTIONS.STUFF_SALAD_NAME]: PRICES.STUFF_SALAD_PRICE,
+  [OPTIONS.STUFF_POTATO_NAME]: PRICES.STUFF_POTATO_PRICE,
 
-  [SALAD_CEASER_NAME]: SALAD_CEASER_PRICE,
-  [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_PRICE,
+  [OPTIONS.SALAD_CEASER_NAME]: PRICES.SALAD_CEASER_PRICE,
+  [OPTIONS.SALAD_OLIVIE_NAME]: PRICES.SALAD_OLIVIE_PRICE,
 
-  [DRINK_COLA_NAME]: DRINK_COLA_PRICE,
-  [DRINK_COFFEE_NAME]: DRINK_COFFEE_PRICE,
+  [OPTIONS.DRINK_COLA_NAME]: PRICES.DRINK_COLA_PRICE,
+  [OPTIONS.DRINK_COFFEE_NAME]: PRICES.DRINK_COFFEE_PRICE,
 
 }
 
 FOOD.prototype._calories ={
 
-  [BURGER_SM_NAME]: BURGER_SM_CALS,
-  [BURGER_BIG_NAME]: BURGER_BIG_CALS,
+  [OPTIONS.BURGER_SM_NAME]: CALORIES.BURGER_SM_CALS,
+  [OPTIONS.BURGER_BIG_NAME]: CALORIES.BURGER_BIG_CALS,
 
-  [STUFF_CHEESE_NAME]: STUFF_CHEESE_CALS,
-  [STUFF_SALAD_NAME]: STUFF_SALAD_CALS,
-  [STUFF_POTATO_NAME]: STUFF_POTATO_CALS,
+  [OPTIONS.STUFF_CHEESE_NAME]: CALORIES.STUFF_CHEESE_CALS,
+  [OPTIONS.STUFF_SALAD_NAME]: CALORIES.STUFF_SALAD_CALS,
+  [OPTIONS.STUFF_POTATO_NAME]: CALORIES.STUFF_POTATO_CALS,
 
-  [SALAD_CEASER_NAME]: SALAD_CEASER_CALS,
-  [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_CALS,
+  [OPTIONS.SALAD_CEASER_NAME]: CALORIES.SALAD_CEASER_CALS,
+  [OPTIONS.SALAD_OLIVIE_NAME]: CALORIES.SALAD_OLIVIE_CALS,
 
-  [DRINK_COLA_NAME]: DRINK_COLA_CALS,
-  [DRINK_COFFEE_NAME]: DRINK_COFFEE_CALS,
+  [OPTIONS.DRINK_COLA_NAME]: CALORIES.DRINK_COLA_CALS,
+  [OPTIONS.DRINK_COFFEE_NAME]: CALORIES.DRINK_COFFEE_CALS,
   
 }
 
@@ -390,12 +392,8 @@ module.exports = FOOD;
 // }
 
 },{"./consts_food_params.js":6}],3:[function(require,module,exports){
-const DRINK_TYPE = require('./consts_food_params.js').DRINK_TYPE;
-const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
-
-// Not used. Here in case it's requested to change default value
-const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
-
+const TYPES = require('./consts_food_params').TYPES;
+const OPTIONS = require('./consts_food_params').OPTIONS;
 
 // Importing FOOD object (considering it abstract class)
 const FOOD = require('./abstract_class_food.js');
@@ -403,7 +401,7 @@ const FOOD = require('./abstract_class_food.js');
 // Constructor for drinks objects
 function Drink(option) {
 
-  FOOD.call(this, DRINK_TYPE, option);
+  FOOD.call(this, TYPES.DRINK_TYPE, option || OPTIONS.DRINK_COFFEE_NAME);
 
 }
 
@@ -427,22 +425,9 @@ module.exports.Drink = Drink;
 // // Setting prototype
 // module.exports.Drink.prototype = FOOD;
 
-},{"./abstract_class_food.js":2,"./consts_food_params.js":6}],4:[function(require,module,exports){
-const BURGER_TYPE = require('./consts_food_params.js').BURGER_TYPE;
-const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
-
-// Not used. Here in case it's requested to change default value
-const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
-
-
-const STUFF_TYPE = require('./consts_food_params.js').STUFF_TYPE;
-const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
-
-// Not used. Here in case it's requested to change default value
-const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
-const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
-
-
+},{"./abstract_class_food.js":2,"./consts_food_params":6}],4:[function(require,module,exports){
+const TYPES = require('./consts_food_params').TYPES;
+const OPTIONS = require('./consts_food_params').OPTIONS;
 
 
 // Importing FOOD object (considering it abstract class)
@@ -452,7 +437,7 @@ const FOOD = require('./abstract_class_food.js');
 // Constructor for stuffing objects
 function Stuffing (option) {
 
-  FOOD.call(this, STUFF_TYPE, option || STUFF_CHEESE_NAME)
+  FOOD.call(this, TYPES.STUFF_TYPE, option || OPTIONS.STUFF_CHEESE_NAME)
   
   // this.type = STUFF_TYPE;
 
@@ -474,7 +459,7 @@ Stuffing.prototype = Object.create(FOOD.prototype);
 function Hamburger(option, stuffing) {
 
 
-  FOOD.call(this, BURGER_TYPE, option || BURGER_SM_NAME);
+  FOOD.call(this, TYPES.BURGER_TYPE, option || OPTIONS.BURGER_SM_NAME);
   this.stuffing = stuffing || new Stuffing();
   // this.type = BURGER_TYPE;
 
@@ -537,13 +522,9 @@ module.exports.Hamburger = Hamburger;
 // module.exports.Hamburger.prototype = FOOD;
 
 
-},{"./abstract_class_food.js":2,"./consts_food_params.js":6}],5:[function(require,module,exports){
-const SALAD_TYPE = require('./consts_food_params.js').SALAD_TYPE;
-const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
-
-// Not used. Here in case it's requested to change default value
-const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
-
+},{"./abstract_class_food.js":2,"./consts_food_params":6}],5:[function(require,module,exports){
+const TYPES = require('./consts_food_params').TYPES;
+const OPTIONS = require('./consts_food_params').OPTIONS;
 
 // Importing FOOD object (considering it abstract class)
 const FOOD = require('./abstract_class_food.js');
@@ -551,7 +532,7 @@ const FOOD = require('./abstract_class_food.js');
 // Constructor for drinks objects
 function Salad(option) {
   
-  FOOD.call(this, SALAD_TYPE, option || SALAD_CEASER_NAME);
+  FOOD.call(this, TYPES.SALAD_TYPE, option || OPTIONS.SALAD_CEASER_NAME);
   // this.type = SALAD_TYPE;
 
   // // Option is 'cola' by default
@@ -569,7 +550,7 @@ module.exports.Salad = Salad;
 // Setting prototype
 // module.exports.Salad.prototype = FOOD;
 
-},{"./abstract_class_food.js":2,"./consts_food_params.js":6}],6:[function(require,module,exports){
+},{"./abstract_class_food.js":2,"./consts_food_params":6}],6:[function(require,module,exports){
 // Parameteres for food
 // NOTE: It probably would be better to storage those as three objects instead of separate values
 //       But it is a minor issue
@@ -578,99 +559,151 @@ module.exports.Salad = Salad;
  * TYPES' NAMES
 */
 
-module.exports.BURGER_TYPE = 'hamburger';
-module.exports.STUFF_TYPE = 'stuffing';
-module.exports.SALAD_TYPE = 'salad';
-module.exports.DRINK_TYPE = 'drink';
+module.exports.TYPES = {
+  BURGER_TYPE: 'hamburger',
+  STUFF_TYPE: 'stuffing',
+  SALAD_TYPE: 'salad',
+  DRINK_TYPE: 'drink',
+}
+
+// module.exports.BURGER_TYPE = 'hamburger';
+// module.exports.STUFF_TYPE = 'stuffing';
+// module.exports.SALAD_TYPE = 'salad';
+// module.exports.DRINK_TYPE = 'drink';
 
 
 /*
  * OPTIONS' NAMES
 */
 
-// NOTE: Option name and size is the same for burgers
-// Hamburgers
-module.exports.BURGER_SM_NAME = 'small';
-module.exports.BURGER_BIG_NAME = 'big';
+module.exports.OPTIONS = {
 
-// Stuffings
-module.exports.STUFF_CHEESE_NAME = 'cheese';
-module.exports.STUFF_SALAD_NAME = 'salad';
-module.exports.STUFF_POTATO_NAME = 'potato';
+  // Hamburgers
+  BURGER_SM_NAME: 'small',
+  BURGER_BIG_NAME: 'big',
 
-// Salads
-module.exports.SALAD_CEASER_NAME = 'ceaser';
-module.exports.SALAD_OLIVIE_NAME = 'olivie';
+  // Stuffings
+  STUFF_CHEESE_NAME: 'cheese',
+  STUFF_SALAD_NAME: 'salad',
+  STUFF_POTATO_NAME: 'potato',
 
-// Drinks
-module.exports.DRINK_COLA_NAME = 'cola';
-module.exports.DRINK_COFFEE_NAME = 'coffee';
+  // Salads
+  SALAD_CEASER_NAME: 'ceaser',
+  SALAD_OLIVIE_NAME: 'olivie',
+
+  // Drinks
+  DRINK_COLA_NAME: 'cola',
+  DRINK_COFFEE_NAME: 'coffee',
+
+}
+
+
+
+// // NOTE: Option name and size is the same for burgers
+// // Hamburgers
+// module.exports.BURGER_SM_NAME = 'small';
+// module.exports.BURGER_BIG_NAME = 'big';
+
+// // Stuffings
+// module.exports.STUFF_CHEESE_NAME = 'cheese';
+// module.exports.STUFF_SALAD_NAME = 'salad';
+// module.exports.STUFF_POTATO_NAME = 'potato';
+
+// // Salads
+// module.exports.SALAD_CEASER_NAME = 'ceaser';
+// module.exports.SALAD_OLIVIE_NAME = 'olivie';
+
+// // Drinks
+// module.exports.DRINK_COLA_NAME = 'cola';
+// module.exports.DRINK_COFFEE_NAME = 'coffee';
 
 
 /*
  * PRICES
 */
 
-// Hamburgers
-module.exports.BURGER_SM_PRICE = 50;
-module.exports.BURGER_BIG_PRICE = 100;
+module.exports.PRICES = {
 
-// Stuffings
-module.exports.STUFF_CHEESE_PRICE = 10;
-module.exports.STUFF_SALAD_PRICE = 20;
-module.exports.STUFF_POTATO_PRICE = 15;
+  // Hamburgers
+  BURGER_SM_PRICE: 50,
+  BURGER_BIG_PRICE: 100,
 
-// Salads
-module.exports.SALAD_CEASER_PRICE = 100;
-module.exports.SALAD_OLIVIE_PRICE = 50;
+  // Stuffings
+  STUFF_CHEESE_PRICE: 10,
+  STUFF_SALAD_PRICE: 20,
+  STUFF_POTATO_PRICE: 15,
 
-// Drinks
-module.exports.DRINK_COLA_PRICE = 50;
-module.exports.DRINK_COFFEE_PRICE = 80;
+  // Salads
+  SALAD_CEASER_PRICE: 100,
+  SALAD_OLIVIE_PRICE: 50,
+
+  // Drinks
+  DRINK_COLA_PRICE: 50,
+  DRINK_COFFEE_PRICE: 80,
+
+}
+
+// // Hamburgers
+// module.exports.BURGER_SM_PRICE = 50;
+// module.exports.BURGER_BIG_PRICE = 100;
+
+// // Stuffings
+// module.exports.STUFF_CHEESE_PRICE = 10;
+// module.exports.STUFF_SALAD_PRICE = 20;
+// module.exports.STUFF_POTATO_PRICE = 15;
+
+// // Salads
+// module.exports.SALAD_CEASER_PRICE = 100;
+// module.exports.SALAD_OLIVIE_PRICE = 50;
+
+// // Drinks
+// module.exports.DRINK_COLA_PRICE = 50;
+// module.exports.DRINK_COFFEE_PRICE = 80;
 
 
 /*
  * CALORIES
 */
 
-// Hamburgers
-module.exports.BURGER_SM_CALS = 20;
-module.exports.BURGER_BIG_CALS = 40;
+module.exports.CALORIES = {
 
-// Stuffings
-module.exports.STUFF_CHEESE_CALS = 20;
-module.exports.STUFF_SALAD_CALS = 5;
-module.exports.STUFF_POTATO_CALS = 10;
+  // Hamburgers
+  BURGER_SM_CALS: 20,
+  BURGER_BIG_CALS: 40,
 
-// Salads
-module.exports.SALAD_CEASER_CALS = 20;
-module.exports.SALAD_OLIVIE_CALS = 80;
+  // Stuffings
+  STUFF_CHEESE_CALS: 20,
+  STUFF_SALAD_CALS: 5,
+  STUFF_POTATO_CALS: 10,
 
-// Drinks
-module.exports.DRINK_COLA_CALS = 40;
-module.exports.DRINK_COFFEE_CALS = 20;
+  // Salads
+  SALAD_CEASER_CALS: 20,
+  SALAD_OLIVIE_CALS: 80,
+
+  // Drinks
+  DRINK_COLA_CALS: 40,
+  DRINK_COFFEE_CALS: 20,
+
+}
+
+// // Hamburgers
+// module.exports.BURGER_SM_CALS = 20;
+// module.exports.BURGER_BIG_CALS = 40;
+
+// // Stuffings
+// module.exports.STUFF_CHEESE_CALS = 20;
+// module.exports.STUFF_SALAD_CALS = 5;
+// module.exports.STUFF_POTATO_CALS = 10;
+
+// // Salads
+// module.exports.SALAD_CEASER_CALS = 20;
+// module.exports.SALAD_OLIVIE_CALS = 80;
+
+// // Drinks
+// module.exports.DRINK_COLA_CALS = 40;
+// module.exports.DRINK_COFFEE_CALS = 20;
 },{}],7:[function(require,module,exports){
-/*
- * OPTIONS' NAMES
-*/
-
-
-// Hamburgers
-const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
-const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
-
-// Stuffings
-const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
-const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
-const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
-
-// Salads
-const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
-const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
-
-// Drinks
-const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
-const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
+const OPTIONS = require('./consts_food_params').OPTIONS;
 
 
 // Additional class for storagin position html-element and reference to corresponding food item
@@ -748,19 +781,19 @@ module.exports.ORDER = {
     */
 
     // Hamburgers (+stuffings)
-    this.inputInit(this.hamburgersForm, '#size--big', BURGER_BIG_NAME);
-    this.inputInit(this.hamburgersForm, '#size--small', BURGER_SM_NAME);
-    this.inputInit(this.hamburgersForm, '#stuffing--cheese', STUFF_CHEESE_NAME);
-    this.inputInit(this.hamburgersForm, '#stuffing--salad',  STUFF_SALAD_NAME);
-    this.inputInit(this.hamburgersForm, '#stuffing--potato', STUFF_POTATO_NAME);
+    this.inputInit(this.hamburgersForm, '#size--big', OPTIONS.BURGER_BIG_NAME);
+    this.inputInit(this.hamburgersForm, '#size--small', OPTIONS.BURGER_SM_NAME);
+    this.inputInit(this.hamburgersForm, '#stuffing--cheese', OPTIONS.STUFF_CHEESE_NAME);
+    this.inputInit(this.hamburgersForm, '#stuffing--salad',  OPTIONS.STUFF_SALAD_NAME);
+    this.inputInit(this.hamburgersForm, '#stuffing--potato', OPTIONS.STUFF_POTATO_NAME);
 
     // Salads
-    this.inputInit(this.saladsForm, '#salad--ceaser', SALAD_CEASER_NAME);
-    this.inputInit(this.saladsForm, '#salad--olivie', SALAD_OLIVIE_NAME);
+    this.inputInit(this.saladsForm, '#salad--ceaser', OPTIONS.SALAD_CEASER_NAME);
+    this.inputInit(this.saladsForm, '#salad--olivie', OPTIONS.SALAD_OLIVIE_NAME);
 
     // Drinks
-    this.inputInit(this.drinksForm, '#drink--coffee', DRINK_COFFEE_NAME);
-    this.inputInit(this.drinksForm, '#drink--cola', DRINK_COLA_NAME);
+    this.inputInit(this.drinksForm, '#drink--coffee', OPTIONS.DRINK_COFFEE_NAME);
+    this.inputInit(this.drinksForm, '#drink--cola', OPTIONS.DRINK_COLA_NAME);
 
     // Thus ES5 functions can find info storaged in this (meaning ORDER)
     const positionTemplate = this.positionTemplate;
@@ -820,4 +853,4 @@ module.exports.ORDER = {
   },
 
 }
-},{"./consts_food_params.js":6}]},{},[1]);
+},{"./consts_food_params":6}]},{},[1]);

@@ -1,9 +1,5 @@
-const DRINK_TYPE = require('./consts_food_params.js').DRINK_TYPE;
-const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
-
-// Not used. Here in case it's requested to change default value
-const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
-
+const TYPES = require('./consts_food_params').TYPES;
+const OPTIONS = require('./consts_food_params').OPTIONS;
 
 // Importing FOOD object (considering it abstract class)
 const FOOD = require('./abstract_class_food.js');
@@ -11,7 +7,7 @@ const FOOD = require('./abstract_class_food.js');
 // Constructor for drinks objects
 function Drink(option) {
 
-  FOOD.call(this, DRINK_TYPE, option);
+  FOOD.call(this, TYPES.DRINK_TYPE, option || OPTIONS.DRINK_COFFEE_NAME);
 
 }
 

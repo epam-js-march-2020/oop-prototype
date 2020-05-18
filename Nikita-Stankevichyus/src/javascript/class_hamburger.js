@@ -1,18 +1,5 @@
-const BURGER_TYPE = require('./consts_food_params.js').BURGER_TYPE;
-const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
-
-// Not used. Here in case it's requested to change default value
-const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
-
-
-const STUFF_TYPE = require('./consts_food_params.js').STUFF_TYPE;
-const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
-
-// Not used. Here in case it's requested to change default value
-const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
-const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
-
-
+const TYPES = require('./consts_food_params').TYPES;
+const OPTIONS = require('./consts_food_params').OPTIONS;
 
 
 // Importing FOOD object (considering it abstract class)
@@ -22,7 +9,7 @@ const FOOD = require('./abstract_class_food.js');
 // Constructor for stuffing objects
 function Stuffing (option) {
 
-  FOOD.call(this, STUFF_TYPE, option || STUFF_CHEESE_NAME)
+  FOOD.call(this, TYPES.STUFF_TYPE, option || OPTIONS.STUFF_CHEESE_NAME)
   
   // this.type = STUFF_TYPE;
 
@@ -44,7 +31,7 @@ Stuffing.prototype = Object.create(FOOD.prototype);
 function Hamburger(option, stuffing) {
 
 
-  FOOD.call(this, BURGER_TYPE, option || BURGER_SM_NAME);
+  FOOD.call(this, TYPES.BURGER_TYPE, option || OPTIONS.BURGER_SM_NAME);
   this.stuffing = stuffing || new Stuffing();
   // this.type = BURGER_TYPE;
 
