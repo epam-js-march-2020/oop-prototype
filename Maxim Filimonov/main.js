@@ -111,7 +111,7 @@ var BasketModule = (function(){// pattern module
             var kkal = 0;
             console.log('Current receipt:')
             for (var key in receipt){
-                console.log('id: ' + receipt[key].id +' '+'Item: ' +  receipt[key].name +' '+ 'price: ' + receipt[key].price +' '+'kkal: ' +  receipt[key].kkal);
+                console.log('id: ' + receipt.indexOf(receipt[key]) +' '+'Item: ' +  receipt[key].name +' '+ 'price: ' + receipt[key].price +' '+'kkal: ' +  receipt[key].kkal);
                 if (receipt[key].mass != undefined){
                     console.log ('                             Mass: '+ receipt[key].mass);
                 }else if (receipt[key].size != undefined){
@@ -126,9 +126,9 @@ var BasketModule = (function(){// pattern module
             console.log('Price: ' + sum);
             console.log('Kkal: ' + ksum);
         },
-        deleteItem: function (id){ 
+        deleteItem: function (id){
             receipt.splice(id,1);
-            gen--;
+            //gen--;
             //this.subTotal();
         },
         pay: function(){
