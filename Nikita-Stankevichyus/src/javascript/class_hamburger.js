@@ -10,51 +10,17 @@ const FOOD = require('./abstract_class_food.js');
 function Stuffing (option) {
 
   FOOD.call(this, TYPES.STUFF_TYPE, option || OPTIONS.STUFF_CHEESE_NAME)
-  
-  // this.type = STUFF_TYPE;
-
-  // // Option is cheese by default
-  // this.option = option || STUFF_CHEESE_NAME;
-
-  // // Depending on the chosen option, parameters are founded automatically in the prototype
-  // this.price = this._definePrice(this.option);
-  // this.calories = this._defineCalories(this.option);
-
 
 }
 
 Stuffing.prototype = Object.create(FOOD.prototype);
 
-// module.exports.Stuffing.prototype = FOOD;
-
 
 function Hamburger(option, stuffing) {
 
-
   FOOD.call(this, TYPES.BURGER_TYPE, option || OPTIONS.BURGER_SM_NAME);
   this.stuffing = stuffing || new Stuffing();
-  // this.type = BURGER_TYPE;
-
-  // // Option is small by default 
-  // this.option = option || BURGER_SM_NAME;
-
-  // // Default stuffing by default
-  // this.stuffing = stuffing || new Stuffing();
   
-  // // Depending on the chosen option, parameters are founded automatically in the prototype
-  // this.price = this._definePrice(this.option);
-  // this.calories = this._defineCalories(this.option);
-
-  // // Calculates total parameters for hamburger with stuffing
-  // this._calculatePrice = function(){
-  //   return this.price + this.stuffing.price;
-  // }  
-
-  // this._calculateCalories = function(){
-  //   return this.calories + this.stuffing.calories;
-  // }
-
-
 }
 
 Hamburger.prototype = Object.create(FOOD.prototype);
@@ -89,7 +55,4 @@ Hamburger.prototype.getParameters = function(){
 
 module.exports.Stuffing = Stuffing;
 module.exports.Hamburger = Hamburger;
-
-// // Setting prototype
-// module.exports.Hamburger.prototype = FOOD;
 

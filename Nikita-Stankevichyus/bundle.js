@@ -119,72 +119,6 @@ $('.aside__drinks_form').submit( function(event) {
 // First render to initialize dynamic elements
 ORDER.render();
 },{"./src/javascript/class_drink.js":3,"./src/javascript/class_hamburger.js":4,"./src/javascript/class_salad.js":5,"./src/javascript/order_local_object.js":7}],2:[function(require,module,exports){
-// /*
-//  * OPTIONS' NAMES
-// */
-
-
-// // Hamburgers
-// const BURGER_SM_NAME = require('./consts_food_params.js').BURGER_SM_NAME;
-// const BURGER_BIG_NAME = require('./consts_food_params.js').BURGER_BIG_NAME;
-
-// // Stuffings
-// const STUFF_CHEESE_NAME = require('./consts_food_params.js').STUFF_CHEESE_NAME;
-// const STUFF_SALAD_NAME = require('./consts_food_params.js').STUFF_SALAD_NAME;
-// const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
-
-// // Salads
-// const SALAD_CEASER_NAME = require('./consts_food_params.js').SALAD_CEASER_NAME;
-// const SALAD_OLIVIE_NAME = require('./consts_food_params.js').SALAD_OLIVIE_NAME;
-
-// // Drinks
-// const DRINK_COLA_NAME = require('./consts_food_params.js').DRINK_COLA_NAME;
-// const DRINK_COFFEE_NAME = require('./consts_food_params.js').DRINK_COFFEE_NAME;
-
-
-
-// /*
-//  * PRICES
-// */
-
-
-// const BURGER_SM_PRICE = require('./consts_food_params.js').BURGER_SM_PRICE;
-// const BURGER_BIG_PRICE = require('./consts_food_params.js').BURGER_BIG_PRICE;
-
-// // Stuffings
-// const STUFF_CHEESE_PRICE = require('./consts_food_params.js').STUFF_CHEESE_PRICE;
-// const STUFF_SALAD_PRICE = require('./consts_food_params.js').STUFF_SALAD_PRICE;
-// const STUFF_POTATO_PRICE = require('./consts_food_params.js').STUFF_POTATO_PRICE;
-
-// // Salads
-// const SALAD_CEASER_PRICE = require('./consts_food_params.js').SALAD_CEASER_PRICE;
-// const SALAD_OLIVIE_PRICE = require('./consts_food_params.js').SALAD_OLIVIE_PRICE;
-
-// // Drinks
-// const DRINK_COLA_PRICE = require('./consts_food_params.js').DRINK_COLA_PRICE;
-// const DRINK_COFFEE_PRICE = require('./consts_food_params.js').DRINK_COFFEE_PRICE;
-
-
-// /*
-//  * CALORIES
-// */
-
-// // Hamburgers
-// const BURGER_SM_CALS = require('./consts_food_params.js').BURGER_SM_CALS;
-// const BURGER_BIG_CALS = require('./consts_food_params.js').BURGER_BIG_CALS;
-
-// // Stuffings
-// const STUFF_CHEESE_CALS = require('./consts_food_params.js').STUFF_CHEESE_CALS;
-// const STUFF_SALAD_CALS = require('./consts_food_params.js').STUFF_SALAD_CALS;
-// const STUFF_POTATO_CALS = require('./consts_food_params.js').STUFF_POTATO_CALS;
-
-// // Salads
-// const SALAD_CEASER_CALS = require('./consts_food_params.js').SALAD_CEASER_CALS;
-// const SALAD_OLIVIE_CALS = require('./consts_food_params.js'). SALAD_OLIVIE_CALS;
-
-// // Drinks
-// const DRINK_COLA_CALS = require('./consts_food_params.js').DRINK_COLA_CALS;
-// const DRINK_COFFEE_CALS = require('./consts_food_params.js').DRINK_COFFEE_CALS;
 
 const OPTIONS = require('./consts_food_params.js').OPTIONS;
 const PRICES = require('./consts_food_params.js').PRICES;
@@ -253,6 +187,7 @@ FOOD.prototype.getStuffing = function(){
   return this.stuffing ? this.stuffing : '';
 },
 
+// Those are crying for map data structure
 FOOD.prototype._prices = {
 
   [OPTIONS.BURGER_SM_NAME]: PRICES.BURGER_SM_PRICE,
@@ -289,107 +224,6 @@ FOOD.prototype._calories ={
 
 module.exports = FOOD;
 
-// module.exports.FOOD = {
-
-//   // Sets product's price depending on the option of the food
-//   // NOTE: It's a protected method
-//   _definePrice(option) {
-//     return this._prices[option];
-//   },
-
-//   // Sets product's calories depending on the option of the food
-//   // NOTE: It's a protected method
-//   _defineCalories(option) {
-//     return this._calories[option];
-//   },
-
-//   // Type is basic type of the food (Hamburger/Salad/Drink)
-//   getType() {
-//     return this.type;
-//   },
-
-//   // Option is advanced type of the food (For hamburgers it's size, for drink this is either cola or coffee, etc)
-//   getOption() {
-//     return this.option;
-//   },
-
-//   // Name is option + type (and stuffing in case of hamburgers)
-//   getName() {
-//     return this.option + ' ' + this.type + (this.stuffing ? ' with ' + this.stuffing.getName() : '');
-//   },
-
-//   // Gettin price. If object is hamburger -- price is calculated via corresponding method
-//   getPrice() {
-//     return (this._calculatePrice ? this._calculatePrice() : this.price);
-//   },
-
-//    // Gettin calories. If object is hamburger -- calories are calculated via corresponding method
-//   getCalories() {
-//     return (this._calculateCalories ? this._calculateCalories() : this.calories);
-//   },
-
-//   // Parameters are price + calories with measurement units. It takes hamburger's stuffing in consideration too
-//   getParameters() {
-//     return (this._calculatePrice ? this._calculatePrice() : this.price) + 'tg' + ' ' 
-//          + (this._calculateCalories ? this._calculateCalories() : this.calories) + 'cal';
-//   },
-
-//   // getName + getParameters. Mainly for testing matters
-//   getFullDescription() {
-//     return this.getName() + ' ' + this.getParameters();
-//   },
-
-//   // Size is method specific for hamburgers. Not sure if it's needed
-//   geSize() {
-//     return this.size ? this.size : '';
-//   },
-
-//   // Stuffing is method specific for hamburgers. Not sure if it's needed
-//   getStuffing() {
-//     return this.stuffing ? this.stuffing : '';
-//   },
-
-
-//   // 'Database' with prices for each food option
-//   // NOTE: It's a private field
-//   _prices: {
-
-//     [BURGER_SM_NAME]: BURGER_SM_PRICE,
-//     [BURGER_BIG_NAME]: BURGER_BIG_PRICE,
-
-//     [STUFF_CHEESE_NAME]: STUFF_CHEESE_PRICE,
-//     [STUFF_SALAD_NAME]: STUFF_SALAD_PRICE,
-//     [STUFF_POTATO_NAME]: STUFF_POTATO_PRICE,
-
-//     [SALAD_CEASER_NAME]: SALAD_CEASER_PRICE,
-//     [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_PRICE,
-
-//     [DRINK_COLA_NAME]: DRINK_COLA_PRICE,
-//     [DRINK_COFFEE_NAME]: DRINK_COFFEE_PRICE,
-
-//   },
-
-//   // 'Database' with calories for each food option
-//   // NOTE: It's a private field
-//   _calories: {
-
-//     [BURGER_SM_NAME]: BURGER_SM_CALS,
-//     [BURGER_BIG_NAME]: BURGER_BIG_CALS,
-
-//     [STUFF_CHEESE_NAME]: STUFF_CHEESE_CALS,
-//     [STUFF_SALAD_NAME]: STUFF_SALAD_CALS,
-//     [STUFF_POTATO_NAME]: STUFF_POTATO_CALS,
-
-//     [SALAD_CEASER_NAME]: SALAD_CEASER_CALS,
-//     [SALAD_OLIVIE_NAME]: SALAD_OLIVIE_CALS,
-
-//     [DRINK_COLA_NAME]: DRINK_COLA_CALS,
-//     [DRINK_COFFEE_NAME]: DRINK_COFFEE_CALS,
-    
-//   },
-
-
-// }
 
 },{"./consts_food_params.js":6}],3:[function(require,module,exports){
 const TYPES = require('./consts_food_params').TYPES;
@@ -408,22 +242,6 @@ function Drink(option) {
 Drink.prototype = Object.create(FOOD.prototype);
 
 module.exports.Drink = Drink;
-// module.exports.Drink = function(option) {
-  
-//   this.type = DRINK_TYPE;
-
-//   // Option is cola by default
-//   this.option = option || DRINK_COLA_NAME;
-
-//   // Depending on the chosen option, parameters are founded automatically in the prototype
-//   this.price = this._definePrice(this.option);
-//   this.calories = this._defineCalories(this.option);
-
-
-// }
-
-// // Setting prototype
-// module.exports.Drink.prototype = FOOD;
 
 },{"./abstract_class_food.js":2,"./consts_food_params":6}],4:[function(require,module,exports){
 const TYPES = require('./consts_food_params').TYPES;
@@ -438,51 +256,17 @@ const FOOD = require('./abstract_class_food.js');
 function Stuffing (option) {
 
   FOOD.call(this, TYPES.STUFF_TYPE, option || OPTIONS.STUFF_CHEESE_NAME)
-  
-  // this.type = STUFF_TYPE;
-
-  // // Option is cheese by default
-  // this.option = option || STUFF_CHEESE_NAME;
-
-  // // Depending on the chosen option, parameters are founded automatically in the prototype
-  // this.price = this._definePrice(this.option);
-  // this.calories = this._defineCalories(this.option);
-
 
 }
 
 Stuffing.prototype = Object.create(FOOD.prototype);
 
-// module.exports.Stuffing.prototype = FOOD;
-
 
 function Hamburger(option, stuffing) {
 
-
   FOOD.call(this, TYPES.BURGER_TYPE, option || OPTIONS.BURGER_SM_NAME);
   this.stuffing = stuffing || new Stuffing();
-  // this.type = BURGER_TYPE;
-
-  // // Option is small by default 
-  // this.option = option || BURGER_SM_NAME;
-
-  // // Default stuffing by default
-  // this.stuffing = stuffing || new Stuffing();
   
-  // // Depending on the chosen option, parameters are founded automatically in the prototype
-  // this.price = this._definePrice(this.option);
-  // this.calories = this._defineCalories(this.option);
-
-  // // Calculates total parameters for hamburger with stuffing
-  // this._calculatePrice = function(){
-  //   return this.price + this.stuffing.price;
-  // }  
-
-  // this._calculateCalories = function(){
-  //   return this.calories + this.stuffing.calories;
-  // }
-
-
 }
 
 Hamburger.prototype = Object.create(FOOD.prototype);
@@ -518,9 +302,6 @@ Hamburger.prototype.getParameters = function(){
 module.exports.Stuffing = Stuffing;
 module.exports.Hamburger = Hamburger;
 
-// // Setting prototype
-// module.exports.Hamburger.prototype = FOOD;
-
 
 },{"./abstract_class_food.js":2,"./consts_food_params":6}],5:[function(require,module,exports){
 const TYPES = require('./consts_food_params').TYPES;
@@ -533,27 +314,14 @@ const FOOD = require('./abstract_class_food.js');
 function Salad(option) {
   
   FOOD.call(this, TYPES.SALAD_TYPE, option || OPTIONS.SALAD_CEASER_NAME);
-  // this.type = SALAD_TYPE;
-
-  // // Option is 'cola' by default
-  // this.option = option || SALAD_CEASER_NAME;
-
-  // // Depending on the chosen option, parameters are founded automatically in the prototype
-  // this.price = this._definePrice(this.option);
-  // this.calories = this._defineCalories(this.option);
-
 
 }
 
 Salad.prototype = Object.create(FOOD.prototype);
 module.exports.Salad = Salad;
-// Setting prototype
-// module.exports.Salad.prototype = FOOD;
 
 },{"./abstract_class_food.js":2,"./consts_food_params":6}],6:[function(require,module,exports){
 // Parameteres for food
-// NOTE: It probably would be better to storage those as three objects instead of separate values
-//       But it is a minor issue
 
 /*
  * TYPES' NAMES
@@ -565,12 +333,6 @@ module.exports.TYPES = {
   SALAD_TYPE: 'salad',
   DRINK_TYPE: 'drink',
 }
-
-// module.exports.BURGER_TYPE = 'hamburger';
-// module.exports.STUFF_TYPE = 'stuffing';
-// module.exports.SALAD_TYPE = 'salad';
-// module.exports.DRINK_TYPE = 'drink';
-
 
 /*
  * OPTIONS' NAMES
@@ -597,27 +359,6 @@ module.exports.OPTIONS = {
 
 }
 
-
-
-// // NOTE: Option name and size is the same for burgers
-// // Hamburgers
-// module.exports.BURGER_SM_NAME = 'small';
-// module.exports.BURGER_BIG_NAME = 'big';
-
-// // Stuffings
-// module.exports.STUFF_CHEESE_NAME = 'cheese';
-// module.exports.STUFF_SALAD_NAME = 'salad';
-// module.exports.STUFF_POTATO_NAME = 'potato';
-
-// // Salads
-// module.exports.SALAD_CEASER_NAME = 'ceaser';
-// module.exports.SALAD_OLIVIE_NAME = 'olivie';
-
-// // Drinks
-// module.exports.DRINK_COLA_NAME = 'cola';
-// module.exports.DRINK_COFFEE_NAME = 'coffee';
-
-
 /*
  * PRICES
 */
@@ -642,24 +383,6 @@ module.exports.PRICES = {
   DRINK_COFFEE_PRICE: 80,
 
 }
-
-// // Hamburgers
-// module.exports.BURGER_SM_PRICE = 50;
-// module.exports.BURGER_BIG_PRICE = 100;
-
-// // Stuffings
-// module.exports.STUFF_CHEESE_PRICE = 10;
-// module.exports.STUFF_SALAD_PRICE = 20;
-// module.exports.STUFF_POTATO_PRICE = 15;
-
-// // Salads
-// module.exports.SALAD_CEASER_PRICE = 100;
-// module.exports.SALAD_OLIVIE_PRICE = 50;
-
-// // Drinks
-// module.exports.DRINK_COLA_PRICE = 50;
-// module.exports.DRINK_COFFEE_PRICE = 80;
-
 
 /*
  * CALORIES
@@ -686,22 +409,7 @@ module.exports.CALORIES = {
 
 }
 
-// // Hamburgers
-// module.exports.BURGER_SM_CALS = 20;
-// module.exports.BURGER_BIG_CALS = 40;
 
-// // Stuffings
-// module.exports.STUFF_CHEESE_CALS = 20;
-// module.exports.STUFF_SALAD_CALS = 5;
-// module.exports.STUFF_POTATO_CALS = 10;
-
-// // Salads
-// module.exports.SALAD_CEASER_CALS = 20;
-// module.exports.SALAD_OLIVIE_CALS = 80;
-
-// // Drinks
-// module.exports.DRINK_COLA_CALS = 40;
-// module.exports.DRINK_COFFEE_CALS = 20;
 },{}],7:[function(require,module,exports){
 const OPTIONS = require('./consts_food_params').OPTIONS;
 
