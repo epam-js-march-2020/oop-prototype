@@ -16,53 +16,93 @@ const STUFF_POTATO_NAME = require('./consts_food_params.js').STUFF_POTATO_NAME;
 
 
 // Importing FOOD object (considering it abstract class)
-const FOOD = require('./abstract_class_food.js').FOOD;
+const FOOD = require('./abstract_class_food.js');
 
 
 // Constructor for stuffing objects
-module.exports.Stuffing = function(option) {
+function Stuffing (option) {
+
+  FOOD.call(this, STUFF_TYPE, option || STUFF_CHEESE_NAME)
   
-  this.type = STUFF_TYPE;
+  // this.type = STUFF_TYPE;
 
-  // Option is cheese by default
-  this.option = option || STUFF_CHEESE_NAME;
+  // // Option is cheese by default
+  // this.option = option || STUFF_CHEESE_NAME;
 
-  // Depending on the chosen option, parameters are founded automatically in the prototype
-  this.price = this._definePrice(this.option);
-  this.calories = this._defineCalories(this.option);
+  // // Depending on the chosen option, parameters are founded automatically in the prototype
+  // this.price = this._definePrice(this.option);
+  // this.calories = this._defineCalories(this.option);
 
 
 }
 
-module.exports.Stuffing.prototype = FOOD;
+Stuffing.prototype = Object.create(FOOD.prototype);
+
+// module.exports.Stuffing.prototype = FOOD;
 
 
-module.exports.Hamburger = function(option, stuffing) {
+function Hamburger(option, stuffing) {
 
-  this.type = BURGER_TYPE;
 
-  // Option is small by default 
-  this.option = option || BURGER_SM_NAME;
-
-  // Default stuffing by default
+  FOOD.call(this, BURGER_TYPE, option || BURGER_SM_NAME);
   this.stuffing = stuffing || new Stuffing();
+  // this.type = BURGER_TYPE;
+
+  // // Option is small by default 
+  // this.option = option || BURGER_SM_NAME;
+
+  // // Default stuffing by default
+  // this.stuffing = stuffing || new Stuffing();
   
-  // Depending on the chosen option, parameters are founded automatically in the prototype
-  this.price = this._definePrice(this.option);
-  this.calories = this._defineCalories(this.option);
+  // // Depending on the chosen option, parameters are founded automatically in the prototype
+  // this.price = this._definePrice(this.option);
+  // this.calories = this._defineCalories(this.option);
 
-  // Calculates total parameters for hamburger with stuffing
-  this._calculatePrice = function(){
-    return this.price + this.stuffing.price;
-  }  
+  // // Calculates total parameters for hamburger with stuffing
+  // this._calculatePrice = function(){
+  //   return this.price + this.stuffing.price;
+  // }  
 
-  this._calculateCalories = function(){
-    return this.calories + this.stuffing.calories;
-  }
+  // this._calculateCalories = function(){
+  //   return this.calories + this.stuffing.calories;
+  // }
 
 
 }
 
-// Setting prototype
-module.exports.Hamburger.prototype = FOOD;
+Hamburger.prototype = Object.create(FOOD.prototype);
+
+// Calculates total parameters for hamburger with stuffing
+Hamburger.prototype._calculatePrice = function(){
+  return this.price + this.stuffing.price;
+}  
+
+Hamburger.prototype._calculateCalories = function(){
+  return this.calories + this.stuffing.calories;
+}
+
+Hamburger.prototype.getName = function(){
+  return this.option + ' ' + this.type + (this.stuffing ? ' with ' + this.stuffing.getName() : '');
+}
+// Gettin price
+Hamburger.prototype.getPrice = function(){
+  return (this._calculatePrice ? this._calculatePrice() : this.price);
+}
+
+// Gettin calories
+Hamburger.prototype.getCalories = function(){
+  return (this._calculateCalories ? this._calculateCalories() : this.calories);
+}
+
+// Parameters are price + calories with measurement units. It takes hamburger's stuffing in consideration too
+Hamburger.prototype.getParameters = function(){
+  return (this._calculatePrice ? this._calculatePrice() : this.price) + 'tg' + ' ' 
+       + (this._calculateCalories ? this._calculateCalories() : this.calories) + 'cal';
+}
+
+module.exports.Stuffing = Stuffing;
+module.exports.Hamburger = Hamburger;
+
+// // Setting prototype
+// module.exports.Hamburger.prototype = FOOD;
 
