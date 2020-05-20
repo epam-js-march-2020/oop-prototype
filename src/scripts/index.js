@@ -90,11 +90,11 @@ function Hamburger(size, stuff) {
 Hamburger.prototype = Object.create(Product.prototype);
 
 /* Размеры, виды начинок и добавок */
-Hamburger.prototype.SIZE_SMALL = { name: "Small", price: 50, calories: 20 };
-Hamburger.prototype.SIZE_LARGE = { name: "Large", price: 100, calories: 40 };
-Hamburger.prototype.STUFF_CHEESE = { name: "cheese", price: 10, calories: 20 };
-Hamburger.prototype.STUFF_SALAD = { name: "salad", price: 20, calories: 5 };
-Hamburger.prototype.STUFF_POTATO = { name: "potato", price: 15, calories: 10 };
+Hamburger.SIZE_SMALL = { name: "Small", price: 50, calories: 20 };
+Hamburger.SIZE_LARGE = { name: "Large", price: 100, calories: 40 };
+Hamburger.STUFF_CHEESE = { name: "cheese", price: 10, calories: 20 };
+Hamburger.STUFF_SALAD = { name: "salad", price: 20, calories: 5 };
+Hamburger.STUFF_POTATO = { name: "potato", price: 15, calories: 10 };
 
 /**
  * Класс, объекты которого описывают параметры салата.
@@ -112,11 +112,11 @@ function Salad(size, stuff) {
 Salad.prototype = Object.create(Product.prototype);
 
 /* Размеры, виды салатов */
-Salad.prototype.SIZE_SMALL = { name: "Small", coefficient: 1 };
-Salad.prototype.SIZE_MEDIUM = { name: "Medium", coefficient: 1.5 };
-Salad.prototype.SIZE_LARGE = { name: "Large", coefficient: 2 };
-Salad.prototype.STUFF_CAESAR = { name: "caesar", price: 100, calories: 20 };
-Salad.prototype.STUFF_OLIVIE = { name: "olivie", price: 50, calories: 80 };
+Salad.SIZE_SMALL = { name: "Small", coefficient: 1 };
+Salad.SIZE_MEDIUM = { name: "Medium", coefficient: 1.5 };
+Salad.SIZE_LARGE = { name: "Large", coefficient: 2 };
+Salad.STUFF_CAESAR = { name: "caesar", price: 100, calories: 20 };
+Salad.STUFF_OLIVIE = { name: "olivie", price: 50, calories: 80 };
 
 /**
  * Класс, объекты которого описывают параметры напитка.
@@ -133,11 +133,11 @@ function Drink(size, stuff) {
 Drink.prototype = Object.create(Product.prototype);
 
 /* Размеры, виды напитков */
-Drink.prototype.SIZE_SMALL = { name: "Small", coefficient: 1 };
-Drink.prototype.SIZE_MEDIUM = { name: "Medium", coefficient: 1.5 };
-Drink.prototype.SIZE_LARGE = { name: "Large", coefficient: 2 };
-Drink.prototype.STUFF_COLA = { name: "cola", price: 50, calories: 40 };
-Drink.prototype.STUFF_COFFEE = { name: "coffee", price: 80, calories: 20 };
+Drink.SIZE_SMALL = { name: "Small", coefficient: 1 };
+Drink.SIZE_MEDIUM = { name: "Medium", coefficient: 1.5 };
+Drink.SIZE_LARGE = { name: "Large", coefficient: 2 };
+Drink.STUFF_COLA = { name: "cola", price: 50, calories: 40 };
+Drink.STUFF_COFFEE = { name: "coffee", price: 80, calories: 20 };
 
 /**
  * Класс, объекты которого описывают заказ
@@ -145,6 +145,7 @@ Drink.prototype.STUFF_COFFEE = { name: "coffee", price: 80, calories: 20 };
  */
 function Order() {
     this.products = [];
+    this.isPaid = false;
 }
 
 /**
@@ -184,7 +185,6 @@ Order.prototype.calculateOrderCalories = function () {
 };
 
 var renderOrder = function () {
-    console.log(order);
     var { products } = order;
 
     var tmpl = _.template($('#productsTableTemplate').html());
@@ -225,11 +225,10 @@ var renderHamburgerEdit = function (product) {
         $(tag).click({ tag }, function (event) {
             var { tag } = event.data;
             if ($(tag).val().includes('SIZE')){
-                product.setSize(product[$(tag).val()]);
+                product.setSize(Hamburger[$(tag).val()]);
             } else {
-                product.setStuff(product[$(tag).val()]);
+                product.setStuff(Hamburger[$(tag).val()]);
             }
-            renderOrder();
         })
     });
     $('input[name =productDelete]').click(function (){
@@ -239,6 +238,7 @@ var renderHamburgerEdit = function (product) {
     });
     $('input[name =doneButton]').click(function () {
         closeAllEdits();
+        renderOrder();
     });
 };
 
@@ -254,11 +254,10 @@ var renderSaladEdit = function (product) {
         $(tag).click({ tag }, function (event) {
             var { tag } = event.data;
             if ($(tag).val().includes('SIZE')){
-                product.setSize(product[$(tag).val()]);
+                product.setSize(Salad[$(tag).val()]);
             } else {
-                product.setStuff(product[$(tag).val()]);
+                product.setStuff(Salad[$(tag).val()]);
             }
-            renderOrder();
         })
     });
     $('input[name =productDelete]').click(function (){
@@ -268,6 +267,7 @@ var renderSaladEdit = function (product) {
     });
     $('input[name =doneButton]').click(function () {
         closeAllEdits();
+        renderOrder();
     });
 };
 
@@ -283,11 +283,10 @@ var renderDrinkEdit = function (product) {
         $(tag).click({ tag }, function (event) {
             var { tag } = event.data;
             if ($(tag).val().includes('SIZE')){
-                product.setSize(product[$(tag).val()]);
+                product.setSize(Drink[$(tag).val()]);
             } else {
-                product.setStuff(product[$(tag).val()]);
+                product.setStuff(Drink[$(tag).val()]);
             }
-            renderOrder();
         })
     });
     $('input[name =productDelete]').click(function (){
@@ -297,30 +296,42 @@ var renderDrinkEdit = function (product) {
     });
     $('input[name =doneButton]').click(function () {
         closeAllEdits();
+        renderOrder();
     });
 };
 
 var addHamburger = function () {
-    var newHamburger = new Hamburger();
-    newHamburger.setSize(newHamburger.SIZE_SMALL);
-    newHamburger.setStuff(newHamburger.STUFF_POTATO);
-    order.addProduct(newHamburger);
     renderOrder();
+    var newHamburger = new Hamburger();
+    newHamburger.setSize(Hamburger.SIZE_SMALL);
+    newHamburger.setStuff(Hamburger.STUFF_POTATO);
+    order.addProduct(newHamburger);
+    renderHamburgerEdit(newHamburger);
 };
 
 var addSalad = function () {
+    renderOrder();
     var newSalad = new Salad();
-    newSalad.setSize(newSalad.SIZE_SMALL);
-    newSalad.setStuff(newSalad.STUFF_CAESAR);
+    newSalad.setSize(Salad.SIZE_SMALL);
+    newSalad.setStuff(Salad.STUFF_CAESAR);
     order.addProduct(newSalad);
-    renderOrder();
+    renderSaladEdit(newSalad);
 };
+
 var addDrink = function () {
-    var newDrink = new Drink();
-    newDrink.setSize(newDrink.SIZE_SMALL);
-    newDrink.setStuff(newDrink.STUFF_COLA);
-    order.addProduct(newDrink);
     renderOrder();
+    var newDrink = new Drink();
+    newDrink.setSize(Drink.SIZE_SMALL);
+    newDrink.setStuff(Drink.STUFF_COLA);
+    order.addProduct(newDrink);
+    renderDrinkEdit(newDrink);
+};
+
+var payOrder = function () {
+    $('#modalFade').show();
+    $('#modalMessage').show();
+    $(window).scrollTop(0);
+    $('body').css({'overflow': 'hidden'});
 };
 
 var order = new Order();
@@ -329,5 +340,7 @@ $(document).ready(function () {
     $('#addHamburger').click(addHamburger);
     $('#addSalad').click(addSalad);
     $('#addDrink').click(addDrink);
+    $('#payOrder').click(payOrder);
+
     renderOrder();
 });

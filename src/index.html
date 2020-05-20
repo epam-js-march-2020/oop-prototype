@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>OOP prototype</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <div>
@@ -89,7 +90,7 @@
             </label>
         </div>
         <label>
-            <input type="button" name="doneButton" value="Done!>
+            <input type="button" name="doneButton" value="Done!">
         </label>
         <label>
             <input type="button" name="productDelete" value="Delete product">
@@ -124,7 +125,16 @@
             <input type="button" name="productDelete" value="Delete product">
         </label>
     </script>
-
+    <div>
+        <label>
+            <input type="button" id="payOrder" value="Pay order">
+        </label>
+    </div>
+    <div id="modalFade" class="modalFade">
+        <div id="modalMessage" class="modalMessage">
+            Thank you!
+        </div>
+    </div>
     <script src="scripts/plugins/jquery.js"></script>
     <script src="scripts/plugins/lodash.js"></script>
     <script src="scripts/index.js"></script>
